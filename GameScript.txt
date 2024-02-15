@@ -1,0 +1,25 @@
+TeamAlpha game plan:
+
+We will have a three-minute flow for our game.
+
+In order to prevent the player character's picture from overlapping with the boss picture, the screen will be divided into three parallel areas. In the first area, the player character appears, attacks, and dodges attacks. In the second area, smaller grunts and butterflies move, and the player character can move to this area as well. However, the third area is where Mid/Final Bosses appear and the player cannot move to this area. This design considers collision volume. There can be a gameplay bug if the trajectory of the enemy bullets fails to include the Boss's body (the player character can fly to the Boss's body without taking damage).
+
+There are two modes of play: slow and fast, with fast mode being the default. Using the Shift key or any other key we find easier, the player can select slow mode, and a white dot will appear after the switch to indicate that the mode switch was successful. When switching back to fast mode, the same thing will happen. The slow mode only affects movement speed, not bullet firing speed.
+
+First Time Period: 0:01-0:10
+
+First of all, when the player-controlled character appears in the middle of the screen, we will give the player eight to ten seconds to react and skillfully operate, and there won't be any enemies on the screen at this time. The player is able to start firing bullets at the third or fifth second. During ten seconds, since there are no enemies, the player is free to start using the arrow keys to move in all eight directions. The game allows the player to use the keys "W, A, S, D, WA, WD, SA, SD" individually or in combination.
+
+Second Time Period: 0:11-0:47
+
+At the 11th second, two regular enemies will appear directly above you at the same time. They will appear in the third area, but move to the second area, firing bullets as they appear and begin to move. Smaller grunts' bullets move in two straight rows. This is the first wave of attacks.
+
+After the two smaller grunts are eliminated (or by the 15th second), two new smaller grunts appear in different locations.
+
+In the 20th second, two small grunts appear in front of the player character, and two butterfly enemies enter the second area from the left and right directions, with the butterfly enemies flying at an angle (45°) so that their bullets make an "X" track. Butterfly enemies fly at an angle (45°) so that their bullets make an "X" trajectory.
+
+By the 28th or 30th second, the player should have eliminated the previous enemies. At this point, four small grunts will appear above and a butterfly enemy will fly in from the left. 40 seconds, a butterfly enemie will fly in from the right.
+
+Third time period: 0:48-1:15
+
+At 0:48, the Mid Boss appears in the third area. Mid Boss attacks with five bullets side-by-side and shoots the player character from right-to-left or left-to-right. Mid Boss's bullets act like a ladder, and this attack lasts for 10 seconds. At 0:49, Mid Boss will show a "power-up" mark right in front of him, alerting the player to a "power-up" mark. At 0:49, Mid Boss will show a "Power Up" sign right in front of him, alerting the player, and then a column of light will be fired, and this special bullet will remain on the screen for 4 seconds. At 1:03, a special bullet will appear on the left side of Mid Boss, and at 1:07, a special bullet will appear on the right side of Mid Boss. At 1:12, Mid Boss's attack ends, the Boss is destroyed and disappears from the screen. This process takes 3 seconds and the Mid Boss fight ends at 1:15.
