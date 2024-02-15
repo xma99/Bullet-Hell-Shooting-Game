@@ -12,13 +12,13 @@ First of all, when the player-controlled character appears in the middle of the 
 
 Second Time Period: 0:11-0:47
 
-At the 11th second, two regular enemies will appear directly above you at the same time. They will appear in the third area, but move to the second area, firing bullets as they appear and begin to move. Smaller grunts' bullets move in two straight rows. This is the first wave of attacks.
+At the 11 second, two regular enemies will appear directly above you at the same time. They will appear in the third area, but move to the second area, firing bullets as they appear and begin to move. Smaller grunts' bullets move in two straight rows. This is the first wave of attacks.
 
 After the two smaller grunts are eliminated (or by the 15th second), two new smaller grunts appear in different locations.
 
-In the 20th second, two small grunts appear in front of the player character, and two butterfly enemies enter the second area from the left and right directions, with the butterfly enemies flying at an angle (45°) so that their bullets make an "X" track. Butterfly enemies fly at an angle (45°) so that their bullets make an "X" trajectory.
+At 0:20, two small grunts appear in front of the player character, and two butterfly enemies enter the second area from the left and right directions, with the butterfly enemies flying at an angle (45°) so that their bullets make an "X" track. Butterfly enemies fly at an angle (45°) so that their bullets make an "X" trajectory.
 
-By the 28th or 30th second, the player should have eliminated the previous enemies. At this point, four small grunts will appear above and a butterfly enemy will fly in from the left. 40 seconds, a butterfly enemie will fly in from the right.
+By the 28 or 30 second, the player should have eliminated the previous enemies. At this point, four small grunts will appear above and a butterfly enemy will fly in from the left. At 0:40, a butterfly enemie will fly in from the right.
 
 Third time period: 0:48-1:15
 
