@@ -28,3 +28,18 @@ At 1:13, Mid Boss's attack ends, the Boss is destroyed and disappears from the s
 
 Fourth time period: 1:16-1:31
 This is the transition phase, where the main enemies are butterfly enemies. There are four butterfly enemies in total, the first of which flies from the left to the right, the second from the right to the left, the third from the left to the right, and the fourth from the right to the left. Then all four of them reappear at the same time, and fly towards the player character in an arrangement of two from the left and two from the right, shooting at the same time as they fly.
+
+Final Boss:
+    Attack method 1:
+The boss targets the player and takes the player as the center of the circle. Within this range, 5 small spherical bullets are randomly generated. The bullets will display their positions for 1 second and the bullets will exist for 1 second. If the player comes into contact with the bullet after this, they will take damage.
+
+    Attack method 2:
+The boss shoots a large spherical bullet that moves slowly toward the player. When the bullet approaches a certain   distance from the player, it splits. The spherical bullet will split into 4 smaller spherical bullets and move toward the player's position 0.5 seconds ago at a faster speed.
+
+    Attack method 3:
+The boss fires a vertical laser that falls from the screen. The laser will follow the player's position and display its trajectory for 2 seconds before firing. After the trajectory is displayed, the laser's position will no longer be locked to the player.
+
+    Attack method 4:
+The boss uses lasers to divide the screen into six equal (2x3) blocks. Players will not be harmed when they come into contact with the lasers, but will be slowed down for three seconds. The laser will be present for 5 seconds.
+
+
