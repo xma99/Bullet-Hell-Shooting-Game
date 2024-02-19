@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
 
 namespace Alpha_Danmaku_Rush_Demo
 {
@@ -19,6 +21,19 @@ namespace Alpha_Danmaku_Rush_Demo
         // Camera: following the player
         private Camera camera;
 
+        private Enemy enemyA;
+        // Enemy variables
+        private List<Enemy> enemies;
+        private Random random;
+        private TimeSpan spawnTimer;
+        private TimeSpan spawnIntervalMin;
+        private TimeSpan spawnIntervalMax;
+        private TimeSpan gameStartTime;
+        bool midCheck = false;
+        bool finalCheck = false;
+        bool midPass=false;
+        bool midClear = false;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -35,6 +50,14 @@ namespace Alpha_Danmaku_Rush_Demo
 
             // Camera setting
             camera = new Camera(GraphicsDevice.Viewport);
+
+            // Initialize enemy variables
+            enemies = new List<Enemy>();
+            random = new Random();
+            spawnIntervalMin = TimeSpan.FromSeconds(5);
+            spawnIntervalMax = TimeSpan.FromSeconds(15);
+            spawnTimer = TimeSpan.Zero;
+            gameStartTime = TimeSpan.Zero;
 
             base.Initialize();
         }
@@ -71,10 +94,19 @@ namespace Alpha_Danmaku_Rush_Demo
             int windowHeight = GraphicsDevice.Viewport.Height;
             Vector2 initialPosition = new Vector2((windowWidth / 2) - (playerSet.Width / 2), windowHeight - playerSet.Height);
             player = new Player(playerSet, initialPosition);
+
+            // Load the texture for enemy A
+            Texture2D enemyASprite = Content.Load<Texture2D>("a");
+            // Create an instance of the Enemy class for enemy A
+            Vector2 enemyAPosition = new Vector2(windowWidth, windowHeight); // Set the initial position of enemy A
+            float enemyAMovementSpeed = 10f;
+            Enemy enemyA = new Enemy(enemyASprite, enemyAPosition, enemyAMovementSpeed, EnemyType.RegularA);
         }
 
         protected override void Update(GameTime gameTime)
         {
+            
+            TimeSpan gameTimeElapsed = gameTime.TotalGameTime - gameStartTime;
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -82,7 +114,73 @@ namespace Alpha_Danmaku_Rush_Demo
             player.Update(gameTime, GraphicsDevice.Viewport.Width);
 
             // Then camera follow the player
-            camera.FollowThePlayer(player);
+            //camera.FollowThePlayer(player);
+
+            // Update spawn timer
+            spawnTimer += gameTime.ElapsedGameTime;
+
+
+            //Important: Spawn Logic need to be change later
+            // Spawn enemy A if spawn interval is reached
+
+            if (gameTimeElapsed <= TimeSpan.FromSeconds(25))
+            {
+                if (spawnTimer >= GetRandomSpawnInterval())
+                {
+                    SpawnEnemyA();
+                    spawnTimer = TimeSpan.Zero; // Reset timer
+
+                }
+                if (spawnTimer >= GetRandomSpawnInterval())
+                {
+                    SpawnEnemyB();
+                    spawnTimer = TimeSpan.Zero; // Reset timer
+
+                }
+            }
+            if (gameTimeElapsed >= TimeSpan.FromSeconds(30)&&midCheck==false)
+            {
+                midCheck = true;
+                ClearEnemy();
+                
+                SpawnEnemyM();
+                
+            }
+            if (gameTimeElapsed >= TimeSpan.FromSeconds(45)&&midPass==false)
+            {if(midClear==false) {
+                    ClearEnemy();
+                    midClear = true;
+                }
+                
+                if (spawnTimer >= GetRandomSpawnInterval())
+                {
+                    SpawnEnemyA();
+                    spawnTimer = TimeSpan.Zero; // Reset timer
+
+                }
+                if (spawnTimer >= GetRandomSpawnInterval())
+                {
+                    SpawnEnemyB();
+                    spawnTimer = TimeSpan.Zero; // Reset timer
+
+                }
+            }
+            if (gameTimeElapsed >= TimeSpan.FromSeconds(60)&&finalCheck==false)
+            {
+                midPass = true;
+                finalCheck= true;
+                ClearEnemy();
+                SpawnEnemyF();
+            }
+            if (gameTimeElapsed == TimeSpan.FromSeconds(120))
+            {
+                ClearEnemy();
+            }
+            // Update enemies
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.Update(gameTime, player.Position);
+            }
 
             base.Update(gameTime);
         }
@@ -97,9 +195,60 @@ namespace Alpha_Danmaku_Rush_Demo
 
             /*_spriteBatch.Draw(player, _position, Color.White);*/
             player.Draw(_spriteBatch);
+
+            foreach (var enemy in enemies)
+            {
+                enemy.Draw(_spriteBatch);
+            }
+
             _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private TimeSpan GetRandomSpawnInterval() // Timer
+        {
+            return TimeSpan.FromSeconds(random.NextDouble() * (spawnIntervalMax.TotalSeconds - spawnIntervalMin.TotalSeconds) + spawnIntervalMin.TotalSeconds);
+        }
+
+        private void SpawnEnemyA()
+        {
+            Texture2D enemyASprite = Content.Load<Texture2D>("a");
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+            Vector2 spawnPosition = new Vector2(random.Next(screenWidth), random.Next(screenHeight));
+            float enemySpeed = 3.0f; // Adjust enemy speed as needed
+            enemies.Add(new Enemy(enemyASprite, spawnPosition, enemySpeed, EnemyType.RegularA));
+        }
+        private void SpawnEnemyB()
+        {
+            Texture2D enemyASprite = Content.Load<Texture2D>("b");
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+            Vector2 spawnPosition = new Vector2(random.Next(screenWidth), random.Next(screenHeight));
+            float enemySpeed = 5.0f; // Adjust enemy speed as needed
+            enemies.Add(new Enemy(enemyASprite, spawnPosition, enemySpeed, EnemyType.RegularA));
+        }
+        private void SpawnEnemyM()
+        {
+            Texture2D enemyASprite = Content.Load<Texture2D>("a");
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+            Vector2 spawnPosition = new Vector2(random.Next(screenWidth), random.Next(screenHeight));
+            float enemySpeed = 3.0f; // Adjust enemy speed as needed
+            enemies.Add(new Enemy(enemyASprite, spawnPosition, enemySpeed, EnemyType.RegularA));
+        }
+        private void SpawnEnemyF()
+        {
+            Texture2D enemyASprite = Content.Load<Texture2D>("b");
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+            Vector2 spawnPosition = new Vector2(random.Next(screenWidth), random.Next(screenHeight));
+            float enemySpeed = 3.0f; // Adjust enemy speed as needed
+            enemies.Add(new Enemy(enemyASprite, spawnPosition, enemySpeed, EnemyType.RegularA));
+        }
+        private void ClearEnemy() {
+        enemies.Clear();
         }
     }
 }
