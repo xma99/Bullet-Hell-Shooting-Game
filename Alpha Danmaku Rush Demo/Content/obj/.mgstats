@@ -1,0 +1,8 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/a.png","C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/bin/a.xnb","TextureProcessor","Texture2DContent",1160,9085,0.4080178
+"C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/b.png","C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/bin/b.xnb","TextureProcessor","Texture2DContent",954,7285,0.005771
+"C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/back1.jpg","C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/bin/back1.xnb","TextureProcessor","Texture2DContent",113373,2759493,0.2754178
+"C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/bullettest1.png","C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/bin/bullettest1.xnb","TextureProcessor","Texture2DContent",784,2325,0.0075245
+"C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/finalBoss.png","C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/bin/finalBoss.xnb","TextureProcessor","Texture2DContent",2298,1166485,0.0736297
+"C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/midBoss.png","C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/bin/midBoss.xnb","TextureProcessor","Texture2DContent",3156,1944085,0.1201939
+"C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/testplayer1.png","C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/bin/testplayer1.xnb","TextureProcessor","Texture2DContent",1415,13885,0.0253294

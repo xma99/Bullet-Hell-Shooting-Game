@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/a.png</File>
+    <File>C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/b.png</File>
+    <File>C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/back1.jpg</File>
+    <File>C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/bullettest1.png</File>
+    <File>C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/finalBoss.png</File>
+    <File>C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/midBoss.png</File>
+    <File>C:/487/Alpha Danmaku Rush Demo/Alpha Danmaku Rush Demo/Content/testplayer1.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
