@@ -39,6 +39,14 @@ namespace Alpha_Danmaku_Rush_Demo
             {
                 movement.X += 1;
             }
+            if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
+            {
+                playerSpeed /= 2;
+            }
+            if (Keyboard.GetState().IsKeyUp(Keys.LeftShift))
+            {
+                playerSpeed *= 2;
+            }
 
             // Player movement, WA, WD, SA, SD
             if (movement.LengthSquared() > 0)
@@ -50,6 +58,7 @@ namespace Alpha_Danmaku_Rush_Demo
             Vector2 updatePosition = Position + movement * playerSpeed;
             updatePosition.X = MathHelper.Clamp(updatePosition.X, 0, screenWidth - sprite.Width);
             Position = updatePosition;
+            playerSpeed = 5.0f;
         }
 
         public void Draw(SpriteBatch spriteBatch)

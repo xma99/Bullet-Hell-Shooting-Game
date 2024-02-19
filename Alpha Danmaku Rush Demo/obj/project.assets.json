@@ -102,23 +102,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\14255\\.nuget\\packages\\": {},
+    "C:\\Users\\Kyoma\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\487\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
+      "projectUniqueName": "C:\\Users\\Kyoma\\Desktop\\school\\2024spring\\cpts487\\Project\\TeamAlpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
       "projectName": "Alpha Danmaku Rush Demo",
-      "projectPath": "C:\\487\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
-      "packagesPath": "C:\\Users\\14255\\.nuget\\packages\\",
-      "outputPath": "C:\\487\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo\\obj\\",
+      "projectPath": "C:\\Users\\Kyoma\\Desktop\\school\\2024spring\\cpts487\\Project\\TeamAlpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
+      "packagesPath": "C:\\Users\\Kyoma\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kyoma\\Desktop\\school\\2024spring\\cpts487\\Project\\TeamAlpha\\Alpha Danmaku Rush Demo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\14255\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kyoma\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -127,7 +127,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -166,30 +165,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.23, 6.0.23]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.23, 6.0.23]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.23, 6.0.23]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.23, 6.0.23]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

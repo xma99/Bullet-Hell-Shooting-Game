@@ -1,15 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "FLBA3YpTc5gZFpGfrKPJCLa70jJZnM9q5O85w2ugxKffdqDC7bvu0xyUx1NAoku2HeAVHjHd553IR2h2dxSUWw==",
+  "dgSpecHash": "QJuJHMsIVyFR1nKJF9QSem2ihIBKtQTBmuaTiTCU6s2qt0L+n3oX0Bdzmd3p9uNmZiOTDPPZP/XNe103K2J80A==",
   "success": true,
-  "projectFilePath": "C:\\487\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
+  "projectFilePath": "C:\\Users\\Kyoma\\Desktop\\school\\2024spring\\cpts487\\Project\\TeamAlpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\14255\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\14255\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\14255\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.23\\microsoft.windowsdesktop.app.ref.6.0.23.nupkg.sha512",
-    "C:\\Users\\14255\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.23\\microsoft.netcore.app.ref.6.0.23.nupkg.sha512",
-    "C:\\Users\\14255\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.23\\microsoft.aspnetcore.app.ref.6.0.23.nupkg.sha512",
-    "C:\\Users\\14255\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.23\\microsoft.netcore.app.host.win-x64.6.0.23.nupkg.sha512"
+    "C:\\Users\\Kyoma\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\Kyoma\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
   ],
   "logs": []
 }
