@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -18,7 +18,11 @@ namespace Alpha_Danmaku_Rush_Demo
         public Vector2 Position { get; private set; }
         private float movementSpeed;
         private bool isActive;
+
         private EnemyType type;
+
+        private Vector2 midBossPosition;
+        private float midBossMove = 20f;
 
         public bool IsActive => isActive;
 
@@ -29,13 +33,26 @@ namespace Alpha_Danmaku_Rush_Demo
             this.movementSpeed = movementSpeed;
             isActive = true;
             this.type = type;
+
+            if (type == EnemyType.MidBoss)
+            {
+                midBossPosition = startPosition;
+            }
         }
 
         public void Update(GameTime gameTime, Vector2 playerPosition)
         {
-            movementSpeed = 80f; // Set enemy speed
+            // movementSpeed = 80f; // Set enemy speed
             if (!isActive) return;
-            Move(gameTime, playerPosition);
+            switch (type)
+            {
+                case EnemyType.MidBoss:
+                    UpdateMidBoss(gameTime);
+                    break;
+                default:
+                    UpdateRegularEnemy(gameTime, playerPosition);
+                    break;
+            }
             // Deactivate enemy if it goes off-screen
             if (Position.Y > GraphicsDeviceManager.DefaultBackBufferHeight)
             {
@@ -43,6 +60,18 @@ namespace Alpha_Danmaku_Rush_Demo
             }
         }
 
+        private void UpdateMidBoss(GameTime gameTime)
+        {
+            // MidBoss do left-right movement
+            float delta = (float)Math.Sin(gameTime.TotalGameTime.TotalSeconds) * midBossMove;
+            Position = new Vector2(midBossPosition.X + delta, Position.Y);
+        }
+
+        private void UpdateRegularEnemy(GameTime gameTime, Vector2 playerPosition)
+        {
+            movementSpeed = 80f;
+            Move(gameTime, playerPosition);
+        }
         private void Move(GameTime gameTime, Vector2 playerPosition)
         {
             // Calculate direction towards the player
@@ -68,4 +97,3 @@ namespace Alpha_Danmaku_Rush_Demo
         }
     }
 }
-
