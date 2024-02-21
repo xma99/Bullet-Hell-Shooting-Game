@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -31,7 +31,7 @@ namespace Alpha_Danmaku_Rush_Demo
         private TimeSpan gameStartTime;
         bool midCheck = false;
         bool finalCheck = false;
-        bool midPass=false;
+        bool midPass = false;
         bool midClear = false;
 
         public Game1()
@@ -105,7 +105,7 @@ namespace Alpha_Danmaku_Rush_Demo
 
         protected override void Update(GameTime gameTime)
         {
-            
+
             TimeSpan gameTimeElapsed = gameTime.TotalGameTime - gameStartTime;
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -119,7 +119,11 @@ namespace Alpha_Danmaku_Rush_Demo
             // Update spawn timer
             spawnTimer += gameTime.ElapsedGameTime;
 
-
+            if (!midCheck && gameTimeElapsed >= TimeSpan.FromSeconds(48) && gameTimeElapsed <= TimeSpan.FromSeconds(75))
+            {
+                SpawnEnemyM();
+                midCheck = true;
+            }
             //Important: Spawn Logic need to be change later
             // Spawn enemy A if spawn interval is reached
 
@@ -138,20 +142,22 @@ namespace Alpha_Danmaku_Rush_Demo
 
                 }
             }
-            if (gameTimeElapsed >= TimeSpan.FromSeconds(30)&&midCheck==false)
+            if (gameTimeElapsed >= TimeSpan.FromSeconds(30) && midCheck == false)
             {
                 midCheck = true;
                 ClearEnemy();
-                
+
                 SpawnEnemyM();
-                
+
             }
-            if (gameTimeElapsed >= TimeSpan.FromSeconds(45)&&midPass==false)
-            {if(midClear==false) {
+            if (gameTimeElapsed >= TimeSpan.FromSeconds(45) && midPass == false)
+            {
+                if (midClear == false)
+                {
                     ClearEnemy();
                     midClear = true;
                 }
-                
+
                 if (spawnTimer >= GetRandomSpawnInterval())
                 {
                     SpawnEnemyA();
@@ -165,10 +171,10 @@ namespace Alpha_Danmaku_Rush_Demo
 
                 }
             }
-            if (gameTimeElapsed >= TimeSpan.FromSeconds(60)&&finalCheck==false)
+            if (gameTimeElapsed >= TimeSpan.FromSeconds(60) && finalCheck == false)
             {
                 midPass = true;
-                finalCheck= true;
+                finalCheck = true;
                 ClearEnemy();
                 SpawnEnemyF();
             }
@@ -231,12 +237,13 @@ namespace Alpha_Danmaku_Rush_Demo
         }
         private void SpawnEnemyM()
         {
-            Texture2D enemyASprite = Content.Load<Texture2D>("a");
+            Texture2D midBossSprite = Content.Load<Texture2D>("midBoss");
             int screenWidth = GraphicsDevice.Viewport.Width;
-            int screenHeight = GraphicsDevice.Viewport.Height;
-            Vector2 spawnPosition = new Vector2(random.Next(screenWidth), random.Next(screenHeight));
-            float enemySpeed = 3.0f; // Adjust enemy speed as needed
-            enemies.Add(new Enemy(enemyASprite, spawnPosition, enemySpeed, EnemyType.RegularA));
+            // int screenHeight = GraphicsDevice.Viewport.Height;
+            Vector2 spawnPosition = new Vector2((screenWidth / 2) - (midBossSprite.Width / 2), 0);
+            float midBossSpeed = 3.0f; // Adjust enemy speed as needed
+            Enemy midBoss = new Enemy(midBossSprite, spawnPosition, midBossSpeed, EnemyType.MidBoss);
+            enemies.Add(midBoss);
         }
         private void SpawnEnemyF()
         {
@@ -247,8 +254,9 @@ namespace Alpha_Danmaku_Rush_Demo
             float enemySpeed = 3.0f; // Adjust enemy speed as needed
             enemies.Add(new Enemy(enemyASprite, spawnPosition, enemySpeed, EnemyType.RegularA));
         }
-        private void ClearEnemy() {
-        enemies.Clear();
+        private void ClearEnemy()
+        {
+            enemies.Clear();
         }
     }
 }
