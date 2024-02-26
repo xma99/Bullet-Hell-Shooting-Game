@@ -24,6 +24,9 @@ namespace Alpha_Danmaku_Rush_Demo
         private Vector2 midBossPosition;
         private float midBossMove = 20f;
 
+        private Vector2 finalBossPosition;
+        private float finalBossMove = 20f;
+
         public bool IsActive => isActive;
 
         public Enemy(Texture2D sprite, Vector2 startPosition, float movementSpeed, EnemyType type)
@@ -34,9 +37,16 @@ namespace Alpha_Danmaku_Rush_Demo
             isActive = true;
             this.type = type;
 
+            // If it's midBoss
             if (type == EnemyType.MidBoss)
             {
                 midBossPosition = startPosition;
+            }
+
+            // If it's finalBoss
+            if (type == EnemyType.FinalBoss)
+            {
+                finalBossPosition = startPosition;
             }
         }
 
@@ -48,6 +58,9 @@ namespace Alpha_Danmaku_Rush_Demo
             {
                 case EnemyType.MidBoss:
                     UpdateMidBoss(gameTime);
+                    break;
+                case EnemyType.FinalBoss:
+                    UpdateFinalBoss(gameTime);
                     break;
                 default:
                     UpdateRegularEnemy(gameTime, playerPosition);
@@ -65,6 +78,13 @@ namespace Alpha_Danmaku_Rush_Demo
             // MidBoss do left-right movement
             float delta = (float)Math.Sin(gameTime.TotalGameTime.TotalSeconds) * midBossMove;
             Position = new Vector2(midBossPosition.X + delta, Position.Y);
+        }
+
+        private void UpdateFinalBoss(GameTime gameTime)
+        {
+            // FinalBoss do left-right movement
+            float delta = (float)Math.Sin(gameTime.TotalGameTime.TotalSeconds) * finalBossMove;
+            Position = new Vector2(finalBossPosition.X + delta, Position.Y);
         }
 
         private void UpdateRegularEnemy(GameTime gameTime, Vector2 playerPosition)
