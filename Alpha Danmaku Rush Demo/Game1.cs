@@ -119,11 +119,25 @@ namespace Alpha_Danmaku_Rush_Demo
             // Update spawn timer
             spawnTimer += gameTime.ElapsedGameTime;
 
+            // MidBoss show
             if (!midCheck && gameTimeElapsed >= TimeSpan.FromSeconds(48) && gameTimeElapsed <= TimeSpan.FromSeconds(75))
             {
                 SpawnEnemyM();
                 midCheck = true;
             }
+
+            // FinalBoss show
+            if (gameTimeElapsed >= TimeSpan.FromSeconds(92) && !finalCheck)
+            {
+                SpawnEnemyF();
+                finalCheck = true;
+            }
+
+            if (gameTimeElapsed >= TimeSpan.FromMinutes(3))
+            {
+                Exit();
+            }
+
             //Important: Spawn Logic need to be change later
             // Spawn enemy A if spawn interval is reached
 
@@ -247,12 +261,13 @@ namespace Alpha_Danmaku_Rush_Demo
         }
         private void SpawnEnemyF()
         {
-            Texture2D enemyASprite = Content.Load<Texture2D>("b");
+            Texture2D finalBossSprite = Content.Load<Texture2D>("finalBoss");
             int screenWidth = GraphicsDevice.Viewport.Width;
-            int screenHeight = GraphicsDevice.Viewport.Height;
-            Vector2 spawnPosition = new Vector2(random.Next(screenWidth), random.Next(screenHeight));
-            float enemySpeed = 3.0f; // Adjust enemy speed as needed
-            enemies.Add(new Enemy(enemyASprite, spawnPosition, enemySpeed, EnemyType.RegularA));
+            // int screenHeight = GraphicsDevice.Viewport.Height;
+            Vector2 spawnPosition = new Vector2((screenWidth / 2) - (finalBossSprite.Width / 2), 0);
+            float finalBossSpeed = 3.0f; // Adjust enemy speed as needed
+            Enemy finalBoss = new Enemy(finalBossSprite, spawnPosition, finalBossSpeed, EnemyType.FinalBoss);
+            enemies.Add(finalBoss);
         }
         private void ClearEnemy()
         {
