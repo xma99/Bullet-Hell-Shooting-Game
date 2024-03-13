@@ -10,16 +10,16 @@ namespace Alpha_Danmaku_Rush.Src.Managers;
 
 public class LevelManager
 {
-
+    private List<Level> levels; // 使用列表来存储所有关卡数据
     private List<Enemy> enemies = new List<Enemy>();
     private Texture2D enemyTexture;
     private Level currentLevel;
     private double elapsedTimeSinceLevelStart = 0; // 从当前关卡开始的经过时间
 
-    public LevelManager(Texture2D enemyTexture, Level level)
+    public LevelManager(Texture2D enemyTexture, string levelsFilePath)
     {
         this.enemyTexture = enemyTexture;
-        this.currentLevel = level;
+        LoadLevels(levelsFilePath); // 在构造函数中加载关卡数据
     }
 
     public void Update(GameTime gameTime)
@@ -67,6 +67,18 @@ public class LevelManager
                 return new Vector2(0, 2); // 高级敌人移动更快
             default:
                 return Vector2.Zero; // 未知类型不移动
+        }
+    }
+
+    private void LoadLevels(string filePath)
+    {
+        string jsonString = File.ReadAllText(filePath);
+        var levelData = JsonSerializer.Deserialize<LevelData>(jsonString);
+        levels = levelData?.Levels;
+
+        if (levels != null && levels.Count > 0)
+        {
+            currentLevel = levels[0]; // 初始化为第一个关卡
         }
     }
 }
