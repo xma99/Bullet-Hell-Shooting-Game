@@ -26,6 +26,12 @@ public class CollisionManager
 
     private void CheckBulletEnemyCollisions()
     {
+        if (enemies == null || player == null)
+        {
+            return;
+        }
+
+
         // 使用 player.Bullets 来获取子弹列表
         for (int i = player.Bullets.Count - 1; i >= 0; i--)
         {

@@ -22,8 +22,7 @@ namespace Alpha_Danmaku_Rush.Src.Core
         private LevelManager levelManager;
 
 
-        // 敌人列表
-        private List<Enemy> enemies;
+        // 敌人
         private Texture2D enemyTexture;
 
 
@@ -66,7 +65,7 @@ namespace Alpha_Danmaku_Rush.Src.Core
             _player.Position = new Vector2(100, 100); // 设置初始位置
 
 
-            collisionManager = new CollisionManager(_player, enemies);
+            collisionManager = new CollisionManager(_player, levelManager.enemies);
         }
 
         protected override void Update(GameTime gameTime)
@@ -105,10 +104,9 @@ namespace Alpha_Danmaku_Rush.Src.Core
             {
                 if (enemy.IsActive)
                 {
-                    _spriteBatch.Draw(enemy.Texture, enemy.Position, Color.White);
+                    enemy.Draw(_spriteBatch);
                 }
             }
-
 
             _spriteBatch.End();
             base.Draw(gameTime);
