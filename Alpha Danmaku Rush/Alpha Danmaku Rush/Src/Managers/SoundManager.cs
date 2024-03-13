@@ -1,60 +1,61 @@
-﻿namespace Alpha_Danmaku_Rush.Src.Managers;
-
-using Microsoft.Xna.Framework.Audio;
+﻿using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
+using System;
 using System.Collections.Generic;
 
 public class SoundManager
 {
-    private ContentManager content;
+    private ContentManager contentManager;
     private Dictionary<string, SoundEffect> soundEffects;
-    private Dictionary<string, Song> songs;
+    private List<Song> levelMusic;
+    private Song menuMusic;
 
-    public SoundManager(ContentManager content)
+    public SoundManager(ContentManager contentManager)
     {
-        this.content = content;
+        this.contentManager = contentManager;
         soundEffects = new Dictionary<string, SoundEffect>();
-        songs = new Dictionary<string, Song>();
+        levelMusic = new List<Song>();
+        LoadContent();
     }
 
-    public void LoadSoundEffect(string name)
+    private void LoadContent()
     {
-        if (!soundEffects.ContainsKey(name))
+        // 加载音乐
+        menuMusic = contentManager.Load<Song>("Music/MenuMusic");
+        levelMusic.Add(contentManager.Load<Song>("Music/LevelMusic1"));
+        levelMusic.Add(contentManager.Load<Song>("Music/LevelMusic2"));
+        // 加载更多关卡音乐...
+
+        // 加载音效
+        soundEffects["BulletFire"] = contentManager.Load<SoundEffect>("Sounds/BulletFire");
+        soundEffects["EnemyHit"] = contentManager.Load<SoundEffect>("Sounds/EnemyHit");
+        soundEffects["PlayerHit"] = contentManager.Load<SoundEffect>("Sounds/PlayerHit");
+        // 加载更多音效...
+    }
+
+    public void PlayMenuMusic()
+    {
+        MediaPlayer.Play(menuMusic);
+        MediaPlayer.IsRepeating = true;
+    }
+
+    public void PlayLevelMusic()
+    {
+        var random = new Random();
+        int index = random.Next(levelMusic.Count);
+        MediaPlayer.Play(levelMusic[index]);
+        MediaPlayer.IsRepeating = true;
+    }
+
+    public void PlaySoundEffect(string effectName)
+    {
+        if (soundEffects.ContainsKey(effectName))
         {
-            soundEffects[name] = content.Load<SoundEffect>(name);
+            soundEffects[effectName].Play();
         }
     }
 
-    public void PlaySoundEffect(string name)
-    {
-        if (soundEffects.ContainsKey(name))
-        {
-            soundEffects[name].Play();
-        }
-    }
-
-    public void LoadSong(string name)
-    {
-        if (!songs.ContainsKey(name))
-        {
-            songs[name] = content.Load<Song>(name);
-        }
-    }
-
-    public void PlaySong(string name, bool isRepeating = false)
-    {
-        if (songs.ContainsKey(name))
-        {
-            MediaPlayer.IsRepeating = isRepeating;
-            MediaPlayer.Play(songs[name]);
-        }
-    }
-
-    public void StopMusic()
-    {
-        MediaPlayer.Stop();
-    }
-
-    // Additional methods to pause, resume music, adjust volume, etc., can be added here.
+    // 你可以添加更多方法，比如停止音乐、调整音量等
 }
+

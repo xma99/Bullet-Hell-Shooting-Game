@@ -47,6 +47,10 @@ namespace Alpha_Danmaku_Rush.Src.Core
         MenuScreen menuScreen;
 
 
+        // Settings
+        Settings gameSettings;
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -62,6 +66,8 @@ namespace Alpha_Danmaku_Rush.Src.Core
         {
             // 创建实例
             scoreManager = new ScoreManager();
+
+            //gameSettings = Settings.LoadSettings();
 
             base.Initialize();
         }
