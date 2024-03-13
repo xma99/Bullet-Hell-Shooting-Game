@@ -1,6 +1,7 @@
 ﻿using Alpha_Danmaku_Rush.Src.Entities;
 using Alpha_Danmaku_Rush.Src.Entities.Enemy;
 using Alpha_Danmaku_Rush.Src.Managers;
+using Alpha_Danmaku_Rush.Src.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -30,6 +31,14 @@ namespace Alpha_Danmaku_Rush.Src.Core
         private CollisionManager collisionManager;
 
 
+        // 分数管理器
+        private ScoreManager scoreManager;
+
+
+        // HUD
+        private HUD hud;
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -43,6 +52,9 @@ namespace Alpha_Danmaku_Rush.Src.Core
 
         protected override void Initialize()
         {
+            // 创建实例
+            scoreManager = new ScoreManager();
+
             base.Initialize();
         }
 
@@ -54,6 +66,7 @@ namespace Alpha_Danmaku_Rush.Src.Core
             Texture2D playerTexture = Content.Load<Texture2D>("Images/player");
             Texture2D bulletTexture = Content.Load<Texture2D>("Images/bullet"); // 加载子弹纹理
             enemyTexture = Content.Load<Texture2D>("Images/enemy"); // "enemy"的敌人纹理
+            var font = Content.Load<SpriteFont>("Fonts/Font");
 
 
             // 初始化LevelManager，提供敌人纹理和关卡数据文件的路径
@@ -65,7 +78,10 @@ namespace Alpha_Danmaku_Rush.Src.Core
             _player.Position = new Vector2(100, 100); // 设置初始位置
 
 
-            collisionManager = new CollisionManager(_player, levelManager.enemies);
+            // 初始化HUD
+            hud = new HUD(font, _player, scoreManager);
+
+            collisionManager = new CollisionManager(_player, levelManager.enemies, scoreManager);
         }
 
         protected override void Update(GameTime gameTime)
@@ -81,8 +97,12 @@ namespace Alpha_Danmaku_Rush.Src.Core
             // 更新关卡
             levelManager.Update(gameTime);
 
-
+            // 更新碰撞检测
             collisionManager.Update();
+
+
+            // 更新分数管理器
+            scoreManager.Update(gameTime);
 
 
             // 更新游戏状态
@@ -97,6 +117,8 @@ namespace Alpha_Danmaku_Rush.Src.Core
             // 绘制玩家
             _player.Draw(_spriteBatch);
 
+            // 绘制HUD
+            hud.Draw(_spriteBatch);
 
 
             // 绘制由LevelManager管理的敌人

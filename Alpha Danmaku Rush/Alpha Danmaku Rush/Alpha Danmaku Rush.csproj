@@ -23,6 +23,7 @@
   <ItemGroup>
     <Folder Include="Assets\Images\" />
     <Folder Include="Assets\Sounds\" />
+    <Folder Include="Assets\Fonts\" />
     <Folder Include="Manager\" />
     <Folder Include="Levels\" />
   </ItemGroup>

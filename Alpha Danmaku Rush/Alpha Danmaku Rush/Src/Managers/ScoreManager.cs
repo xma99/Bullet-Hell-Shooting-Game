@@ -6,35 +6,38 @@ using Microsoft.Xna.Framework.Graphics;
 
 public class ScoreManager
 {
-    public int Score { get; private set; }
-    private SpriteFont font;
-    private Vector2 position;
+    public int Score { get; private set; } // 当前分数
+    private double timeSinceLastIncrement; // 上次分数增加以来的时间
 
-    public ScoreManager(SpriteFont font, Vector2 position)
-    {
-        this.font = font;
-        this.position = position;
-        Score = 0;
-    }
-
-    public void AddScore(int points)
-    {
-        Score += points;
-    }
-
-    public void ResetScore()
+    public ScoreManager()
     {
         Score = 0;
+        timeSinceLastIncrement = 0.0;
     }
 
     public void Update(GameTime gameTime)
     {
-        // Update logic, if any, goes here.
-        // For example, you might have time-based scoring.
+        // 累计自上次更新以来经过的时间
+        timeSinceLastIncrement += gameTime.ElapsedGameTime.TotalSeconds;
+
+        // 如果超过1秒，分数增加1，并重置累计时间
+        if (timeSinceLastIncrement >= 1.0)
+        {
+            Score += 1;
+            timeSinceLastIncrement -= 1.0; // 重置累计时间，保留小数部分
+        }
     }
 
-    public void Draw(SpriteBatch spriteBatch)
+    // 当玩家杀死敌人时调用此方法增加分数
+    public void AddScoreForEnemyKill()
     {
-        spriteBatch.DrawString(font, $"Score: {Score}", position, Color.White);
+        Score += 100;
+    }
+
+    // 重置分数，例如在游戏重新开始时调用
+    public void Reset()
+    {
+        Score = 0;
+        timeSinceLastIncrement = 0.0;
     }
 }

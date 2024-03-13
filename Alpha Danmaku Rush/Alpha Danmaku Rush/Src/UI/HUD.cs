@@ -3,82 +3,30 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Alpha_Danmaku_Rush.Src.Entities;
+using Alpha_Danmaku_Rush.Src.Managers;
 
 public class HUD
 {
-    private SpriteFont font;
-    private int score;
-    private int lives;
+    private SpriteFont font; // 用于绘制文本的字体
+    private Player player; // 参考玩家对象以访问其生命值
+    private ScoreManager scoreManager; // 参考分数管理器以访问分数
 
-    public HUD()
+    public HUD(SpriteFont font, Player player, ScoreManager scoreManager)
     {
-        score = 0;
-        lives = 3; // Starting lives, for example
-    }
-
-    public void LoadContent(ContentManager content)
-    {
-        // Load the font
-        font = content.Load<SpriteFont>("path_to_your_font");
-    }
-
-    public void Update(int score, int lives)
-    {
-        this.score = score;
-        this.lives = lives;
+        this.font = font;
+        this.player = player;
+        this.scoreManager = scoreManager;
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        spriteBatch.DrawString(font, $"Score: {score}", new Vector2(10, 10), Color.White);
-        spriteBatch.DrawString(font, $"Lives: {lives}", new Vector2(10, 30), Color.White);
+        // 绘制玩家分数
+        string scoreText = $"Score: {scoreManager.Score}";
+        spriteBatch.DrawString(font, scoreText, new Vector2(20, 20), Color.White);
 
-        // You can also draw graphics for lives, power-ups, etc. here
+        // 绘制玩家生命值
+        string healthText = $"Health: {player.Health}";
+        spriteBatch.DrawString(font, healthText, new Vector2(20, 50), Color.White);
     }
 }
-
-
-
-/*
- *public class YourGame : Game
-   {
-   // ... other fields ...
-   
-   private HUD hud;
-   
-   protected override void LoadContent()
-   {
-   // ... other loading code ...
-   
-   hud = new HUD();
-   hud.LoadContent(Content);
-   }
-   
-   protected override void Update(GameTime gameTime)
-   {
-   // ... other update code ...
-   
-   // Update the HUD (pass in the actual score and lives)
-   hud.Update(actualScore, actualLives);
-   }
-   
-   protected override void Draw(GameTime gameTime)
-   {
-   GraphicsDevice.Clear(Color.Black);
-   
-   spriteBatch.Begin();
-   
-   // ... other draw code ...
-   
-   hud.Draw(spriteBatch);
-   
-   spriteBatch.End();
-   
-   base.Draw(gameTime);
-   }
-   }
-   
- *
- *
- *
- */

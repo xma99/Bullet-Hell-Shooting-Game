@@ -10,11 +10,13 @@ public class CollisionManager
     private Player player;
     private List<Bullet> bullets;
     private List<Enemy> enemies;
+    private ScoreManager score;
 
-    public CollisionManager(Player player, List<Enemy> enemies)
+    public CollisionManager(Player player, List<Enemy> enemies, ScoreManager score)
     {
         this.player = player;
         this.enemies = enemies;
+        this.score = score;
     }
 
 
@@ -47,6 +49,7 @@ public class CollisionManager
                     if (enemies[j].Health <= 0)
                     {
                         enemies[j].IsActive = false; // 生命值<=0时，使敌人消失
+                        score.AddScoreForEnemyKill(); // 增加分数
                     }
                 }
             }

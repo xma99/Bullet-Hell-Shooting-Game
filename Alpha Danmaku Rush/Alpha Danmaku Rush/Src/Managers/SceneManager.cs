@@ -5,24 +5,24 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
 
-public class ScreenManager
+public class SceneManager
 {
-    private static ScreenManager instance;
+    private static SceneManager instance;
     private Stack<GameScreen> screens = new Stack<GameScreen>();
 
-    public static ScreenManager Instance
+    public static SceneManager Instance
     {
         get
         {
             if (instance == null)
-                instance = new ScreenManager();
+                instance = new SceneManager();
 
             return instance;
         }
     }
 
     // Constructor
-    private ScreenManager()
+    private SceneManager()
     {
     }
 
