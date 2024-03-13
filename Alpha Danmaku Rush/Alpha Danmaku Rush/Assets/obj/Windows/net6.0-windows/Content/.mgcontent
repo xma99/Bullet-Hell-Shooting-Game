@@ -4,9 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush/Alpha Danmaku Rush/Assets/Images/bullet.png</File>
     <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush/Alpha Danmaku Rush/Assets/Images/Player.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

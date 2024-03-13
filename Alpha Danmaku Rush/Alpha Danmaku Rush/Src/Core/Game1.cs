@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace Alpha_Danmaku_Rush.Src.Core
 {
@@ -10,7 +11,9 @@ namespace Alpha_Danmaku_Rush.Src.Core
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+
         private Player _player; // 添加玩家对象
+
 
         public Game1()
         {
@@ -34,9 +37,13 @@ namespace Alpha_Danmaku_Rush.Src.Core
 
             // 加载玩家纹理 "player.png"的纹理文件在Content目录,使用Content.mgcb编译
             Texture2D playerTexture = Content.Load<Texture2D>("Images/player");
+            Texture2D bulletTexture = Content.Load<Texture2D>("Images/bullet"); // 加载子弹纹理
+
             _player = new Player();
-            _player.LoadContent(playerTexture);
+            _player.LoadContent(playerTexture, bulletTexture);
             _player.Position = new Vector2(100, 100); // 设置初始位置
+
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -60,9 +67,6 @@ namespace Alpha_Danmaku_Rush.Src.Core
 
             // 绘制玩家
             _player.Draw(_spriteBatch);
-
-
-
 
             _spriteBatch.End();
             base.Draw(gameTime);
