@@ -17,13 +17,19 @@ public class Enemy
 
     public Vector2 Size { get; set; } // 大小
 
+    public int Health { get; set; }
+
+
     public Enemy(Texture2D texture, Vector2 position, Vector2 velocity)
     {
         Texture = texture;
         Position = position;
         Velocity = velocity;
         IsActive = true;
+
+
         Size = new Vector2(64, 64);
+        Health = 100; // 初始生命值
     }
 
     // 更新敌人状态

@@ -17,9 +17,11 @@ public class Player
     private Texture2D bulletTexture; // 子弹的纹理
     public List<Bullet> Bullets { get; private set; } // 玩家发射的子弹列表
 
-
     // 碰撞箱
     public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
+
+
+    public int Health { get; set; }
 
 
     public Player()
@@ -29,6 +31,7 @@ public class Player
         Size = new Vector2(100,100);
 
         Bullets = new List<Bullet>();
+        Health = 100; // 初始生命值
     }
 
     // 加载纹理

@@ -35,8 +35,13 @@ public class CollisionManager
                     player.Bullets[i].BoundingBox.Intersects(enemies[j].BoundingBox))
                 {
                     // 子弹和敌人相撞
+                    enemies[j].Health -= 50; // 敌人生命值减少50
                     player.Bullets[i].IsActive = false; // 使子弹消失
-                    enemies[j].IsActive = false; // 使敌人消失
+
+                    if (enemies[j].Health <= 0)
+                    {
+                        enemies[j].IsActive = false; // 生命值<=0时，使敌人消失
+                    }
                 }
             }
         }
@@ -49,6 +54,7 @@ public class CollisionManager
             if (enemy.IsActive && enemy.BoundingBox.Intersects(player.BoundingBox))
             {
                 // 敌人和玩家相撞
+                player.Health -= 10; // 玩家生命值减少10
                 enemy.IsActive = false; // 使敌人消失
             }
         }
