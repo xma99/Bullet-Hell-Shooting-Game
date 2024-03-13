@@ -18,6 +18,10 @@ public class Player
     public List<Bullet> Bullets { get; private set; } // 玩家发射的子弹列表
 
 
+    // 碰撞箱
+    public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
+
+
     public Player()
     {
         Position = Vector2.Zero;
@@ -65,6 +69,17 @@ public class Player
             bullet.Update(gameTime);
         }
         Bullets.RemoveAll(b => !b.IsActive); // 移除非活跃的子弹
+
+
+        // 更新玩家位置
+        Vector2 newPosition = Position;
+
+        // 限制玩家在屏幕内移动
+        newPosition.X = MathHelper.Clamp(newPosition.X, 0, 1024 - Size.X);
+        newPosition.Y = MathHelper.Clamp(newPosition.Y, 0, 768 - Size.Y);
+
+        // 更新 Position 属性
+        Position = newPosition;
     }
 
     // 绘制玩家

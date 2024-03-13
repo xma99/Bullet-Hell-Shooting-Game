@@ -1,3 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush/Alpha Danmaku Rush/Assets/Images/bullet.png","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush/Alpha Danmaku Rush/Assets/bin/Windows/Images/bullet.xnb","TextureProcessor","Texture2DContent",722115,4194389,0.1776218
+"E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush/Alpha Danmaku Rush/Assets/Images/enemy.png","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush/Alpha Danmaku Rush/Assets/bin/Windows/Images/enemy.xnb","TextureProcessor","Texture2DContent",2148603,4194389,0.1990835
 "E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush/Alpha Danmaku Rush/Assets/Images/Player.png","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush/Alpha Danmaku Rush/Assets/bin/Windows/Images/Player.xnb","TextureProcessor","Texture2DContent",1567879,4194389,0.2037621

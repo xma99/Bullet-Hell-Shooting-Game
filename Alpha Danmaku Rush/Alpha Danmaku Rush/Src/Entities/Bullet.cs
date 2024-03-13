@@ -13,6 +13,9 @@
         public bool IsActive { get; set; } // 指示子弹是否活跃（在屏幕上）
         public Vector2 Size { get; set; } // 大小
 
+        // 碰撞箱
+        public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
+
         public Bullet(Texture2D texture)
         {
             Texture = texture;
@@ -29,7 +32,7 @@
             Position += Velocity;
 
             // 如果子弹移出屏幕，标记为非活跃
-            if (Position.Y < 0 || Position.Y > 480) // 假设屏幕高度为480
+            if (Position.Y < 0)
             {
                 IsActive = false;
             }

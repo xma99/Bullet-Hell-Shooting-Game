@@ -7,58 +7,50 @@ using System.Collections.Generic;
 
 public class CollisionManager
 {
-    //public Player Player { get; set; }
-    //public List<Enemy> Enemies { get; set; }
-    //public List<Bullet> Bullets { get; set; }
-    //public List<PowerUp> PowerUps { get; set; }
+    private Player player;
+    private List<Bullet> bullets;
+    private List<Enemy> enemies;
 
-    //public CollisionManager(Player player, List<Enemy> enemies, List<Bullet> bullets, List<PowerUp> powerUps)
-    //{
-    //    Player = player;
-    //    Enemies = enemies;
-    //    Bullets = bullets;
-    //    PowerUps = powerUps;
-    //}
+    public CollisionManager(Player player, List<Enemy> enemies)
+    {
+        this.player = player;
+        this.enemies = enemies;
+    }
 
-    //public void Update()
-    //{
-    //    CheckPlayerCollisions();
-    //    CheckBulletCollisions();
-    //}
 
-    //private void CheckPlayerCollisions()
-    //{
-    //    // Check for collisions between the player and enemies
-    //    foreach (var enemy in Enemies)
-    //    {
-    //        if (Player.BoundingBox.Intersects(enemy.BoundingBox))
-    //        {
-    //            // Handle player-enemy collision (e.g., reduce player health)
-    //        }
-    //    }
+    public void Update()
+    {
+        CheckBulletEnemyCollisions();
+        CheckEnemyPlayerCollisions();
+    }
 
-    //    // Check for collisions between the player and power-ups
-    //    foreach (var powerUp in PowerUps)
-    //    {
-    //        if (Player.BoundingBox.Intersects(powerUp.BoundingBox))
-    //        {
-    //            // Handle player-power-up collision (e.g., apply power-up)
-    //        }
-    //    }
-    //}
+    private void CheckBulletEnemyCollisions()
+    {
+        // 使用 player.Bullets 来获取子弹列表
+        for (int i = player.Bullets.Count - 1; i >= 0; i--)
+        {
+            for (int j = enemies.Count - 1; j >= 0; j--)
+            {
+                if (player.Bullets[i].IsActive && enemies[j].IsActive &&
+                    player.Bullets[i].BoundingBox.Intersects(enemies[j].BoundingBox))
+                {
+                    // 子弹和敌人相撞
+                    player.Bullets[i].IsActive = false; // 使子弹消失
+                    enemies[j].IsActive = false; // 使敌人消失
+                }
+            }
+        }
+    }
 
-    //private void CheckBulletCollisions()
-    //{
-    //    // Check for collisions between bullets and enemies
-    //    foreach (var bullet in Bullets)
-    //    {
-    //        foreach (var enemy in Enemies)
-    //        {
-    //            if (bullet.BoundingBox.Intersects(enemy.BoundingBox))
-    //            {
-    //                // Handle bullet-enemy collision (e.g., damage enemy)
-    //            }
-    //        }
-    //    }
-    //}
+    private void CheckEnemyPlayerCollisions()
+    {
+        foreach (var enemy in enemies)
+        {
+            if (enemy.IsActive && enemy.BoundingBox.Intersects(player.BoundingBox))
+            {
+                // 敌人和玩家相撞
+                enemy.IsActive = false; // 使敌人消失
+            }
+        }
+    }
 }
