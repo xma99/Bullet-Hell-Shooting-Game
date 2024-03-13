@@ -49,6 +49,11 @@ public class CollisionManager
 
     private void CheckEnemyPlayerCollisions()
     {
+        if (enemies == null || player == null)
+        {
+            return;
+        }
+
         foreach (var enemy in enemies)
         {
             if (enemy.IsActive && enemy.BoundingBox.Intersects(player.BoundingBox))

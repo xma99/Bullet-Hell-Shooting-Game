@@ -11,7 +11,7 @@ namespace Alpha_Danmaku_Rush.Src.Managers;
 public class LevelManager
 {
     private List<Level> levels; // 使用列表来存储所有关卡数据
-    private List<Enemy> enemies = new List<Enemy>();
+    public List<Enemy> enemies = new List<Enemy>();
     private Texture2D enemyTexture;
     private Level currentLevel;
     private double elapsedTimeSinceLevelStart = 0; // 从当前关卡开始的经过时间
