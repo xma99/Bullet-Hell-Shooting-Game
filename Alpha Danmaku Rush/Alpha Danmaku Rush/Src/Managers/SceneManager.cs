@@ -7,70 +7,68 @@ using System.Collections.Generic;
 
 public class SceneManager
 {
-    private static SceneManager instance;
-    private Stack<GameScreen> screens = new Stack<GameScreen>();
+    private GameState currentState;
+    private int currentLevelIndex;
+    private LevelManager levelManager; // 假设你有一个LevelManager类来管理关卡的加载和播放
 
-    public static SceneManager Instance
+    public SceneManager(LevelManager levelManager)
     {
-        get
-        {
-            if (instance == null)
-                instance = new SceneManager();
-
-            return instance;
-        }
+        this.levelManager = levelManager;
+        currentState = GameState.MainMenu; // 游戏初始状态设为主菜单
+        currentLevelIndex = 0; // 初始关卡索引
     }
 
-    // Constructor
-    private SceneManager()
-    {
-    }
-
-    // Load content for the screen
-    public void LoadContent(ContentManager content)
-    {
-        foreach (var screen in screens)
-        {
-            screen.LoadContent(content);
-        }
-    }
-
-    // Update the current screen
     public void Update(GameTime gameTime)
     {
-        if (screens.Count > 0)
-            screens.Peek().Update(gameTime);
-    }
-
-    // Draw the current screen
-    public void Draw(SpriteBatch spriteBatch)
-    {
-        if (screens.Count > 0)
-            screens.Peek().Draw(spriteBatch);
-    }
-
-    // Add a new screen
-    public void AddScreen(GameScreen screen)
-    {
-        screens.Push(screen);
-    }
-
-    // Remove the current screen
-    public void RemoveScreen()
-    {
-        if (screens.Count > 0)
+        switch (currentState)
         {
-            var screen = screens.Pop();
-            screen.UnloadContent();
+            case GameState.MainMenu:
+                // 更新主菜单逻辑
+                break;
+            case GameState.Settings:
+                // 更新设置界面逻辑
+                break;
+            case GameState.Playing:
+                // 更新当前关卡逻辑
+                levelManager.Update(gameTime);
+                break;
+            case GameState.LevelComplete:
+                // 关卡完成逻辑，可能包括切换到下一关
+                NextLevel();
+                break;
+            case GameState.GameOver:
+                // 游戏结束逻辑
+                break;
         }
     }
+
+    public void Draw(SpriteBatch spriteBatch)
+    {
+        // 根据当前状态绘制不同的场景
+        // 示例：如果是Playing状态，绘制当前关卡
+        if (currentState == GameState.Playing)
+        {
+            levelManager.Draw(spriteBatch);
+        }
+        // 对其他状态做类似处理
+    }
+
+    public void ChangeState(GameState newState)
+    {
+        currentState = newState;
+        // 在这里添加任何状态切换时需要的逻辑，例如重置关卡索引
+        if (newState == GameState.Playing)
+        {
+            // 可以在这里重置或初始化关卡相关的变量
+        }
+    }
+
+    private void NextLevel()
+    {
+        currentLevelIndex++;
+        // 检查是否还有更多关卡，否则可能改变状态为游戏结束或循环关卡
+        // 更新当前关卡或改变游戏状态
+        currentState = GameState.Playing;
+    }
 }
 
-// Abstract class representing a general game screen
-public abstract class GameScreen
-{
-    public abstract void LoadContent(ContentManager content);
-    public abstract void Update(GameTime gameTime);
-    public abstract void Draw(SpriteBatch spriteBatch);
-    public abstract void UnloadContent();
-}

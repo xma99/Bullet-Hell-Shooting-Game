@@ -39,6 +39,10 @@ namespace Alpha_Danmaku_Rush.Src.Core
         private HUD hud;
 
 
+        // SceneManager
+        SceneManager sceneManager;
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -55,6 +59,10 @@ namespace Alpha_Danmaku_Rush.Src.Core
             // 创建实例
             scoreManager = new ScoreManager();
 
+            // 初始化LevelManager，提供敌人和关卡数据文件的路径
+            levelManager = new LevelManager(enemyTexture, "Levels/levels.json");
+            sceneManager = new SceneManager(levelManager);
+
             base.Initialize();
         }
 
@@ -67,10 +75,6 @@ namespace Alpha_Danmaku_Rush.Src.Core
             Texture2D bulletTexture = Content.Load<Texture2D>("Images/bullet"); // 加载子弹纹理
             enemyTexture = Content.Load<Texture2D>("Images/enemy"); // "enemy"的敌人纹理
             var font = Content.Load<SpriteFont>("Fonts/Font");
-
-
-            // 初始化LevelManager，提供敌人纹理和关卡数据文件的路径
-            levelManager = new LevelManager(enemyTexture, "Levels/levels.json");
 
 
             _player = new Player();
@@ -104,6 +108,8 @@ namespace Alpha_Danmaku_Rush.Src.Core
             // 更新分数管理器
             scoreManager.Update(gameTime);
 
+            // 更新场景管理器
+            sceneManager.Update(gameTime);
 
             // 更新游戏状态
             base.Update(gameTime);
@@ -120,15 +126,8 @@ namespace Alpha_Danmaku_Rush.Src.Core
             // 绘制HUD
             hud.Draw(_spriteBatch);
 
-
-            // 绘制由LevelManager管理的敌人
-            foreach (var enemy in levelManager.enemies)
-            {
-                if (enemy.IsActive)
-                {
-                    enemy.Draw(_spriteBatch);
-                }
-            }
+            // 绘制场景管理器
+            sceneManager.Draw(_spriteBatch);
 
             _spriteBatch.End();
             base.Draw(gameTime);

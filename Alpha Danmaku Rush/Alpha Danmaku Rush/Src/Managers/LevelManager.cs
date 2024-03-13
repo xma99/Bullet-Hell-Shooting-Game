@@ -5,6 +5,7 @@ using System.Text.Json;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Alpha_Danmaku_Rush.Src.Entities.Level;
+using SharpDX.Direct2D1;
 
 namespace Alpha_Danmaku_Rush.Src.Managers;
 
@@ -13,7 +14,7 @@ public class LevelManager
     private List<Level> levels; // 使用列表来存储所有关卡数据
     public List<Enemy> enemies = new List<Enemy>();
     private Texture2D enemyTexture;
-    private Level currentLevel;
+    public Level currentLevel;
     private double elapsedTimeSinceLevelStart = 0; // 从当前关卡开始的经过时间
 
     public LevelManager(Texture2D enemyTexture, string levelsFilePath)
@@ -53,6 +54,18 @@ public class LevelManager
         }
         // 移除非活动敌人
         enemies.RemoveAll(e => !e.IsActive);
+    }
+
+    public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+    {
+        // 绘制所有敌人
+        foreach (var enemy in enemies)
+        {
+            if (enemy.IsActive)
+            {
+                enemy.Draw(spriteBatch);
+            }
+        }
     }
 
     private Vector2 DetermineVelocityBasedOnType(string type)
