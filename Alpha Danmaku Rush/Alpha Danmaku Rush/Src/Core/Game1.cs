@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Alpha_Danmaku_Rush.Src.Entities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -9,9 +10,7 @@ namespace Alpha_Danmaku_Rush.Src.Core
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        // 玩家的纹理和位置
-        private Texture2D playerTexture;
-        private Vector2 playerPosition;
+        private Player _player; // 添加玩家对象
 
         public Game1()
         {
@@ -26,9 +25,6 @@ namespace Alpha_Danmaku_Rush.Src.Core
 
         protected override void Initialize()
         {
-            // 初始化玩家位置
-            playerPosition = new Vector2(100, 100);
-
             base.Initialize();
         }
 
@@ -36,8 +32,11 @@ namespace Alpha_Danmaku_Rush.Src.Core
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // 加载玩家纹理
-            playerTexture = Content.Load<Texture2D>("Images/player"); // "player.png"的纹理文件在Content目录,使用Content.mgcb编译
+            // 加载玩家纹理 "player.png"的纹理文件在Content目录,使用Content.mgcb编译
+            Texture2D playerTexture = Content.Load<Texture2D>("Images/player");
+            _player = new Player();
+            _player.LoadContent(playerTexture);
+            _player.Position = new Vector2(100, 100); // 设置初始位置
         }
 
         protected override void Update(GameTime gameTime)
@@ -45,29 +44,27 @@ namespace Alpha_Danmaku_Rush.Src.Core
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // 玩家控制逻辑
-            var keyboardState = Keyboard.GetState();
-            if (keyboardState.IsKeyDown(Keys.Up))
-                playerPosition.Y -= 2;
-            if (keyboardState.IsKeyDown(Keys.Down))
-                playerPosition.Y += 2;
-            if (keyboardState.IsKeyDown(Keys.Left))
-                playerPosition.X -= 2;
-            if (keyboardState.IsKeyDown(Keys.Right))
-                playerPosition.X += 2;
 
+            // 更新玩家状态
+            _player.Update(gameTime);
+
+
+            // 更新游戏状态
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            _spriteBatch.Begin();
 
             // 绘制玩家
-            _spriteBatch.Begin();
-            _spriteBatch.Draw(playerTexture, playerPosition, Color.White);
-            _spriteBatch.End();
+            _player.Draw(_spriteBatch);
 
+
+
+
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }

@@ -39,26 +39,26 @@ public class Item
         }
     }
 
-    // Collision detection with the player or other entities can be handled here
-    public void OnPlayerCollision(Player player)
-    {
-        // Activate item effect based on its type
-        switch (ItemType)
-        {
-            case "PowerUp":
-                player.PowerUp(EffectValue);
-                break;
-            case "Score":
-                player.AddScore((int)EffectValue);
-                break;
-            case "Health":
-                player.RestoreHealth(EffectValue);
-                break;
-                // Add other cases as needed
-        }
+    //// Collision detection with the player or other entities can be handled here
+    //public void OnPlayerCollision(Player player)
+    //{
+    //    // Activate item effect based on its type
+    //    switch (ItemType)
+    //    {
+    //        case "PowerUp":
+    //            player.PowerUp(EffectValue);
+    //            break;
+    //        case "Score":
+    //            player.AddScore((int)EffectValue);
+    //            break;
+    //        case "Health":
+    //            player.RestoreHealth(EffectValue);
+    //            break;
+    //            // Add other cases as needed
+    //    }
 
-        // Deactivate the item after being collected
-        IsActive = false;
-    }
+    //    // Deactivate the item after being collected
+    //    IsActive = false;
+    //}
 }
 
