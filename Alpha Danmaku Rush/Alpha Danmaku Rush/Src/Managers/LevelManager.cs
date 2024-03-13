@@ -1,6 +1,74 @@
-﻿namespace Alpha_Danmaku_Rush.Src.Managers;
+﻿using Alpha_Danmaku_Rush.Src.Entities.Enemy;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using Alpha_Danmaku_Rush.Src.Entities.Level;
+
+namespace Alpha_Danmaku_Rush.Src.Managers;
 
 public class LevelManager
 {
-    
+
+    private List<Enemy> enemies = new List<Enemy>();
+    private Texture2D enemyTexture;
+    private Level currentLevel;
+    private double elapsedTimeSinceLevelStart = 0; // 从当前关卡开始的经过时间
+
+    public LevelManager(Texture2D enemyTexture, Level level)
+    {
+        this.enemyTexture = enemyTexture;
+        this.currentLevel = level;
+    }
+
+    public void Update(GameTime gameTime)
+    {
+        // 更新从当前关卡开始的经过时间
+        elapsedTimeSinceLevelStart += gameTime.ElapsedGameTime.TotalMilliseconds;
+
+        // 遍历当前关卡的所有敌人数据
+        for (int i = 0; i < currentLevel.Enemies.Count; i++)
+        {
+            EnemyData enemyData = currentLevel.Enemies[i];
+
+            // 检查是否到了生成该敌人的时间
+            if (elapsedTimeSinceLevelStart >= enemyData.SpawnTime)
+            {
+                // 生成敌人
+                Vector2 position = new Vector2(enemyData.Position.X, enemyData.Position.Y);
+                Enemy enemy = new Enemy(enemyTexture, position, DetermineVelocityBasedOnType(enemyData.Type));
+                enemies.Add(enemy);
+
+                // 从敌人数据列表中移除，避免重复生成
+                currentLevel.Enemies.RemoveAt(i);
+                i--; // 因为移除了一个元素，所以索引减1
+            }
+        }
+
+        // 更新敌人状态
+        foreach (var enemy in enemies)
+        {
+            enemy.Update(gameTime);
+        }
+        // 移除非活动敌人
+        enemies.RemoveAll(e => !e.IsActive);
+    }
+
+    private Vector2 DetermineVelocityBasedOnType(string type)
+    {
+        // 根据敌人类型确定速度，这需要根据游戏设计具体实现
+        // 这里仅为示例
+        switch (type)
+        {
+            case "basic":
+                return new Vector2(0, 1); // 基础敌人向下移动
+            case "advanced":
+                return new Vector2(0, 2); // 高级敌人移动更快
+            default:
+                return Vector2.Zero; // 未知类型不移动
+        }
+    }
 }
+
+

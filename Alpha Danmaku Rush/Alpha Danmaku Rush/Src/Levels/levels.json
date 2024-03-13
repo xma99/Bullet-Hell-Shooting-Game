@@ -1,0 +1,29 @@
+﻿{
+  "levels": [
+    {
+      "levelNumber": 1,
+      "enemies": [
+        {
+          "type": "basic",
+          "position": { "x": 100, "y": -50 },
+          "spawnTime": 1000
+        },
+        {
+          "type": "basic",
+          "position": { "x": 200, "y": -50 },
+          "spawnTime": 2000
+        }
+      ]
+    },
+    {
+      "levelNumber": 2,
+      "enemies": [
+        {
+          "type": "advanced",
+          "position": { "x": 150, "y": -50 },
+          "spawnTime": 1000
+        }
+      ]
+    }
+  ]
+}
