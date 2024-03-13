@@ -11,7 +11,7 @@ namespace Alpha_Danmaku_Rush.Src.Managers;
 
 public class LevelManager
 {
-    private List<Level> levels; // 使用列表来存储所有关卡数据
+    public List<Level> levels; // 使用列表来存储所有关卡数据
     public List<Enemy> enemies = new List<Enemy>();
     private Texture2D enemyTexture;
     public Level currentLevel;
@@ -93,6 +93,29 @@ public class LevelManager
         {
             currentLevel = levels[0]; // 初始化为第一个关卡
         }
+    }
+
+    public void NextLevel()
+    {
+        if (levels != null && currentLevel != null)
+        {
+            int currentIndex = levels.IndexOf(currentLevel);
+            if (currentIndex + 1 < levels.Count)
+            {
+                currentLevel = levels[currentIndex + 1];
+                ResetForNewLevel();
+            }
+            else
+            {
+                // 已经是最后一关，可以处理游戏完成逻辑
+            }
+        }
+    }
+
+    private void ResetForNewLevel()
+    {
+        elapsedTimeSinceLevelStart = 0; // 重置关卡计时
+        enemies.Clear(); // 清空当前敌人列表
     }
 }
 

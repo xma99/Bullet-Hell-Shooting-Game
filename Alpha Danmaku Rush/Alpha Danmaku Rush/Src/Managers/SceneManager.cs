@@ -1,30 +1,44 @@
-﻿namespace Alpha_Danmaku_Rush.Src.Managers;
+﻿using Alpha_Danmaku_Rush.Src.UI;
+
+namespace Alpha_Danmaku_Rush.Src.Managers;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
 
 public class SceneManager
 {
     private GameState currentState;
     private int currentLevelIndex;
     private LevelManager levelManager; // 假设你有一个LevelManager类来管理关卡的加载和播放
+    private MenuScreen menuScreen;
 
-    public SceneManager(LevelManager levelManager)
+    public SceneManager(LevelManager levelManager, MenuScreen menuScreen)
     {
         this.levelManager = levelManager;
         currentState = GameState.MainMenu; // 游戏初始状态设为主菜单
         currentLevelIndex = 0; // 初始关卡索引
+        this.menuScreen = menuScreen;
     }
 
     public void Update(GameTime gameTime)
     {
+        KeyboardState state = Keyboard.GetState();
+
+        // 根据当前状态更新逻辑
         switch (currentState)
         {
             case GameState.MainMenu:
+
                 // 更新主菜单逻辑
-                currentState = GameState.Playing; // 示例：在这里添加逻辑以便在点击“开始游戏”按钮后切换到Playing状态
+                // 假设按下Enter键时开始游戏
+                if (state.IsKeyDown(Keys.Enter))
+                {
+                    ChangeState(GameState.Playing);
+                }
+
                 break;
             case GameState.Settings:
                 // 更新设置界面逻辑
@@ -52,6 +66,10 @@ public class SceneManager
             levelManager.Draw(spriteBatch);
         }
         // 对其他状态做类似处理
+        else if (currentState == GameState.MainMenu)
+        {
+            menuScreen.Draw(spriteBatch);
+        }
     }
 
     public void ChangeState(GameState newState)
@@ -61,6 +79,7 @@ public class SceneManager
         if (newState == GameState.Playing)
         {
             // 可以在这里重置或初始化关卡相关的变量
+            levelManager.NextLevel();
         }
     }
 
@@ -70,6 +89,8 @@ public class SceneManager
         // 检查是否还有更多关卡，否则可能改变状态为游戏结束或循环关卡
         // 更新当前关卡或改变游戏状态
         currentState = GameState.Playing;
+        levelManager.currentLevel = levelManager.levels[currentLevelIndex];
+        levelManager.NextLevel();
     }
 }
 

@@ -43,6 +43,10 @@ namespace Alpha_Danmaku_Rush.Src.Core
         SceneManager sceneManager;
 
 
+        // MenuScreen
+        MenuScreen menuScreen;
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -75,7 +79,8 @@ namespace Alpha_Danmaku_Rush.Src.Core
 
             // 初始化LevelManager，提供敌人和关卡数据文件的路径
             levelManager = new LevelManager(enemyTexture, "Levels/levels.json");
-            sceneManager = new SceneManager(levelManager);
+            menuScreen = new MenuScreen(font);
+            sceneManager = new SceneManager(levelManager, menuScreen);
 
             _player = new Player();
             _player.LoadContent(playerTexture, bulletTexture);
