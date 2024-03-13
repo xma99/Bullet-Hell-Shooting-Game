@@ -59,10 +59,6 @@ namespace Alpha_Danmaku_Rush.Src.Core
             // 创建实例
             scoreManager = new ScoreManager();
 
-            // 初始化LevelManager，提供敌人和关卡数据文件的路径
-            levelManager = new LevelManager(enemyTexture, "Levels/levels.json");
-            sceneManager = new SceneManager(levelManager);
-
             base.Initialize();
         }
 
@@ -76,6 +72,10 @@ namespace Alpha_Danmaku_Rush.Src.Core
             enemyTexture = Content.Load<Texture2D>("Images/enemy"); // "enemy"的敌人纹理
             var font = Content.Load<SpriteFont>("Fonts/Font");
 
+
+            // 初始化LevelManager，提供敌人和关卡数据文件的路径
+            levelManager = new LevelManager(enemyTexture, "Levels/levels.json");
+            sceneManager = new SceneManager(levelManager);
 
             _player = new Player();
             _player.LoadContent(playerTexture, bulletTexture);

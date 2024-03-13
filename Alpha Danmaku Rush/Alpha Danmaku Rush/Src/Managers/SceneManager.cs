@@ -24,6 +24,7 @@ public class SceneManager
         {
             case GameState.MainMenu:
                 // 更新主菜单逻辑
+                currentState = GameState.Playing; // 示例：在这里添加逻辑以便在点击“开始游戏”按钮后切换到Playing状态
                 break;
             case GameState.Settings:
                 // 更新设置界面逻辑
