@@ -19,7 +19,6 @@ public class LevelManager
     private ContentManager _content;
     private EnemyManager _enemyManager;
     private Player _player;
-    private List<HealthIcon> _healthIcons;
     private TimeSpan _spawnIntervalMin;
     private TimeSpan _spawnIntervalMax;
     private Random _random = new Random();
@@ -27,18 +26,18 @@ public class LevelManager
     // Existing fields and methods...
     private UIManager _uiManager;
 
+    private bool _isGameStarted;
+    private int _currentLevel;
+
     public LevelManager(ContentManager content, GraphicsDeviceManager graphics, SpriteBatch spriteBatch)
     {
+        InitializePlayer();
         _content = content;
         _graphics = graphics;
         _spriteBatch = spriteBatch;
         _enemyManager = new EnemyManager(content, graphics);
 
-
         _uiManager.InitializeHealthIcons(_player.Health);
-
-        InitializePlayer();
-        InitializeHealthIcons();
     }
 
     private void InitializePlayer()
@@ -46,23 +45,6 @@ public class LevelManager
         Texture2D playerTexture = _content.Load<Texture2D>("testplayer1");
         Vector2 initialPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2 - playerTexture.Width / 2, _graphics.PreferredBackBufferHeight - playerTexture.Height);
         _player = new Player(playerTexture, initialPosition);
-    }
-
-    private void InitializeHealthIcons()
-    {
-        _healthIcons = new List<HealthIcon>();
-        Texture2D heartTexture = _content.Load<Texture2D>("heart");
-        float scale = 0.03f;
-        int iconSpacing = 1;
-        int totalIconWidth = (int)(heartTexture.Width * scale);
-        int totalSpacingWidth = iconSpacing * 9;
-        int totalRequiredWidth = 10 * totalIconWidth + totalSpacingWidth;
-        int startPositionX = _graphics.PreferredBackBufferWidth - totalRequiredWidth;
-        for (int i = 0; i < 10; i++)
-        {
-            Vector2 iconPosition = new Vector2(startPositionX + (totalIconWidth + iconSpacing) * i, 20);
-            _healthIcons.Add(new HealthIcon(heartTexture, iconPosition, scale, isActive: true));
-        }
     }
 
     public void Update(GameTime gameTime)
@@ -83,8 +65,13 @@ public class LevelManager
         _spriteBatch.End();
     }
 
-    public void LoadLevel(string filePath)
+    public void LoadLevel(string filePath, int levelNumber)
     {
+        // Reset the current level state
+        _enemyManager.Clear();
+        ResetPlayerPosition(); // Implement this method as needed
+
+        _currentLevel = levelNumber;
         string jsonString = File.ReadAllText(filePath);
         LevelData levelData = JsonSerializer.Deserialize<LevelData>(jsonString);
 
@@ -101,6 +88,9 @@ public class LevelManager
             }
         }
     }
+
+    private void ResetPlayerPosition() =>
+        _player.Position = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - _player.sprite.Height);
 
     private EnemyType ParseEnemyType(string type)
     {
@@ -119,5 +109,22 @@ public class LevelManager
     private void SpawnEnemy(EnemyType enemyType, EnemyBulletType bulletType)
     {
         // Your logic to spawn an enemy based on type and bullet configuration
+        switch (enemyType)
+        {
+            case EnemyType.RegularA:
+                _enemyManager.SpawnEnemyA();
+                break;
+            case EnemyType.RegularB:
+                _enemyManager.SpawnEnemyB();
+                break;
+            case EnemyType.MidBoss:
+                _enemyManager.SpawnEnemyM();
+                break;
+            case EnemyType.FinalBoss:
+                _enemyManager.SpawnEnemyF();
+                break;
+            default: ;
+                break;
+        }
     }
 }

@@ -7,8 +7,8 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities
     public class Player
     {
         // Player default setting
-        private Texture2D sprite;
-        public Vector2 Position { get; private set; }
+        public Texture2D sprite;
+        public Vector2 Position { get; set; }
         private float playerSpeed = 5.0f;
 
         public int Health { get; set; } = 10;  // Player health

@@ -20,7 +20,7 @@ public class MainMenuManager
 
     public MainMenuManager(ContentManager content)
     {
-        _menuFont = content.Load<SpriteFont>("Font"); // Ensure you have a Font.spritefont
+        _menuFont = content.Load<SpriteFont>("Fonts/Font"); // Ensure you have a Font.spritefont
     }
 
     public void Update(GameTime gameTime, KeyboardState keyboardState, KeyboardState previousKeyboardState)

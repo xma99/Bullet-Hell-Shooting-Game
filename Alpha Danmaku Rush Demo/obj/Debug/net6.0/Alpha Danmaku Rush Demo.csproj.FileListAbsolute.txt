@@ -262,3 +262,4 @@ E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\obj\Debug\net6.0\r
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.pdb
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.genruntimeconfig.cache
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\obj\Debug\net6.0\ref\Alpha Danmaku Rush Demo.dll
+E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\Fonts\Font.xnb

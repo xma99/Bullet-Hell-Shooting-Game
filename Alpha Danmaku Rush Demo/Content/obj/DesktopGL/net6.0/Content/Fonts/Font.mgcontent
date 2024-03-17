@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/Fonts/Font.spritefont</SourceFile>
+  <SourceTime>2024-03-16T23:52:59.0005187-07:00</SourceTime>
+  <DestFile>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/Fonts/Font.xnb</DestFile>
+  <DestTime>2024-03-17T00:08:22.0304997-07:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2022-07-26T04:44:56-07:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2022-07-26T04:44:56-07:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
