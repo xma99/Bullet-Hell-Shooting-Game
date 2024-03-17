@@ -23,20 +23,14 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
 
         // Enemy variables
         private Random random;
-        private TimeSpan spawnTimer;
         private TimeSpan spawnIntervalMin;
         private TimeSpan spawnIntervalMax;
-        private TimeSpan gameStartTime;
         bool midCheck = false;
         bool finalCheck = false;
         bool midPass = false;
         bool midClear = false;
 
-        
-
         private List<HealthIcon> healthIcons;
-        private int playerHealth;
-        private Texture2D bulletTexture;
 
         private EnemyManager enemyManager;
 
@@ -72,7 +66,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
                 Vector2 iconPosition = new Vector2(startPositionX + (totalIconWidth + iconSpacing) * i, 20);
                 healthIcons.Add(new HealthIcon(heartTexture, iconPosition, scale, isActive: true));
             }
-            playerHealth = 10; // Set initial player health
 
             base.Initialize();
         }

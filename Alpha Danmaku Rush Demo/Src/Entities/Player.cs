@@ -11,6 +11,8 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities
         public Vector2 Position { get; private set; }
         private float playerSpeed = 5.0f;
 
+        public int Health { get; set; } = 10;  // Player health
+
         public Player(Texture2D img, Vector2 initialPosition)
         {
             sprite = img;
