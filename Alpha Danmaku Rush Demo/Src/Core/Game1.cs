@@ -36,10 +36,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
         bool midPass = false;
         bool midClear = false;
 
-        Texture2D enemyABullet;
-        Texture2D enemyBBullet;
-        Texture2D midBossBullet;
-        Texture2D finalBossBullet;
+        
 
         private List<HealthIcon> healthIcons;
         private int playerHealth;
@@ -56,12 +53,12 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
 
         protected override void Initialize()
         {
-            enemyManager = new EnemyManager();
-
+            enemyManager = new EnemyManager(Content, _graphics);
 
             // Changing the window size setting
             _graphics.PreferredBackBufferWidth = 800;
             _graphics.PreferredBackBufferHeight = 1000;
+
             _graphics.ApplyChanges();
 
             // Camera setting
@@ -112,11 +109,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
             Vector2 initialPosition = new Vector2(windowWidth / 2 - playerSet.Width / 2, windowHeight - playerSet.Height);
             player = new Player(playerSet, initialPosition);
 
-            // Load the texture
-            enemyABullet = Content.Load<Texture2D>("bullettest1");
-            enemyBBullet = Content.Load<Texture2D>("bullettest1");
-            midBossBullet = Content.Load<Texture2D>("bubble");
-            finalBossBullet = Content.Load<Texture2D>("bubble");
+            
         }
 
         protected override void Update(GameTime gameTime)
