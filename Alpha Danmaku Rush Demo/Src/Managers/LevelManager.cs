@@ -19,6 +19,10 @@ public class LevelManager
     private ContentManager _content;
     private EnemyManager _enemyManager;
     private Player _player;
+    private CollisionManager _collisionManager;
+    private ScoreManager _scoreManager;
+
+
     private TimeSpan _spawnIntervalMin;
     private TimeSpan _spawnIntervalMax;
     private Random _random = new Random();
@@ -36,6 +40,7 @@ public class LevelManager
         _graphics = graphics;
         _spriteBatch = spriteBatch;
         _enemyManager = new EnemyManager(content, graphics);
+        _collisionManager = new CollisionManager(_player, _enemyManager, _scoreManager);
 
         _uiManager.InitializeHealthIcons(_player.Health);
     }
@@ -53,6 +58,8 @@ public class LevelManager
         // Here you would handle the logic for updating the level state, spawning enemies, etc.
         // Example: Update health icons based on player's health
         _uiManager.UpdateHealthIcons(_player.Health);
+        _collisionManager.Update();
+        _scoreManager.Update(gameTime);
     }
 
     public void Draw()

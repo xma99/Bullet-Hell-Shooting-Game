@@ -12,12 +12,21 @@ public static class BulletFactory
     // A method to create bullets based on type, speed, and other attributes
     public static Bullet CreateBullet(ContentManager content, Vector2 position, Vector2 velocity, EnemyBulletType type)
     {
-        return type.Type switch
+        Bullet newBullet;
+        switch (type.Type)
         {
-            "A" => new BulletA(content.Load<Texture2D>("bullettest1"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color)),
-            "B" => new BulletB(content.Load<Texture2D>("bullettest1"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color)),
-            _ => throw new ArgumentException($"Unsupported bullet type: {type}")
-        };
+            case "A":   
+                newBullet = new BulletA(content.Load<Texture2D>("bullettest1"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color));
+                newBullet.Speed = type.Speed;
+                return newBullet;
+            case "B":
+                newBullet = new BulletB(content.Load<Texture2D>("bullettest1"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color));
+                newBullet.Speed = type.Speed;
+                return newBullet;
+            default:
+                throw new ArgumentException($"Unsupported bullet type: {type}");
+        }
+
     }
 
     // Adjusts the velocity vector based on the desired speed

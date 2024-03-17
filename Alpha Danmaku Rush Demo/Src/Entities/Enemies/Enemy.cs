@@ -22,6 +22,12 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         protected float Speed;
         public bool isActive;
 
+        // Timer to track the time since the last attack
+        protected TimeSpan attackTimer = TimeSpan.Zero;
+        // Interval between attacks
+        protected TimeSpan attackInterval;
+
+
         public List<Bullet.Bullet> bulletList = new List<Bullet.Bullet>();
 
         public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, Sprite.Width, Sprite.Height);
@@ -37,6 +43,8 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         }
 
         public abstract void Update(GameTime gameTime, Vector2 playerPosition);
+
+        public abstract void Attack(GameTime gameTime, Vector2 playerPosition);
 
         protected void Move(GameTime gameTime, Vector2 playerPosition)
         {

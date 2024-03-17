@@ -23,5 +23,16 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             float delta = (float)Math.Sin(gameTime.TotalGameTime.TotalSeconds) * midBossMove;
             Position = new Vector2(Position.X + delta, Position.Y);
         }
+
+        public override void Attack(GameTime gameTime, Vector2 playerPosition)
+        {
+            // Implement specific attack logic for RegularAEnemy
+            // RegularAEnemy shoots bullets at the player
+            if (gameTime.TotalGameTime.TotalMilliseconds % 500 < 10)
+            {
+                Vector2 direction = Vector2.Normalize(playerPosition - Position);
+                Vector2 bulletVelocity = direction * 8f;
+            }
+        }
     }
 }

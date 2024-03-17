@@ -14,6 +14,8 @@ public abstract class Bullet
 
     public int Damage { get; set; }
 
+    public int Speed { get; set; }
+
     public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, Sprite.Width, Sprite.Height);
 
     protected Bullet(Texture2D sprite, Vector2 position, Vector2 velocity, Color color)
@@ -22,6 +24,7 @@ public abstract class Bullet
         Position = position;
         Velocity = velocity;
         Color = color;
+        IsActive = false;
     }
 
     public abstract void Update(GameTime gameTime);

@@ -16,7 +16,7 @@
     {
       "id": "2",
       "time": [ "8000", "16000" ],
-      "enemyType": "MidBoss",
+      "enemyType": "RegularA",
       "enemyBulletType": {
         "color": "blue",
         "type": "A",
