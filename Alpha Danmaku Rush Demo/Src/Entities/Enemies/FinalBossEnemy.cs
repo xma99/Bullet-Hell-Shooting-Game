@@ -14,7 +14,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         public FinalBossEnemy(ContentManager content, Vector2 startPosition, float movementSpeed) 
             : base(content, startPosition, movementSpeed)
         {
-            sprite = content.Load<Texture2D>("finalBoss");
+            Sprite = content.Load<Texture2D>("finalBoss");
         }
 
         public override void Update(GameTime gameTime, Vector2 playerPosition)

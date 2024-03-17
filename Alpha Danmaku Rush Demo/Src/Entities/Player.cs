@@ -7,15 +7,17 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities
     public class Player
     {
         // Player default setting
-        public Texture2D sprite;
+        public Texture2D Sprite;
         public Vector2 Position { get; set; }
         private float playerSpeed = 5.0f;
 
         public int Health { get; set; } = 10;  // Player health
 
+        public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, Sprite.Width, Sprite.Height);
+
         public Player(Texture2D img, Vector2 initialPosition)
         {
-            sprite = img;
+            Sprite = img;
             Position = initialPosition;
         }
 
@@ -59,14 +61,14 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities
 
             // Player can move up but not beyond the width of the screen
             Vector2 updatePosition = Position + movement * playerSpeed;
-            updatePosition.X = MathHelper.Clamp(updatePosition.X, 0, screenWidth - sprite.Width);
+            updatePosition.X = MathHelper.Clamp(updatePosition.X, 0, screenWidth - Sprite.Width);
             Position = updatePosition;
             playerSpeed = 5.0f;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(sprite, Position, Color.White);
+            spriteBatch.Draw(Sprite, Position, Color.White);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         public RegularAEnemy(ContentManager content, Vector2 startPosition, float movementSpeed)
             : base(content, startPosition, movementSpeed)
         {
-            sprite = content.Load<Texture2D>("a");
+            Sprite = content.Load<Texture2D>("a");
         }
 
         public override void Update(GameTime gameTime, Vector2 playerPosition)
@@ -24,7 +24,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
                 Deactivate();
             }
 
-            movementSpeed = 80f;
+            Speed = 80f;
             Move(gameTime, playerPosition);
         }
     }

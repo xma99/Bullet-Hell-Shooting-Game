@@ -90,7 +90,7 @@ public class LevelManager
     }
 
     private void ResetPlayerPosition() =>
-        _player.Position = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - _player.sprite.Height);
+        _player.Position = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - _player.Sprite.Height);
 
     private EnemyType ParseEnemyType(string type)
     {
@@ -112,16 +112,16 @@ public class LevelManager
         switch (enemyType)
         {
             case EnemyType.RegularA:
-                _enemyManager.SpawnEnemyA();
+                _enemyManager.SpawnEnemyA(bulletType);
                 break;
             case EnemyType.RegularB:
-                _enemyManager.SpawnEnemyB();
+                _enemyManager.SpawnEnemyB(bulletType);
                 break;
             case EnemyType.MidBoss:
-                _enemyManager.SpawnEnemyM();
+                _enemyManager.SpawnEnemyM(bulletType);
                 break;
             case EnemyType.FinalBoss:
-                _enemyManager.SpawnEnemyF();
+                _enemyManager.SpawnEnemyF(bulletType);
                 break;
             default: ;
                 break;

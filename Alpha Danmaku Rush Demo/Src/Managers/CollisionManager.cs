@@ -1,0 +1,48 @@
+﻿using Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
+using Alpha_Danmaku_Rush_Demo.Src.Entities;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
+
+public class CollisionManager
+{
+    private Player player;
+    private List<Bullet> bullets;
+    private EnemyManager enemies;
+    private ScoreManager score;
+
+    public CollisionManager(Player player, EnemyManager enemies, ScoreManager score)
+    {
+        this.player = player;
+        this.enemies = enemies;
+        this.score = score;
+    }
+
+    public void Update()
+    {
+        CheckEnemyBulletPlayerCollisions();
+        CheckEnemyPlayerCollisions();
+    }
+
+    private void CheckEnemyBulletPlayerCollisions()
+    {
+        foreach (var bullet in enemies.enemies.SelectMany(enemy => enemy.bulletList.Where(bullet => bullet.BoundingBox.Intersects(player.BoundingBox) && bullet.IsActive)))
+        {
+            player.Health -= bullet.Damage;
+            bullet.IsActive = false;
+        }
+    }
+
+
+    private void CheckEnemyPlayerCollisions()
+    {
+        foreach (var enemy in enemies.enemies.Where(enemy =>
+                     enemy.BoundingBox.Intersects(player.BoundingBox) && enemy.isActive))
+        {
+            player.Health -= 1;
+            enemy.Deactivate();
+        }
+    }
+}

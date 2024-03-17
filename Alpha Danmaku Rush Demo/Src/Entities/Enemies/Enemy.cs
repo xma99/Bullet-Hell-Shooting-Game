@@ -14,16 +14,17 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
     public abstract class Enemy
     {
         private ContentManager content;
-        protected Texture2D sprite;
+        protected Texture2D Sprite;
 
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
 
-        protected float movementSpeed;
+        protected float Speed;
         public bool isActive;
 
         public List<Bullet.Bullet> bulletList = new List<Bullet.Bullet>();
 
+        public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, Sprite.Width, Sprite.Height);
 
         protected Vector2 DefaultTarget = new Vector2(0, 1);//default bullet moving direction
 
@@ -31,7 +32,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         {
             this.content = content;
             Position = startPosition;
-            movementSpeed = movementSpeed;
+            Speed = movementSpeed;
             isActive = true;
         }
 
@@ -42,10 +43,10 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             // Calculate direction towards the player
             Vector2 direction = Vector2.Normalize(playerPosition - Position);
             // Move the enemy towards the player
-            Vector2 newPosition = Position + direction * movementSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Vector2 newPosition = Position + direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             // Ensure the enemy stays within the game screen
-            newPosition.X = Math.Clamp(newPosition.X, 0, GraphicsDeviceManager.DefaultBackBufferWidth - sprite.Width);
-            newPosition.Y = Math.Clamp(newPosition.Y, 0, GraphicsDeviceManager.DefaultBackBufferHeight - sprite.Height);
+            newPosition.X = Math.Clamp(newPosition.X, 0, GraphicsDeviceManager.DefaultBackBufferWidth - Sprite.Width);
+            newPosition.Y = Math.Clamp(newPosition.Y, 0, GraphicsDeviceManager.DefaultBackBufferHeight - Sprite.Height);
             // Update the position
             Position = newPosition;
         }
@@ -53,7 +54,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         public void Draw(SpriteBatch spriteBatch)
         {
             if (!isActive) return;
-            spriteBatch.Draw(sprite, Position, Color.White);
+            spriteBatch.Draw(Sprite, Position, Color.White);
         }
 
         public void Deactivate()
@@ -63,7 +64,10 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 
         public void AddBullet(EnemyBulletType type)
         {
-            bulletList.Add(BulletFactory.CreateBullet(this.Position, this.Velocity, type));
+            for (int i = 0; i < type.Amount; i++)
+            {
+                bulletList.Add(BulletFactory.CreateBullet(content, this.Position, this.Velocity, type));
+            }
         }
     }
     

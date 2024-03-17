@@ -12,6 +12,10 @@ public abstract class Bullet
     public Color Color { get; set; }
     public bool IsActive { get; set; } = true;
 
+    public int Damage { get; set; }
+
+    public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, Sprite.Width, Sprite.Height);
+
     protected Bullet(Texture2D sprite, Vector2 position, Vector2 velocity, Color color)
     {
         Sprite = sprite;

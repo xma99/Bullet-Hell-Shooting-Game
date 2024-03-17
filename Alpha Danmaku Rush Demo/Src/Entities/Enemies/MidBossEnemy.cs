@@ -13,7 +13,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         public MidBossEnemy(ContentManager content, Vector2 startPosition, float movementSpeed)
             : base(content, startPosition, movementSpeed)
         {
-            sprite = content.Load<Texture2D>("midBoss");
+            Sprite = content.Load<Texture2D>("midBoss");
         }
 
         public override void Update(GameTime gameTime, Vector2 playerPosition)

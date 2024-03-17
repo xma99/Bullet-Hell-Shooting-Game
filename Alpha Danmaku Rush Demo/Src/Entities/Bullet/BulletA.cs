@@ -8,6 +8,7 @@ public class BulletA : Bullet
     public BulletA(Texture2D sprite, Vector2 position, Vector2 velocity, Color color)
         : base(sprite, position, velocity, color)
     {
+        Damage = 1;
     }
 
     public override void Update(GameTime gameTime)
