@@ -21,6 +21,8 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         protected Attack attack;//an attack object
         public bool BulletCheck = true;
 
+
+
         protected Vector2 DefaultTarget = new Vector2(0, 1);//default bullet moving direction
 
         protected Enemy(Texture2D sprite, Vector2 startPosition, float movementSpeed, Texture2D bulletSprite)
