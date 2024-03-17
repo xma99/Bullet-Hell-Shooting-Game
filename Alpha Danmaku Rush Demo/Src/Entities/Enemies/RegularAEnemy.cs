@@ -28,6 +28,15 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             Speed = 80f;
             Move(gameTime, playerPosition);
 
+            // update bullets
+            foreach (var bullet in bulletList)
+            {
+                if (bullet.IsActive)
+                {
+                    bullet.Update(gameTime);
+                }
+            }
+
             //attack
             Attack(gameTime, playerPosition);
         }

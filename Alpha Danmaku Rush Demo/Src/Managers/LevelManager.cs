@@ -32,6 +32,8 @@ public class LevelManager
 
     private bool _isGameStarted;
     private int _currentLevel;
+    // add background image
+    private Texture2D background;
 
     public LevelManager(ContentManager content, GraphicsDeviceManager graphics, SpriteBatch spriteBatch)
     {
@@ -46,6 +48,9 @@ public class LevelManager
         _collisionManager = new CollisionManager(_player, _enemyManager, _scoreManager);
         _uiManager = new UIManager(content, graphics);
         _uiManager.InitializeHealthIcons(_player.Health);
+
+        // load background image
+        background = _content.Load<Texture2D>("back1");
     }
 
     private void InitializePlayer()
@@ -63,14 +68,20 @@ public class LevelManager
         _uiManager.UpdateHealthIcons(_player.Health);
         _collisionManager.Update();
         _scoreManager.Update(gameTime);
+        _enemyManager.Update(gameTime, _player.Position);
     }
 
     public void Draw()
-    {
+    {   
+        // Draw the background
+        _spriteBatch.Draw(background, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White);
+
         // Background, player, enemies, and health icons drawing logic
         _player.Draw(_spriteBatch);
         _enemyManager.Draw(_spriteBatch);
         _uiManager.Draw(_spriteBatch); // Draw UI elements
+
+        
     }
 
     public void LoadLevel(string filePath, int levelNumber)
