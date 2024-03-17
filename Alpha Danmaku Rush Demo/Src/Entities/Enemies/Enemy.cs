@@ -19,27 +19,17 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         protected float movementSpeed;
         public bool isActive;
 
-        protected Texture2D BulletSprite;
-        public List<Attack> attackList;
-        protected Attack attack;//an attack object
-        public bool BulletCheck = true;
-
-
         public List<Bullet.Bullet> bulletList = new List<Bullet.Bullet>();
 
 
         protected Vector2 DefaultTarget = new Vector2(0, 1);//default bullet moving direction
 
-        protected Enemy(Texture2D sprite, Vector2 startPosition, float movementSpeed, Texture2D bulletSprite)
+        protected Enemy(Texture2D sprite, Vector2 startPosition, float movementSpeed)
         {
             this.sprite = sprite;
             Position = startPosition;
             this.movementSpeed = movementSpeed;
             isActive = true;
-            BulletSprite = bulletSprite;
-            attackList = new List<Attack>();
-            attack = new Attack(BulletSprite, Position, DefaultTarget);
-            attackList.Add(attack);
         }
 
         public abstract void Update(GameTime gameTime, Vector2 playerPosition);
@@ -61,10 +51,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         {
             if (!isActive) return;
             spriteBatch.Draw(sprite, Position, Color.White);
-            foreach (Attack attack in attackList)
-            {
-                attack.Draw(spriteBatch);
-            }
         }
 
         public void Deactivate()
