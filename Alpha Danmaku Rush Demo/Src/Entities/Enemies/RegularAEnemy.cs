@@ -3,13 +3,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 using System;
+using Microsoft.Xna.Framework.Content;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 {
     class RegularAEnemy : Enemy
     {
-        public RegularAEnemy(Texture2D sprite, Vector2 startPosition, float movementSpeed)
-            : base(sprite, startPosition, movementSpeed) { }
+        public RegularAEnemy(ContentManager content, Vector2 startPosition, float movementSpeed)
+            : base(content, startPosition, movementSpeed)
+        {
+            sprite = content.Load<Texture2D>("a");
+        }
 
         public override void Update(GameTime gameTime, Vector2 playerPosition)
         {

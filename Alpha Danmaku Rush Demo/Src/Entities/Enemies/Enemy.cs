@@ -7,12 +7,15 @@ using System.Reflection.Metadata;
 using Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
 using Alpha_Danmaku_Rush_Demo.Src.Utils;
 using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
+using Microsoft.Xna.Framework.Content;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 {
     public abstract class Enemy
     {
+        private ContentManager content;
         protected Texture2D sprite;
+
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
 
@@ -24,11 +27,11 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 
         protected Vector2 DefaultTarget = new Vector2(0, 1);//default bullet moving direction
 
-        protected Enemy(Texture2D sprite, Vector2 startPosition, float movementSpeed)
+        protected Enemy(ContentManager content, Vector2 startPosition, float movementSpeed)
         {
-            this.sprite = sprite;
+            this.content = content;
             Position = startPosition;
-            this.movementSpeed = movementSpeed;
+            movementSpeed = movementSpeed;
             isActive = true;
         }
 

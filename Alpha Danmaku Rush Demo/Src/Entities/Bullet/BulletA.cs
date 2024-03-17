@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
 
 public class BulletA : Bullet
 {
-    public BulletA(Vector2 position, Vector2 velocity, Color color)
-        : base(position, velocity, color)
+    public BulletA(Texture2D sprite, Vector2 position, Vector2 velocity, Color color)
+        : base(sprite, position, velocity, color)
     {
     }
 

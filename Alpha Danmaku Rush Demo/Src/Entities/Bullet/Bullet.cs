@@ -5,13 +5,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 public abstract class Bullet
 {
+    protected Texture2D Sprite;
+
     public Vector2 Position { get; set; }
     public Vector2 Velocity { get; set; }
     public Color Color { get; set; }
     public bool IsActive { get; set; } = true;
 
-    protected Bullet(Vector2 position, Vector2 velocity, Color color)
+    protected Bullet(Texture2D sprite, Vector2 position, Vector2 velocity, Color color)
     {
+        Sprite = sprite;
         Position = position;
         Velocity = velocity;
         Color = color;
@@ -19,11 +22,11 @@ public abstract class Bullet
 
     public abstract void Update(GameTime gameTime);
 
-    public virtual void Draw(SpriteBatch spriteBatch, Texture2D texture)
+    public void Draw(SpriteBatch spriteBatch)
     {
         if (IsActive)
         {
-            spriteBatch.Draw(texture, Position, Color);
+            spriteBatch.Draw(Sprite, Position, Color);
         }
     }
 }

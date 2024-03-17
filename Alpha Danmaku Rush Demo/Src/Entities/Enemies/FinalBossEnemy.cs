@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 using System;
+using Microsoft.Xna.Framework.Content;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 {
@@ -10,9 +11,10 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
     {
         private float finalBossMove = 20f;
 
-        public FinalBossEnemy(Texture2D sprite, Vector2 startPosition, float movementSpeed) 
-            : base(sprite, startPosition, movementSpeed)
+        public FinalBossEnemy(ContentManager content, Vector2 startPosition, float movementSpeed) 
+            : base(content, startPosition, movementSpeed)
         {
+            sprite = content.Load<Texture2D>("finalBoss");
         }
 
         public override void Update(GameTime gameTime, Vector2 playerPosition)

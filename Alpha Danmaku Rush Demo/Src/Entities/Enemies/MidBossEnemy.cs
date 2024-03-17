@@ -1,5 +1,6 @@
 ﻿using Alpha_Danmaku_Rush_Demo.Src.Utils;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -9,8 +10,11 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
     {
         private float midBossMove = 20f;
 
-        public MidBossEnemy(Texture2D sprite, Vector2 startPosition, float movementSpeed)
-            : base(sprite, startPosition, movementSpeed) { }
+        public MidBossEnemy(ContentManager content, Vector2 startPosition, float movementSpeed)
+            : base(content, startPosition, movementSpeed)
+        {
+            sprite = content.Load<Texture2D>("midBoss");
+        }
 
         public override void Update(GameTime gameTime, Vector2 playerPosition)
         {

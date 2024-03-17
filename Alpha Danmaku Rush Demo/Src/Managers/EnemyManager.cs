@@ -67,10 +67,9 @@ public class EnemyManager
 
     public void SpawnEnemyA()
     {
-        Texture2D enemySprite = Content.Load<Texture2D>("a");
         Vector2 spawnPosition = new Vector2(random.Next(_graphics.GraphicsDevice.Viewport.Width), random.Next(_graphics.GraphicsDevice.Viewport.Height));
         float enemySpeed = 3.0f; // Adjust as needed
-        Enemy enemy = EnemyFactory.CreateEnemy(EnemyType.RegularA, enemySprite, spawnPosition, enemySpeed, enemyABullet);
+        Enemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.RegularA, spawnPosition, enemySpeed);
         Add(enemy);
     }
     public void SpawnEnemyB()
@@ -78,7 +77,7 @@ public class EnemyManager
         Texture2D enemySprite = Content.Load<Texture2D>("b");
         Vector2 spawnPosition = new Vector2(random.Next(_graphics.GraphicsDevice.Viewport.Width), random.Next(_graphics.GraphicsDevice.Viewport.Height));
         float enemySpeed = 5.0f; // Adjust as needed
-        Enemy enemy = EnemyFactory.CreateEnemy(EnemyType.RegularB, enemySprite, spawnPosition, enemySpeed, enemyBBullet);
+        Enemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.RegularB, spawnPosition, enemySpeed);
         Add(enemy);
     }
     public void SpawnEnemyM()
@@ -86,7 +85,7 @@ public class EnemyManager
         Texture2D enemySprite = Content.Load<Texture2D>("midBoss");
         Vector2 spawnPosition = new Vector2(random.Next(_graphics.GraphicsDevice.Viewport.Width), random.Next(_graphics.GraphicsDevice.Viewport.Height));
         float enemySpeed = 3.0f; // Adjust as needed
-        Enemy enemy = EnemyFactory.CreateEnemy(EnemyType.MidBoss, enemySprite, spawnPosition, enemySpeed, midBossBullet);
+        Enemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.MidBoss, spawnPosition, enemySpeed);
         Add(enemy);
     }
     public void SpawnEnemyF()
@@ -95,7 +94,7 @@ public class EnemyManager
         Texture2D enemySprite = Content.Load<Texture2D>("finalBoss");
         Vector2 spawnPosition = new Vector2(screenWidth / 2 - enemySprite.Width / 2, 0);
         float enemySpeed = 3.0f; // Adjust as needed
-        Enemy enemy = EnemyFactory.CreateEnemy(EnemyType.FinalBoss, enemySprite, spawnPosition, enemySpeed, finalBossBullet);
+        Enemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.FinalBoss, spawnPosition, enemySpeed);
         Add(enemy);
     }
 

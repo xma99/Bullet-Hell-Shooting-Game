@@ -11,10 +11,10 @@ public static class EnemyFactory
     {
         return type switch
         {
-            EnemyType.RegularA => new RegularAEnemy(content.Load<Texture2D>("a"), startPosition, movementSpeed),
-            EnemyType.RegularB => new RegularBEnemy(content.Load<Texture2D>("b"), startPosition, movementSpeed),
-            EnemyType.MidBoss => new MidBossEnemy(content.Load<Texture2D>("midBoss"), startPosition, movementSpeed),
-            EnemyType.FinalBoss => new FinalBossEnemy(content.Load<Texture2D>("finalBoss"), startPosition, movementSpeed),
+            EnemyType.RegularA => new RegularAEnemy(content, startPosition, movementSpeed),
+            EnemyType.RegularB => new RegularBEnemy(content, startPosition, movementSpeed),
+            EnemyType.MidBoss => new MidBossEnemy(content, startPosition, movementSpeed),
+            EnemyType.FinalBoss => new FinalBossEnemy(content, startPosition, movementSpeed),
             _ => throw new ArgumentOutOfRangeException(nameof(type), $"Not implemented type: {type}"),
         };
     }

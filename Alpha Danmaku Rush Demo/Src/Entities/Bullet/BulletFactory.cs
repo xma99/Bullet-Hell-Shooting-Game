@@ -2,18 +2,20 @@
 using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
 using Alpha_Danmaku_Rush_Demo.Src.Utils;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
 
 public static class BulletFactory
 {
     // A method to create bullets based on type, speed, and other attributes
-    public static Bullet CreateBullet(Vector2 position, Vector2 velocity, EnemyBulletType type)
+    public static Bullet CreateBullet(ContentManager content, Vector2 position, Vector2 velocity, EnemyBulletType type)
     {
         return type.Type switch
         {
-            "A" => new BulletA(position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color)), // Assume speed 10 for BulletA
-            "B" => new BulletB(position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color)), // Assume speed 5 for BulletB
+            "A" => new BulletA(content.Load<Texture2D>("bullettest1"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color)),
+            "B" => new BulletB(content.Load<Texture2D>("bullettest1"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color)),
             _ => throw new ArgumentException($"Unsupported bullet type: {type}")
         };
     }
