@@ -15,23 +15,12 @@ public class EnemyManager
     private ContentManager Content;
     GraphicsDeviceManager _graphics;
 
-    Texture2D enemyABullet;
-    Texture2D enemyBBullet;
-    Texture2D midBossBullet;
-    Texture2D finalBossBullet;
-
     public EnemyManager(ContentManager content, GraphicsDeviceManager gdManager)
     {
         this.Content = content;
-        // Load the texture
-        enemyABullet = content.Load<Texture2D>("bullettest1");
-        enemyBBullet = content.Load<Texture2D>("bullettest1");
-        midBossBullet = content.Load<Texture2D>("bubble");
-        finalBossBullet = content.Load<Texture2D>("bubble");
 
         _graphics = gdManager;
     }
-
 
     public void Add(Enemy enemy)
     {

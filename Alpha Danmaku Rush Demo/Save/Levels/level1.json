@@ -4,24 +4,25 @@
       "id": "1",
       "time": [ "0", "8000" ],
       "enemyType": "RegularA",
-      "enemyAmount": "5",
-      "interval": "200",
+      "enemyAmount": 5,
+      "interval": 200,
       "enemyBulletType": {
         "color": "red",
-        "type": "B",
-        "amount": "20",
-        "speed": "10"
+        "type": "A",
+        "amount": 20,
+        "speed": 10
       }
     },
     {
       "id": "2",
       "time": [ "8000", "16000" ],
       "enemyType": "RegularA",
+      "enemyAmount": 1,
       "enemyBulletType": {
         "color": "blue",
         "type": "A",
-        "amount": "10",
-        "speed": "5"
+        "amount": 10,
+        "speed": 5
       }
     }
   ]

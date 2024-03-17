@@ -63,6 +63,14 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         {
             if (!isActive) return;
             spriteBatch.Draw(Sprite, Position, Color.White);
+
+            foreach (var bullet in bulletList)
+            {
+                if (bullet.IsActive)
+                {
+                    bullet.Draw(spriteBatch);
+                }
+            }
         }
 
         public void Deactivate()

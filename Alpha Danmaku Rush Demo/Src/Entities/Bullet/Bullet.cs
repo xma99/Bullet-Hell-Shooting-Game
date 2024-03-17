@@ -36,4 +36,13 @@ public abstract class Bullet
             spriteBatch.Draw(Sprite, Position, Color);
         }
     }
+
+    protected void CheckOffScreen()
+    {
+        // hard coded screen size
+        if (Position.X < 0 || Position.X > 800 || Position.Y < 0 || Position.Y > 1100)
+        {
+            IsActive = false;
+        }
+    }
 }

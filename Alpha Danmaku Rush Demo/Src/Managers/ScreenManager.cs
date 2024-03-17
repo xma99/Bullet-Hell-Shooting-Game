@@ -3,6 +3,8 @@ using Alpha_Danmaku_Rush_Demo.Src.Managers.MainMenu;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.IO;
+using System.Reflection;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
@@ -66,8 +68,6 @@ public class ScreenManager
 
     public void Draw()
     {
-        _spriteBatch.Begin();
-
         switch (_currentState)
         {
             case ScreenState.MainMenu:
@@ -76,7 +76,16 @@ public class ScreenManager
             case ScreenState.GameLevel:
                 if (!_isGameStarted)
                 {
-                    _levelManager.LoadLevel("/Save/Levels/level"+ _currentLevel + ".json", _currentLevel);
+                    //debug code for vs
+                    string exePath = Assembly.GetExecutingAssembly().Location;
+                    string exeDirectory = Path.GetDirectoryName(exePath);
+
+                    // Move up directories to the solution root from the executable location
+                    string solutionRoot = Directory.GetParent(exeDirectory).Parent.Parent.FullName;
+                    string filePath = Path.Combine(solutionRoot, "Save/Levels/level" + _currentLevel + ".json");
+
+
+                    _levelManager.LoadLevel(filePath, _currentLevel);
                     _isGameStarted = true;
                 }
                 _levelManager.Draw();
@@ -87,8 +96,6 @@ public class ScreenManager
             default:
                 throw new ArgumentOutOfRangeException();
         }
-
-        _spriteBatch.End();
     }
 
     public void LoadLevel(string levelPath, int levelNumber)

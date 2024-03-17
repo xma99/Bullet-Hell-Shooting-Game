@@ -13,6 +13,7 @@ public class BulletA : Bullet
 
     public override void Update(GameTime gameTime)
     {
+        CheckOffScreen();
         // Example update logic for BulletA
         Position += Velocity * gameTime.ElapsedGameTime.Milliseconds / 1000f;
     }

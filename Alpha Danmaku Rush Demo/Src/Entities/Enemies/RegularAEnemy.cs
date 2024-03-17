@@ -27,6 +27,9 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 
             Speed = 80f;
             Move(gameTime, playerPosition);
+
+            //attack
+            Attack(gameTime, playerPosition);
         }
 
         public override void Attack(GameTime gameTime, Vector2 playerPosition)
@@ -44,6 +47,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
                     {
                         bullet.IsActive = true; // Activate the bullet
                         // Set the bullet's velocity towards the player
+                        bullet.Position = Position;
                         bullet.Velocity = Vector2.Normalize(playerPosition - bullet.Position) * bullet.Speed; // Assuming bullet has a Speed property
                         break; // This assumes you want to activate only one bullet per attack interval
                     }

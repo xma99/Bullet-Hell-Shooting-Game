@@ -64,6 +64,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities
             updatePosition.X = MathHelper.Clamp(updatePosition.X, 0, screenWidth - Sprite.Width);
             Position = updatePosition;
             playerSpeed = 5.0f;
+
         }
 
         public void Draw(SpriteBatch spriteBatch)

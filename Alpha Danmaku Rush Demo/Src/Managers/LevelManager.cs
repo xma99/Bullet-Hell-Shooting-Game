@@ -35,13 +35,16 @@ public class LevelManager
 
     public LevelManager(ContentManager content, GraphicsDeviceManager graphics, SpriteBatch spriteBatch)
     {
-        InitializePlayer();
+        
         _content = content;
         _graphics = graphics;
         _spriteBatch = spriteBatch;
         _enemyManager = new EnemyManager(content, graphics);
-        _collisionManager = new CollisionManager(_player, _enemyManager, _scoreManager);
 
+        InitializePlayer();
+        _scoreManager = new ScoreManager();
+        _collisionManager = new CollisionManager(_player, _enemyManager, _scoreManager);
+        _uiManager = new UIManager(content, graphics);
         _uiManager.InitializeHealthIcons(_player.Health);
     }
 
@@ -64,12 +67,10 @@ public class LevelManager
 
     public void Draw()
     {
-        _spriteBatch.Begin();
         // Background, player, enemies, and health icons drawing logic
         _player.Draw(_spriteBatch);
         _enemyManager.Draw(_spriteBatch);
         _uiManager.Draw(_spriteBatch); // Draw UI elements
-        _spriteBatch.End();
     }
 
     public void LoadLevel(string filePath, int levelNumber)
