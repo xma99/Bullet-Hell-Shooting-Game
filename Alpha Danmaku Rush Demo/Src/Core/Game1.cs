@@ -14,12 +14,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
-
         private ScreenManager _screenManager;
-
-        // private Texture2D background;
-        Texture2D backImage;
 
         public Game1()
         {
@@ -51,18 +46,15 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
                 Exit();
 
             _screenManager.Update(gameTime);
-
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            // display images
+
             _spriteBatch.Begin();
-
             _screenManager.Draw();
-
             _spriteBatch.End();
 
             base.Draw(gameTime);
