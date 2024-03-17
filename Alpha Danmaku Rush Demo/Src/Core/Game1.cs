@@ -1,4 +1,6 @@
 ﻿using Alpha_Danmaku_Rush_Demo.Src.Entities;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
+using Alpha_Danmaku_Rush_Demo.Src.Managers;
 using Alpha_Danmaku_Rush_Demo.Src.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,20 +14,18 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
         // Player
         private Player player;
-        // Bullet
-        // private Texture2D bulletObject;
 
         // private Texture2D background;
         Texture2D backImage;
 
         // Camera: following the player
         private Camera camera;
+        
 
-        private Enemy enemyA;
         // Enemy variables
-        private List<Enemy> enemies;
         private Random random;
         private TimeSpan spawnTimer;
         private TimeSpan spawnIntervalMin;
@@ -35,9 +35,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
         bool finalCheck = false;
         bool midPass = false;
         bool midClear = false;
-        /// <summary>
-        /// Gloable virable for bullet texture
-        /// </summary>
 
         Texture2D enemyABullet;
         Texture2D enemyBBullet;
@@ -48,6 +45,8 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
         private int playerHealth;
         private Texture2D bulletTexture;
 
+        private EnemyManager enemyManager;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -57,6 +56,9 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
 
         protected override void Initialize()
         {
+            enemyManager = new EnemyManager();
+
+
             // Changing the window size setting
             _graphics.PreferredBackBufferWidth = 800;
             _graphics.PreferredBackBufferHeight = 1000;
@@ -66,7 +68,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
             camera = new Camera(GraphicsDevice.Viewport);
 
             // Initialize enemy variables
-            enemies = new List<Enemy>();
             random = new Random();
             spawnIntervalMin = TimeSpan.FromSeconds(5);
             spawnIntervalMax = TimeSpan.FromSeconds(15);
@@ -101,11 +102,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
 
             // Player
             Texture2D playerSet = Content.Load<Texture2D>("testplayer1");
-            // Player's Bullet
-            // bulletObject = Content.Load<Texture2D>("bullettest1");
-
-            // Load the bullet texture
-            // bulletTexture = Content.Load<Texture2D>("bubble");
 
             // Background image
             backImage = Content.Load<Texture2D>("back1");
@@ -116,16 +112,11 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
             Vector2 initialPosition = new Vector2(windowWidth / 2 - playerSet.Width / 2, windowHeight - playerSet.Height);
             player = new Player(playerSet, initialPosition);
 
-            // Load the texture for enemy A
-            Texture2D enemyASprite = Content.Load<Texture2D>("a");
+            // Load the texture
             enemyABullet = Content.Load<Texture2D>("bullettest1");
             enemyBBullet = Content.Load<Texture2D>("bullettest1");
             midBossBullet = Content.Load<Texture2D>("bubble");
             finalBossBullet = Content.Load<Texture2D>("bubble");
-            // Create an instance of the Enemy class for enemy A
-            Vector2 enemyAPosition = new Vector2(windowWidth, windowHeight); // Set the initial position of enemy A
-            float enemyAMovementSpeed = 10f;
-            Enemy enemyA = new Enemy(enemyASprite, enemyAPosition, enemyAMovementSpeed, EnemyType.RegularA, enemyABullet);
         }
 
         protected override void Update(GameTime gameTime)
@@ -297,53 +288,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
         private TimeSpan GetRandomSpawnInterval() // Timer
         {
             return TimeSpan.FromSeconds(random.NextDouble() * (spawnIntervalMax.TotalSeconds - spawnIntervalMin.TotalSeconds) + spawnIntervalMin.TotalSeconds);
-        }
-
-        private void SpawnEnemyA()
-        {
-            Texture2D enemyASprite = Content.Load<Texture2D>("a");
-            // Texture2D bubbleTexture = Content.Load<Texture2D>("bubble");
-            int screenWidth = GraphicsDevice.Viewport.Width;
-            int screenHeight = GraphicsDevice.Viewport.Height;
-            Vector2 spawnPosition = new Vector2(random.Next(screenWidth), random.Next(screenHeight));
-            float enemySpeed = 3.0f; // Adjust enemy speed as needed
-            enemies.Add(new Enemy(enemyASprite, spawnPosition, enemySpeed, EnemyType.RegularA, enemyABullet));
-        }
-        private void SpawnEnemyB()
-        {
-            Texture2D enemyASprite = Content.Load<Texture2D>("b");
-            // Texture2D bubbleTexture = Content.Load<Texture2D>("bubble");
-            int screenWidth = GraphicsDevice.Viewport.Width;
-            int screenHeight = GraphicsDevice.Viewport.Height;
-            Vector2 spawnPosition = new Vector2(random.Next(screenWidth), random.Next(screenHeight));
-            float enemySpeed = 5.0f; // Adjust enemy speed as needed
-            enemies.Add(new Enemy(enemyASprite, spawnPosition, enemySpeed, EnemyType.RegularA, enemyBBullet));
-        }
-        private void SpawnEnemyM()
-        {
-            Texture2D midBossSprite = Content.Load<Texture2D>("midBoss");
-            // Texture2D bubbleTexture = Content.Load<Texture2D>("bubble");
-            int screenWidth = GraphicsDevice.Viewport.Width;
-            // int screenHeight = GraphicsDevice.Viewport.Height;
-            Vector2 spawnPosition = new Vector2(screenWidth / 2 - midBossSprite.Width / 2, 0);
-            float midBossSpeed = 3.0f; // Adjust enemy speed as needed
-            Enemy midBoss = new Enemy(midBossSprite, spawnPosition, midBossSpeed, EnemyType.MidBoss, midBossBullet);
-            enemies.Add(midBoss);
-        }
-        private void SpawnEnemyF()
-        {
-            Texture2D finalBossSprite = Content.Load<Texture2D>("finalBoss");
-            // Texture2D bubbleTexture = Content.Load<Texture2D>("bubble");
-            int screenWidth = GraphicsDevice.Viewport.Width;
-            // int screenHeight = GraphicsDevice.Viewport.Height;
-            Vector2 spawnPosition = new Vector2(screenWidth / 2 - finalBossSprite.Width / 2, 0);
-            float finalBossSpeed = 3.0f; // Adjust enemy speed as needed
-            Enemy finalBoss = new Enemy(finalBossSprite, spawnPosition, finalBossSpeed, EnemyType.FinalBoss, finalBossBullet);
-            enemies.Add(finalBoss);
-        }
-        private void ClearEnemy()
-        {
-            enemies.Clear();
         }
     }
 }

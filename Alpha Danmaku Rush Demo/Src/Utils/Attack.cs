@@ -46,6 +46,3 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Utils
         }
     }
 }
-
-
-
