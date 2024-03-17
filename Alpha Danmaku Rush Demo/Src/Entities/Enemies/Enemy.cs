@@ -1,18 +1,21 @@
-﻿using Alpha_Danmaku_Rush_Demo.Src;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
 using Alpha_Danmaku_Rush_Demo.Src.Utils;
+using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 {
     public abstract class Enemy
     {
         protected Texture2D sprite;
-        public Vector2 Position { get; protected set; }
+        public Vector2 Position { get; set; }
+        public Vector2 Velocity { get; set; }
+
         protected float movementSpeed;
         public bool isActive;
 
@@ -21,6 +24,8 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         protected Attack attack;//an attack object
         public bool BulletCheck = true;
 
+
+        public List<Bullet.Bullet> bulletList = new List<Bullet.Bullet>();
 
 
         protected Vector2 DefaultTarget = new Vector2(0, 1);//default bullet moving direction
@@ -65,6 +70,11 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         public void Deactivate()
         {
             isActive = false;
+        }
+
+        public void AddBullet(EnemyBulletType type)
+        {
+            bulletList.Add(BulletFactory.CreateBullet(this.Position, this.Velocity, type));
         }
     }
     
