@@ -3,6 +3,7 @@ using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Content;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
@@ -10,7 +11,7 @@ public class EnemyManager
 {
     private List<Enemy> enemies = new List<Enemy>();
     private Random random = new Random();
-    private Microsoft.Xna.Framework.Content.ContentManager Content;
+    private ContentManager Content;
     GraphicsDeviceManager _graphics;
 
     Texture2D enemyABullet;
@@ -18,7 +19,7 @@ public class EnemyManager
     Texture2D midBossBullet;
     Texture2D finalBossBullet;
 
-    public EnemyManager(Microsoft.Xna.Framework.Content.ContentManager content, GraphicsDeviceManager gdManager)
+    public EnemyManager(ContentManager content, GraphicsDeviceManager gdManager)
     {
         this.Content = content;
         // Load the texture

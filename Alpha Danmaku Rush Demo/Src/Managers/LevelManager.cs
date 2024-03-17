@@ -1,0 +1,123 @@
+﻿using Alpha_Danmaku_Rush_Demo.Src.Entities;
+using Alpha_Danmaku_Rush_Demo.Src.UI;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using System;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
+using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
+using System.Text.Json;
+using System.IO;
+
+namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
+
+public class LevelManager
+{
+    private GraphicsDeviceManager _graphics;
+    private SpriteBatch _spriteBatch;
+    private ContentManager _content;
+    private EnemyManager _enemyManager;
+    private Player _player;
+    private List<HealthIcon> _healthIcons;
+    private TimeSpan _spawnIntervalMin;
+    private TimeSpan _spawnIntervalMax;
+    private Random _random = new Random();
+
+    // Existing fields and methods...
+    private UIManager _uiManager;
+
+    public LevelManager(ContentManager content, GraphicsDeviceManager graphics, SpriteBatch spriteBatch)
+    {
+        _content = content;
+        _graphics = graphics;
+        _spriteBatch = spriteBatch;
+        _enemyManager = new EnemyManager(content, graphics);
+
+
+        _uiManager.InitializeHealthIcons(_player.Health);
+
+        InitializePlayer();
+        InitializeHealthIcons();
+    }
+
+    private void InitializePlayer()
+    {
+        Texture2D playerTexture = _content.Load<Texture2D>("testplayer1");
+        Vector2 initialPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2 - playerTexture.Width / 2, _graphics.PreferredBackBufferHeight - playerTexture.Height);
+        _player = new Player(playerTexture, initialPosition);
+    }
+
+    private void InitializeHealthIcons()
+    {
+        _healthIcons = new List<HealthIcon>();
+        Texture2D heartTexture = _content.Load<Texture2D>("heart");
+        float scale = 0.03f;
+        int iconSpacing = 1;
+        int totalIconWidth = (int)(heartTexture.Width * scale);
+        int totalSpacingWidth = iconSpacing * 9;
+        int totalRequiredWidth = 10 * totalIconWidth + totalSpacingWidth;
+        int startPositionX = _graphics.PreferredBackBufferWidth - totalRequiredWidth;
+        for (int i = 0; i < 10; i++)
+        {
+            Vector2 iconPosition = new Vector2(startPositionX + (totalIconWidth + iconSpacing) * i, 20);
+            _healthIcons.Add(new HealthIcon(heartTexture, iconPosition, scale, isActive: true));
+        }
+    }
+
+    public void Update(GameTime gameTime)
+    {
+        _player.Update(gameTime, _graphics.GraphicsDevice.Viewport.Width);
+        // Here you would handle the logic for updating the level state, spawning enemies, etc.
+        // Example: Update health icons based on player's health
+        _uiManager.UpdateHealthIcons(_player.Health);
+    }
+
+    public void Draw()
+    {
+        _spriteBatch.Begin();
+        // Background, player, enemies, and health icons drawing logic
+        _player.Draw(_spriteBatch);
+        _enemyManager.Draw(_spriteBatch);
+        _uiManager.Draw(_spriteBatch); // Draw UI elements
+        _spriteBatch.End();
+    }
+
+    public void LoadLevel(string filePath)
+    {
+        string jsonString = File.ReadAllText(filePath);
+        LevelData levelData = JsonSerializer.Deserialize<LevelData>(jsonString);
+
+        foreach (var wave in levelData.Waves)
+        {
+            // Assuming you have a method to parse the enemy type and create an enemy
+            for (int i = 0; i < wave.EnemyAmount; i++)
+            {
+                // Here we'll need to translate string enemy types to our enum or class types
+                EnemyType enemyType = ParseEnemyType(wave.EnemyType);
+
+                // Placeholder for spawning logic; replace with your actual implementation
+                SpawnEnemy(enemyType, wave.EnemyBulletType);
+            }
+        }
+    }
+
+    private EnemyType ParseEnemyType(string type)
+    {
+        // Implement parsing logic based on your EnemyType enum or classes
+        // This is a basic example, extend it according to your needs
+        return type switch
+        {
+            "RegularA" => EnemyType.RegularA,
+            "RegularB" => EnemyType.RegularB,
+            "MidBoss" => EnemyType.MidBoss,
+            "FinalBoss" => EnemyType.FinalBoss,
+            _ => throw new ArgumentOutOfRangeException(nameof(type), $"Not expected enemy type value: {type}"),
+        };
+    }
+
+    private void SpawnEnemy(EnemyType enemyType, EnemyBulletType bulletType)
+    {
+        // Your logic to spawn an enemy based on type and bullet configuration
+    }
+}

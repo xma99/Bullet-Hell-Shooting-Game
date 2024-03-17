@@ -1,0 +1,28 @@
+{
+  "waves": [
+    {
+      "id": "1",
+      "time": [ "0", "1000" ],
+      "enemyType": "RegularA",
+      "enemyAmount": "5",
+      "interval": "200",
+      "enemyBulletType": {
+        "color": "red",
+        "type": "B",
+        "amount": "20",
+        "speed": "10"
+      }
+    },
+    {
+      "id": "2",
+      "time": [ "1000", "2000" ],
+      "enemyType": "MidBoss",
+      "enemyBulletType": {
+        "color": "blue",
+        "type": "A",
+        "amount": "50",
+        "speed": "5"
+      }
+    }
+  ]
+}

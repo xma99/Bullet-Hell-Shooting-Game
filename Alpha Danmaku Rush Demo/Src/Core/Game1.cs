@@ -25,10 +25,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
         private Random random;
         private TimeSpan spawnIntervalMin;
         private TimeSpan spawnIntervalMax;
-        bool midCheck = false;
-        bool finalCheck = false;
-        bool midPass = false;
-        bool midClear = false;
 
         private List<HealthIcon> healthIcons;
 
