@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Alpha_Danmaku_Rush_Demo
+namespace Alpha_Danmaku_Rush_Demo.Src.Entities
 {
     public class Player
     {
@@ -13,7 +13,7 @@ namespace Alpha_Danmaku_Rush_Demo
 
         public Player(Texture2D img, Vector2 initialPosition)
         {
-            this.sprite = img;
+            sprite = img;
             Position = initialPosition;
         }
 

@@ -1,10 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Alpha_Danmaku_Rush_Demo.Src.Entities;
+using Alpha_Danmaku_Rush_Demo.Src.UI;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
-namespace Alpha_Danmaku_Rush_Demo
+namespace Alpha_Danmaku_Rush_Demo.Src.Core
 {
     public class Game1 : Game
     {
@@ -36,7 +38,7 @@ namespace Alpha_Danmaku_Rush_Demo
         /// <summary>
         /// Gloable virable for bullet texture
         /// </summary>
-       
+
         Texture2D enemyABullet;
         Texture2D enemyBBullet;
         Texture2D midBossBullet;
@@ -79,7 +81,7 @@ namespace Alpha_Danmaku_Rush_Demo
             int totalIconWidth = (int)(heartTexture.Width * scale);
             int totalSpacingWidth = iconSpacing * 9; // Total spacing width between 9 pairs of icons
             int totalRequiredWidth = 10 * totalIconWidth + totalSpacingWidth;
-            int startPositionX = (GraphicsDevice.Viewport.Width - totalRequiredWidth);
+            int startPositionX = GraphicsDevice.Viewport.Width - totalRequiredWidth;
             for (int i = 0; i < 10; i++)
             {
                 Vector2 iconPosition = new Vector2(startPositionX + (totalIconWidth + iconSpacing) * i, 20);
@@ -96,7 +98,7 @@ namespace Alpha_Danmaku_Rush_Demo
 
             int width = GraphicsDevice.Viewport.Width;
             int height = GraphicsDevice.Viewport.Height;
-            
+
             // Player
             Texture2D playerSet = Content.Load<Texture2D>("testplayer1");
             // Player's Bullet
@@ -111,7 +113,7 @@ namespace Alpha_Danmaku_Rush_Demo
             // Position: The player is shown in the center of the screen
             int windowWidth = GraphicsDevice.Viewport.Width;
             int windowHeight = GraphicsDevice.Viewport.Height;
-            Vector2 initialPosition = new Vector2((windowWidth / 2) - (playerSet.Width / 2), windowHeight - playerSet.Height);
+            Vector2 initialPosition = new Vector2(windowWidth / 2 - playerSet.Width / 2, windowHeight - playerSet.Height);
             player = new Player(playerSet, initialPosition);
 
             // Load the texture for enemy A
@@ -119,11 +121,11 @@ namespace Alpha_Danmaku_Rush_Demo
             enemyABullet = Content.Load<Texture2D>("bullettest1");
             enemyBBullet = Content.Load<Texture2D>("bullettest1");
             midBossBullet = Content.Load<Texture2D>("bubble");
-             finalBossBullet = Content.Load<Texture2D>("bubble");
+            finalBossBullet = Content.Load<Texture2D>("bubble");
             // Create an instance of the Enemy class for enemy A
             Vector2 enemyAPosition = new Vector2(windowWidth, windowHeight); // Set the initial position of enemy A
             float enemyAMovementSpeed = 10f;
-            Enemy enemyA = new Enemy(enemyASprite, enemyAPosition, enemyAMovementSpeed, EnemyType.RegularA,enemyABullet);
+            Enemy enemyA = new Enemy(enemyASprite, enemyAPosition, enemyAMovementSpeed, EnemyType.RegularA, enemyABullet);
         }
 
         protected override void Update(GameTime gameTime)
@@ -305,7 +307,7 @@ namespace Alpha_Danmaku_Rush_Demo
             int screenHeight = GraphicsDevice.Viewport.Height;
             Vector2 spawnPosition = new Vector2(random.Next(screenWidth), random.Next(screenHeight));
             float enemySpeed = 3.0f; // Adjust enemy speed as needed
-            enemies.Add(new Enemy(enemyASprite, spawnPosition, enemySpeed, EnemyType.RegularA,enemyABullet));
+            enemies.Add(new Enemy(enemyASprite, spawnPosition, enemySpeed, EnemyType.RegularA, enemyABullet));
         }
         private void SpawnEnemyB()
         {
@@ -323,9 +325,9 @@ namespace Alpha_Danmaku_Rush_Demo
             // Texture2D bubbleTexture = Content.Load<Texture2D>("bubble");
             int screenWidth = GraphicsDevice.Viewport.Width;
             // int screenHeight = GraphicsDevice.Viewport.Height;
-            Vector2 spawnPosition = new Vector2((screenWidth / 2) - (midBossSprite.Width / 2), 0);
+            Vector2 spawnPosition = new Vector2(screenWidth / 2 - midBossSprite.Width / 2, 0);
             float midBossSpeed = 3.0f; // Adjust enemy speed as needed
-            Enemy midBoss = new Enemy(midBossSprite, spawnPosition, midBossSpeed, EnemyType.MidBoss,midBossBullet);
+            Enemy midBoss = new Enemy(midBossSprite, spawnPosition, midBossSpeed, EnemyType.MidBoss, midBossBullet);
             enemies.Add(midBoss);
         }
         private void SpawnEnemyF()
@@ -334,9 +336,9 @@ namespace Alpha_Danmaku_Rush_Demo
             // Texture2D bubbleTexture = Content.Load<Texture2D>("bubble");
             int screenWidth = GraphicsDevice.Viewport.Width;
             // int screenHeight = GraphicsDevice.Viewport.Height;
-            Vector2 spawnPosition = new Vector2((screenWidth / 2) - (finalBossSprite.Width / 2), 0);
+            Vector2 spawnPosition = new Vector2(screenWidth / 2 - finalBossSprite.Width / 2, 0);
             float finalBossSpeed = 3.0f; // Adjust enemy speed as needed
-            Enemy finalBoss = new Enemy(finalBossSprite, spawnPosition, finalBossSpeed, EnemyType.FinalBoss,finalBossBullet);
+            Enemy finalBoss = new Enemy(finalBossSprite, spawnPosition, finalBossSpeed, EnemyType.FinalBoss, finalBossBullet);
             enemies.Add(finalBoss);
         }
         private void ClearEnemy()

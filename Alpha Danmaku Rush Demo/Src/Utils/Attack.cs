@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace Alpha_Danmaku_Rush_Demo
+namespace Alpha_Danmaku_Rush_Demo.Src.Utils
 {
     public class Attack
     {
@@ -23,9 +23,9 @@ namespace Alpha_Danmaku_Rush_Demo
         {
             this.bullet = bullet;
             checkAttack = true;
-            this.bulletPosition = SpawnPosition;
-            this.bulletSpeed = 10.0f;
-            this.DefaultTarget = defaultTarget;
+            bulletPosition = SpawnPosition;
+            bulletSpeed = 10.0f;
+            DefaultTarget = defaultTarget;
         }
 
         public void UpdateAttack(GameTime gameTime, Vector2 playerPosition)

@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Alpha_Danmaku_Rush_Demo.Src.Entities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Alpha_Danmaku_Rush_Demo
+namespace Alpha_Danmaku_Rush_Demo.Src.UI
 {
     public class Camera
     {

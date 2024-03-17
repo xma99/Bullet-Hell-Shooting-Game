@@ -23,8 +23,11 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Src\Core\" />
+    <Folder Include="Src\Entities\" />
     <Folder Include="Src\Managers\" />
-    <Folder Include="Levels\" />
+    <Folder Include="Src\UI\" />
+    <Folder Include="Src\新文件夹\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

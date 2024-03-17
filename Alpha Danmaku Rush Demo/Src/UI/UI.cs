@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using static System.Formats.Asn1.AsnWriter;
 
-namespace Alpha_Danmaku_Rush_Demo
+namespace Alpha_Danmaku_Rush_Demo.Src.UI
 {
     public class HealthIcon
     {

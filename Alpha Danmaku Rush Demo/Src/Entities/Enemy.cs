@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Alpha_Danmaku_Rush_Demo.Src.Utils;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
 
-namespace Alpha_Danmaku_Rush_Demo
+namespace Alpha_Danmaku_Rush_Demo.Src.Entities
 {
     public enum EnemyType
     {
@@ -35,7 +36,7 @@ namespace Alpha_Danmaku_Rush_Demo
         private Attack attack;//an attack object
         private Vector2 DefaultTarget = new Vector2(0, 1);//default bullet moving direction
         public List<Attack> attackList;
-        public bool BulletCheck=true;//allow to add bullet into attacklist
+        public bool BulletCheck = true;//allow to add bullet into attacklist
 
         public bool IsActive => isActive;
 
@@ -46,7 +47,7 @@ namespace Alpha_Danmaku_Rush_Demo
             this.movementSpeed = movementSpeed;
             isActive = true;
             this.type = type;
-            this.BulletSprite= bulletSprite;
+            BulletSprite = bulletSprite;
             // If it's midBoss
             if (type == EnemyType.MidBoss)
             {
@@ -62,7 +63,7 @@ namespace Alpha_Danmaku_Rush_Demo
             attackList = new List<Attack>();
             attack = new Attack(BulletSprite, Position, DefaultTarget);
             attackList.Add(attack);
-            
+
         }
 
         public void Update(GameTime gameTime, Vector2 playerPosition)
@@ -104,10 +105,10 @@ namespace Alpha_Danmaku_Rush_Demo
                 }
             }
 
-            if ((second % 3) == 0&&BulletCheck)
+            if (second % 3 == 0 && BulletCheck)
             {
                 Attack newAttack = new Attack(BulletSprite, Position, DefaultTarget);
-                
+
                 attackList.Add(newAttack);
                 BulletCheck = false;
             }
@@ -134,7 +135,7 @@ namespace Alpha_Danmaku_Rush_Demo
                 }
             }
 
-            if (second % 2 == 0&&BulletCheck)
+            if (second % 2 == 0 && BulletCheck)
             {
                 Attack newAttack = new Attack(BulletSprite, Position, DefaultTarget);
                 //newAttack.UpdateAttack(gameTime, playerPosition);
@@ -167,16 +168,16 @@ namespace Alpha_Danmaku_Rush_Demo
             }
             //attack.UpdateAttack(gameTime, playerPosition);
 
-            if (second % 4 == 0&&BulletCheck==true)
+            if (second % 4 == 0 && BulletCheck == true)
             {
                 attack = new Attack(BulletSprite, Position, DefaultTarget);
                 attackList.Add(attack);
                 BulletCheck = false;
 
             }
-            if(second%4!=0&&!BulletCheck)
+            if (second % 4 != 0 && !BulletCheck)
             {
-                BulletCheck=true;
+                BulletCheck = true;
             }
         }
         private void Move(GameTime gameTime, Vector2 playerPosition)
@@ -194,13 +195,14 @@ namespace Alpha_Danmaku_Rush_Demo
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            
+
             if (!isActive) return;
             spriteBatch.Draw(sprite, Position, Color.White);
-            foreach(Attack attack in attackList) {
+            foreach (Attack attack in attackList)
+            {
                 attack.Draw(spriteBatch);
             }
-            
+
 
         }
 
