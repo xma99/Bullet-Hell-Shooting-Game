@@ -21,10 +21,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
         // private Texture2D background;
         Texture2D backImage;
 
-        // Camera: following the player
-        private Camera camera;
-        
-
         // Enemy variables
         private Random random;
         private TimeSpan spawnTimer;
@@ -60,16 +56,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
             _graphics.PreferredBackBufferHeight = 1000;
 
             _graphics.ApplyChanges();
-
-            // Camera setting
-            camera = new Camera(GraphicsDevice.Viewport);
-
-            // Initialize enemy variables
-            random = new Random();
-            spawnIntervalMin = TimeSpan.FromSeconds(5);
-            spawnIntervalMax = TimeSpan.FromSeconds(15);
-            spawnTimer = TimeSpan.Zero;
-            gameStartTime = TimeSpan.Zero;
+            
 
             // Initialize health icons
             healthIcons = new List<HealthIcon>();
@@ -115,130 +102,16 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
         protected override void Update(GameTime gameTime)
         {
 
-            TimeSpan gameTimeElapsed = gameTime.TotalGameTime - gameStartTime;
+            TimeSpan gameTimeElapsed = gameTime.TotalGameTime - TimeSpan.Zero;
+
+            // Exit game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             // Player move
             player.Update(gameTime, GraphicsDevice.Viewport.Width);
 
-            // Then camera follow the player
-            //camera.FollowThePlayer(player);
-
-            // Update spawn timer
-            spawnTimer += gameTime.ElapsedGameTime;
-
-            // MidBoss show
-            if (!midCheck && gameTimeElapsed >= TimeSpan.FromSeconds(48) && gameTimeElapsed <= TimeSpan.FromSeconds(75))
-            {
-                SpawnEnemyM();
-                midCheck = true;
-            }
-
-            // FinalBoss show
-            if (gameTimeElapsed >= TimeSpan.FromSeconds(92) && !finalCheck)
-            {
-                SpawnEnemyF();
-                finalCheck = true;
-            }
-
-            if (gameTimeElapsed >= TimeSpan.FromMinutes(3))
-            {
-                Exit();
-            }
-
             //Important: Spawn Logic need to be change later
-            // Spawn enemy A if spawn interval is reached
-
-            if (gameTimeElapsed <= TimeSpan.FromSeconds(25))
-            {
-                if (spawnTimer >= GetRandomSpawnInterval())
-                {
-                    SpawnEnemyA();
-                    spawnTimer = TimeSpan.Zero; // Reset timer
-
-                }
-                if (spawnTimer >= GetRandomSpawnInterval())
-                {
-                    SpawnEnemyB();
-                    spawnTimer = TimeSpan.Zero; // Reset timer
-
-                }
-            }
-            if (gameTimeElapsed >= TimeSpan.FromSeconds(30) && midCheck == false)
-            {
-                midCheck = true;
-                ClearEnemy();
-                SpawnEnemyM();
-
-            }
-            if (gameTimeElapsed >= TimeSpan.FromSeconds(45) && midPass == false)
-            {
-                if (midClear == false)
-                {
-                    ClearEnemy();
-                    midClear = true;
-                }
-
-                if (spawnTimer >= GetRandomSpawnInterval())
-                {
-                    SpawnEnemyA();
-                    spawnTimer = TimeSpan.Zero; // Reset timer
-
-                }
-                if (spawnTimer >= GetRandomSpawnInterval())
-                {
-                    SpawnEnemyB();
-                    spawnTimer = TimeSpan.Zero; // Reset timer
-
-                }
-            }
-            if (gameTimeElapsed >= TimeSpan.FromSeconds(60) && finalCheck == false)
-            {
-                midPass = true;
-                finalCheck = true;
-                ClearEnemy();
-                SpawnEnemyF();
-            }
-            if (gameTimeElapsed == TimeSpan.FromSeconds(120))
-            {
-                ClearEnemy();
-            }
-            // Update enemies
-            foreach (Enemy enemy in enemies)
-            {
-                enemy.Update(gameTime, player.Position);
-            }
-
-            // Update player health based on collisions with enemy bullets
-            foreach (var enemy in enemies)
-            {
-                foreach (var attack in enemy.attackList)
-                {
-                    if (attack.checkAttack && Vector2.Distance(player.Position, attack.bulletPosition) < 7) // Adjust the collision detection radius as needed
-                    {
-                        attack.checkAttack = false; // Prevent multiple collisions with the same bullet
-                        playerHealth--; // Decrement player health
-                        if (playerHealth <= 0)
-                        {
-                            // Game over logic
-                        }
-                        else
-                        {
-                            // Find the first active heart icon and remove it
-                            for (int i = 0; i < healthIcons.Count; i++)
-                            {
-                                if (healthIcons[i].IsActive)
-                                {
-                                    healthIcons[i].IsActive = false;
-                                    break; // Exit the loop after removing one heart icon
-                                }
-                            }
-                        }
-                        break;
-                    }
-                }
-            }
 
             // Update positions of health icons
             foreach (var icon in healthIcons)
@@ -253,8 +126,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // display images
-            // _spriteBatch.Begin();
-            _spriteBatch.Begin(transformMatrix: camera.GetMatrix());
+            _spriteBatch.Begin();
 
             // Draw the background image to fit the screen
             _spriteBatch.Draw(backImage, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
@@ -268,10 +140,8 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
             /*_spriteBatch.Draw(player, _position, Color.White);*/
             player.Draw(_spriteBatch);
 
-            foreach (var enemy in enemies)
-            {
-                enemy.Draw(_spriteBatch);
-            }
+            // Draw enemies
+            enemyManager.Draw(_spriteBatch);
 
             _spriteBatch.End();
 

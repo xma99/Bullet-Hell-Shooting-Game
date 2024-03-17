@@ -26,6 +26,8 @@ public class EnemyManager
         enemyBBullet = content.Load<Texture2D>("bullettest1");
         midBossBullet = content.Load<Texture2D>("bubble");
         finalBossBullet = content.Load<Texture2D>("bubble");
+
+        _graphics = gdManager;
     }
 
 
@@ -62,7 +64,7 @@ public class EnemyManager
         enemies.Clear();
     }
 
-    private void SpawnEnemyA()
+    public void SpawnEnemyA()
     {
         Texture2D enemySprite = Content.Load<Texture2D>("a");
         Vector2 spawnPosition = new Vector2(random.Next(_graphics.GraphicsDevice.Viewport.Width), random.Next(_graphics.GraphicsDevice.Viewport.Height));
@@ -70,7 +72,7 @@ public class EnemyManager
         Enemy enemy = EnemyFactory.CreateEnemy(EnemyType.RegularA, enemySprite, spawnPosition, enemySpeed, enemyABullet);
         Add(enemy);
     }
-    private void SpawnEnemyB()
+    public void SpawnEnemyB()
     {
         Texture2D enemySprite = Content.Load<Texture2D>("b");
         Vector2 spawnPosition = new Vector2(random.Next(_graphics.GraphicsDevice.Viewport.Width), random.Next(_graphics.GraphicsDevice.Viewport.Height));
@@ -78,7 +80,7 @@ public class EnemyManager
         Enemy enemy = EnemyFactory.CreateEnemy(EnemyType.RegularB, enemySprite, spawnPosition, enemySpeed, enemyBBullet);
         Add(enemy);
     }
-    private void SpawnEnemyM()
+    public void SpawnEnemyM()
     {
         Texture2D enemySprite = Content.Load<Texture2D>("midBoss");
         Vector2 spawnPosition = new Vector2(random.Next(_graphics.GraphicsDevice.Viewport.Width), random.Next(_graphics.GraphicsDevice.Viewport.Height));
@@ -86,7 +88,7 @@ public class EnemyManager
         Enemy enemy = EnemyFactory.CreateEnemy(EnemyType.MidBoss, enemySprite, spawnPosition, enemySpeed, midBossBullet);
         Add(enemy);
     }
-    private void SpawnEnemyF()
+    public void SpawnEnemyF()
     {
         int screenWidth = _graphics.GraphicsDevice.Viewport.Width;
         Texture2D enemySprite = Content.Load<Texture2D>("finalBoss");
