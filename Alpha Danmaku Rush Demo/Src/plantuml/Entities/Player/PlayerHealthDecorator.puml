@@ -1,0 +1,12 @@
+@startuml
+class PlayerHealthDecorator {
+    + Health : int <<get>> <<set>>
+    + PlayerHealthDecorator(player:IPlayer, extraLifeTime:int)
+    + Update(gameTime:GameTime, screenWidth:int) : void
+    + Draw(spriteBatch:SpriteBatch) : void
+}
+IPlayer <|-- PlayerHealthDecorator
+PlayerHealthDecorator --> "Position" Vector2
+PlayerHealthDecorator --> "Sprite" Texture2D
+PlayerHealthDecorator --> "BoundingBox" Rectangle
+@enduml

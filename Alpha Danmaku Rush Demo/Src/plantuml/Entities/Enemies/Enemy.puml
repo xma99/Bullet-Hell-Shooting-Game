@@ -1,0 +1,14 @@
+@startuml
+abstract class Enemy {
+    + {abstract} Update(gameTime:GameTime, playerPosition:Vector2) : void
+    + {abstract} Attack(gameTime:GameTime, playerPosition:Vector2) : void
+    + Draw(spriteBatch:SpriteBatch) : void
+    + Deactivate() : void
+    + AddBullet(type:EnemyBulletType) : void
+}
+class "List`1"<T> {
+}
+GameObject <|-- Enemy
+Enemy o-> "bulletList<Bullet.Bullet>" "List`1"
+Enemy --> "BoundingBox" Rectangle
+@enduml

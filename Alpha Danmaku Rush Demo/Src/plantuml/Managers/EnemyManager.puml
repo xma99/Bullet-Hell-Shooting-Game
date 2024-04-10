@@ -1,0 +1,16 @@
+@startuml
+class EnemyManager {
+    + EnemyManager(content:ContentManager, gdManager:GraphicsDeviceManager)
+    + Add(enemy:Enemy) : void
+    + Update(gameTime:GameTime, playerPosition:Vector2) : void
+    + Draw(spriteBatch:SpriteBatch) : void
+    + Clear() : void
+    + SpawnEnemyA(bulletType:EnemyBulletType) : void
+    + SpawnEnemyB(bulletType:EnemyBulletType) : void
+    + SpawnEnemyM(bulletType:EnemyBulletType) : void
+    + SpawnEnemyF(bulletType:EnemyBulletType) : void
+}
+class "List`1"<T> {
+}
+EnemyManager o-> "enemies<Enemy>" "List`1"
+@enduml

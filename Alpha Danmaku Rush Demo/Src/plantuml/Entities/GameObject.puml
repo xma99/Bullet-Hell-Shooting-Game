@@ -1,0 +1,11 @@
+@startuml
+class GameObject {
+    + IsActive : bool <<get>> <<set>> = true
+    + GameObject(sprite:Texture2D, initialPosition:Vector2)
+    + <<virtual>> Draw(spriteBatch:SpriteBatch) : void
+}
+GameObject --> "Sprite" Texture2D
+GameObject --> "Position" Vector2
+GameObject --> "Velocity" Vector2
+GameObject --> "BoundingBox" Rectangle
+@enduml

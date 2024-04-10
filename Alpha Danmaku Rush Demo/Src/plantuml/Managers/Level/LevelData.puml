@@ -1,0 +1,7 @@
+@startuml
+class LevelData {
+}
+class "List`1"<T> {
+}
+LevelData --> "Waves<WaveData>" "List`1"
+@enduml

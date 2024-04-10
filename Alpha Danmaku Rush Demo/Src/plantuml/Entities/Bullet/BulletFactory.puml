@@ -1,0 +1,5 @@
+@startuml
+class BulletFactory <<static>> {
+    + {static} CreateBullet(content:ContentManager, position:Vector2, velocity:Vector2, type:EnemyBulletType) : Bullet
+}
+@enduml

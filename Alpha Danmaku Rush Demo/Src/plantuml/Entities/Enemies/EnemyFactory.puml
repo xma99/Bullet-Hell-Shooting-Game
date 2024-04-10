@@ -1,0 +1,5 @@
+@startuml
+class EnemyFactory <<static>> {
+    + {static} CreateEnemy(content:ContentManager, type:EnemyType, startPosition:Vector2, movementSpeed:float) : Enemy
+}
+@enduml

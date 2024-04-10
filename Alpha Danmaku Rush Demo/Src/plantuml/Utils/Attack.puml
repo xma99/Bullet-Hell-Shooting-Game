@@ -1,0 +1,12 @@
+@startuml
+class Attack {
+    + checkAttack : bool <<get>> <<set>>
+    + Attack(bullet:Texture2D, SpawnPosition:Vector2, defaultTarget:Vector2)
+    + UpdateAttack(gameTime:GameTime, playerPosition:Vector2) : void
+    + Draw(spriteBatch:SpriteBatch) : void
+}
+Attack --> "bullet" Texture2D
+Attack --> "bulletPosition" Vector2
+Attack --> "bulletVelocity" Vector2
+Attack --> "DefaultTarget" Vector2
+@enduml

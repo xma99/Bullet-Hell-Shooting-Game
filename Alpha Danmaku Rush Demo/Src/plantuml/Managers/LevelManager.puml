@@ -1,0 +1,8 @@
+@startuml
+class LevelManager {
+    + LevelManager(content:ContentManager, graphics:GraphicsDeviceManager, spriteBatch:SpriteBatch)
+    + Update(gameTime:GameTime) : void
+    + Draw() : void
+    + LoadLevel(filePath:string, levelNumber:int) : void
+}
+@enduml

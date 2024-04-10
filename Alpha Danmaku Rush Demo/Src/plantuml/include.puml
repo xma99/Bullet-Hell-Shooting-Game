@@ -1,0 +1,36 @@
+@startuml
+!include .\\Program.puml
+!include .\\Core\Game1.puml
+!include .\\Entities\GameObject.puml
+!include .\\Managers\CollisionManager.puml
+!include .\\Managers\EnemyManager.puml
+!include .\\Managers\LevelManager.puml
+!include .\\Managers\ScoreManager.puml
+!include .\\Managers\ScreenManager.puml
+!include .\\Managers\SettingsManager.puml
+!include .\\Managers\UIManager.puml
+!include .\\UI\HealthIcon.puml
+!include .\\Utils\Attack.puml
+!include .\\Utils\ColorHelper.puml
+!include .\\Entities\Bullet\Bullet.puml
+!include .\\Entities\Bullet\BulletA.puml
+!include .\\Entities\Bullet\BulletB.puml
+!include .\\Entities\Bullet\BulletFactory.puml
+!include .\\Entities\Enemies\Enemy.puml
+!include .\\Entities\Enemies\EnemyFactory.puml
+!include .\\Entities\Enemies\EnemyType.puml
+!include .\\Entities\Enemies\FinalBossEnemy.puml
+!include .\\Entities\Enemies\MidBossEnemy.puml
+!include .\\Entities\Enemies\RegularAEnemy.puml
+!include .\\Entities\Enemies\RegularBEnemy.puml
+!include .\\Entities\Player\IPlayer.puml
+!include .\\Entities\Player\Player.puml
+!include .\\Entities\Player\PlayerBuilder.puml
+!include .\\Entities\Player\PlayerHealthDecorator.puml
+!include .\\Entities\Player\PlayerMovementDecorator.puml
+!include .\\Managers\Level\EnemyBulletType.puml
+!include .\\Managers\Level\LevelData.puml
+!include .\\Managers\Level\WaveData.puml
+!include .\\Managers\MainMenu\MainMenuManager.puml
+!include .\\Managers\MainMenu\MainMenuOption.puml
+@enduml

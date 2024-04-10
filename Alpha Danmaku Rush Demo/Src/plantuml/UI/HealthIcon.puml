@@ -1,0 +1,11 @@
+@startuml
+class HealthIcon {
+    + IsActive : bool <<get>> <<set>>
+    + Scale : float <<get>> <<set>>
+    + HealthIcon(texture:Texture2D, position:Vector2, scale:float, isActive:bool)
+    + UpdatePosition(screenSize:Vector2) : void
+    + Draw(spriteBatch:SpriteBatch) : void
+}
+HealthIcon --> "Texture" Texture2D
+HealthIcon --> "Position" Vector2
+@enduml

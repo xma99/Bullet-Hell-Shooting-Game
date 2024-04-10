@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Alpha Danmaku Rush Demo")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Alpha Danmaku Rush Demo - Backup (1)")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d25435b9ffdc985943144159209842461dc42442")]
-[assembly: System.Reflection.AssemblyProductAttribute("Alpha Danmaku Rush Demo")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Alpha Danmaku Rush Demo")]
+[assembly: System.Reflection.AssemblyProductAttribute("Alpha Danmaku Rush Demo - Backup (1)")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Alpha Danmaku Rush Demo - Backup (1)")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。

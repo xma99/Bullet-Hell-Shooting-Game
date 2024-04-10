@@ -1,0 +1,6 @@
+@startuml
+class Game1 {
+    + Game1()
+}
+Game <|-- Game1
+@enduml
