@@ -39,7 +39,7 @@ public class EnemyManager
         // HandleCollisions();
 
         // Remove inactive enemies from the list
-        enemies.RemoveAll(e => !e.isActive);
+        enemies.RemoveAll(e => !e.IsActive);
     }
 
     public void Draw(SpriteBatch spriteBatch)

@@ -11,19 +11,15 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 {
-    public abstract class Enemy
+    public abstract class Enemy : GameObject
     {
         private ContentManager content;
-        protected Texture2D Sprite;
-
-        public Vector2 Position { get; set; }
-        public Vector2 Velocity { get; set; }
 
         protected float Speed;
-        public bool isActive;
 
         // Timer to track the time since the last attack
         protected TimeSpan attackTimer = TimeSpan.Zero;
+
         // Interval between attacks
         protected TimeSpan attackInterval;
 
@@ -32,14 +28,11 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 
         public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, Sprite.Width, Sprite.Height);
 
-        protected Vector2 DefaultTarget = new Vector2(0, 1);//default bullet moving direction
-
-        protected Enemy(ContentManager content, Vector2 startPosition, float movementSpeed)
+        protected Enemy(ContentManager content, Vector2 startPosition, float movementSpeed) : base(null, startPosition)
         {
             this.content = content;
-            Position = startPosition;
+
             Speed = movementSpeed;
-            isActive = true;
         }
 
         public abstract void Update(GameTime gameTime, Vector2 playerPosition);
@@ -61,7 +54,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (!isActive) return;
+            if (!IsActive) return;
             spriteBatch.Draw(Sprite, Position, Color.White);
 
             foreach (var bullet in bulletList)
@@ -75,7 +68,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 
         public void Deactivate()
         {
-            isActive = false;
+            IsActive = false;
         }
 
         public void AddBullet(EnemyBulletType type)

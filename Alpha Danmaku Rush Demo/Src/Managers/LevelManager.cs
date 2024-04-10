@@ -1,5 +1,4 @@
-﻿using Alpha_Danmaku_Rush_Demo.Src.Entities;
-using Alpha_Danmaku_Rush_Demo.Src.UI;
+﻿using Alpha_Danmaku_Rush_Demo.Src.UI;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -9,6 +8,7 @@ using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
 using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
 using System.Text.Json;
 using System.IO;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 

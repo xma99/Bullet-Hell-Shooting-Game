@@ -1,8 +1,8 @@
 ﻿using Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
 using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
-using Alpha_Danmaku_Rush_Demo.Src.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
@@ -39,7 +39,7 @@ public class CollisionManager
     private void CheckEnemyPlayerCollisions()
     {
         foreach (var enemy in enemies.enemies.Where(enemy =>
-                     enemy.BoundingBox.Intersects(player.BoundingBox) && enemy.isActive))
+                     enemy.BoundingBox.Intersects(player.BoundingBox) && enemy.IsActive))
         {
             player.Health -= 1;
             enemy.Deactivate();
