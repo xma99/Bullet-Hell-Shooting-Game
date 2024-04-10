@@ -4,10 +4,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
 {
-    public class Player : GameObject
+    public class Player : GameObject, IPlayer
     {
-        // Player default setting
-        private float playerSpeed = 5.0f;
 
         public int Health { get; set; } = 10;  // Player health
 
@@ -19,6 +17,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
 
         public void Update(GameTime gameTime, int screenWidth)
         {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -9,7 +9,8 @@ public class PlayerBuilder
 {
     private Texture2D _sprite;
     private Vector2 _position;
-    private List<Func<GameObject, GameObject>> _decorators = new List<Func<GameObject, GameObject>>();
+    private List<Func<IPlayer, IPlayer>> _decorators = new List<Func<IPlayer, IPlayer>>();
+
 
     public PlayerBuilder SetSprite(Texture2D sprite)
     {
@@ -29,19 +30,21 @@ public class PlayerBuilder
         return this;
     }
 
+
     public PlayerBuilder WithExtraHealth(int extraHealth)
     {
         _decorators.Add(player => new PlayerHealthDecorator(player, extraHealth));
         return this;
     }
 
-    public GameObject Build()
+    public IPlayer Build()
     {
-        GameObject player = new Player(_sprite, _position);
+        IPlayer player = new Player(_sprite, _position);
         foreach (var decorator in _decorators)
         {
             player = decorator(player);
         }
         return player;
     }
+
 }

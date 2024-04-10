@@ -4,18 +4,23 @@ using Microsoft.Xna.Framework;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
 
-public class PlayerMovementDecorator : GameObject
+public class PlayerMovementDecorator : IPlayer
 {
-    private GameObject wrappedPlayer;
+    private IPlayer wrappedPlayer;
     private float playerSpeed = 5.0f;
 
-    public PlayerMovementDecorator(GameObject player, float speed) : base(player.Sprite, player.Position)
+    public PlayerMovementDecorator(IPlayer player, float speed)
     {
         wrappedPlayer = player;
         playerSpeed = speed;
     }
 
     public void Update(GameTime gameTime, int screenWidth)
+    {
+        Move(gameTime, screenWidth);
+    }
+
+    private void Move(GameTime gameTime, int screenWidth)
     {
         Vector2 movement = Vector2.Zero;
         KeyboardState direction = Keyboard.GetState();
@@ -26,18 +31,15 @@ public class PlayerMovementDecorator : GameObject
         if (direction.IsKeyDown(Keys.D) || direction.IsKeyDown(Keys.Right)) movement.X += 1;
 
         if (Keyboard.GetState().IsKeyDown(Keys.LeftShift)) playerSpeed /= 2;
-        if (Keyboard.GetState().IsKeyUp(Keys.LeftShift)) playerSpeed *= 2;
+        else if (Keyboard.GetState().IsKeyUp(Keys.LeftShift)) playerSpeed = 5.0f; // Reset speed if not holding shift
 
         if (movement.LengthSquared() > 0) movement.Normalize();
 
-        Vector2 updatePosition = wrappedPlayer.Position + movement * playerSpeed;
-        updatePosition.X = MathHelper.Clamp(updatePosition.X, 0, screenWidth - wrappedPlayer.Sprite.Width);
-        wrappedPlayer.Position = updatePosition;
-        playerSpeed = 5.0f;
-    }
-    
-    public override void Draw(SpriteBatch spriteBatch)
-    {
-        wrappedPlayer.Draw(spriteBatch);
+        if (wrappedPlayer is GameObject gameObject)
+        {
+            Vector2 updatePosition = gameObject.Position + movement * playerSpeed;
+            updatePosition.X = MathHelper.Clamp(updatePosition.X, 0, screenWidth - gameObject.Sprite.Width);
+            gameObject.Position = updatePosition;
+        }
     }
 }

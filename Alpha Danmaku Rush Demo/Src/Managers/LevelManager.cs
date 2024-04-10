@@ -8,6 +8,7 @@ using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
 using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
 using System.Text.Json;
 using System.IO;
+using Alpha_Danmaku_Rush_Demo.Src.Entities;
 using Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
@@ -18,7 +19,7 @@ public class LevelManager
     private SpriteBatch _spriteBatch;
     private ContentManager _content;
     private EnemyManager _enemyManager;
-    private Player _player;
+    private IPlayer _player;
     private CollisionManager _collisionManager;
     private ScoreManager _scoreManager;
 
@@ -44,10 +45,14 @@ public class LevelManager
         _enemyManager = new EnemyManager(content, graphics);
 
         InitializePlayer();
-        _scoreManager = new ScoreManager();
-        _collisionManager = new CollisionManager(_player, _enemyManager, _scoreManager);
-        _uiManager = new UIManager(content, graphics);
-        _uiManager.InitializeHealthIcons(_player.Health);
+
+        if (_player is Player player)
+        {
+            _scoreManager = new ScoreManager();
+            _collisionManager = new CollisionManager(player, _enemyManager, _scoreManager);
+            _uiManager = new UIManager(content, graphics);
+            _uiManager.InitializeHealthIcons(player.Health);
+        }
 
         // load background image
         background = _content.Load<Texture2D>("back1");
@@ -57,18 +62,30 @@ public class LevelManager
     {
         Texture2D playerTexture = _content.Load<Texture2D>("testplayer1");
         Vector2 initialPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2 - playerTexture.Width / 2, _graphics.PreferredBackBufferHeight - playerTexture.Height);
-        _player = new Player(playerTexture, initialPosition);
+
+
+        // init player
+        PlayerBuilder builder = new PlayerBuilder();
+        _player = builder.SetSprite(playerTexture)
+            .SetPosition(new Vector2(100, 100))
+            .WithMovement(5.0f)
+            .WithExtraHealth(20)
+            .Build();
     }
 
     public void Update(GameTime gameTime)
     {
-        _player.Update(gameTime, _graphics.GraphicsDevice.Viewport.Width);
-        // Here you would handle the logic for updating the level state, spawning enemies, etc.
-        // Example: Update health icons based on player's health
-        _uiManager.UpdateHealthIcons(_player.Health);
-        _collisionManager.Update();
-        _scoreManager.Update(gameTime);
-        _enemyManager.Update(gameTime, _player.Position);
+        if (_player is Player player)
+        {
+            _player.Update(gameTime, _graphics.GraphicsDevice.Viewport.Width);
+
+            // Here you would handle the logic for updating the level state, spawning enemies, etc.
+            // Example: Update health icons based on player's health
+            _uiManager.UpdateHealthIcons(player.Health);
+            _collisionManager.Update();
+            _scoreManager.Update(gameTime);
+            _enemyManager.Update(gameTime, player.Position);
+        }
     }
 
     public void Draw()
@@ -77,11 +94,12 @@ public class LevelManager
         _spriteBatch.Draw(background, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White);
 
         // Background, player, enemies, and health icons drawing logic
-        _player.Draw(_spriteBatch);
-        _enemyManager.Draw(_spriteBatch);
-        _uiManager.Draw(_spriteBatch); // Draw UI elements
-
-        
+        if (_player is Player player)
+        {
+            player.Draw(_spriteBatch);
+            _enemyManager.Draw(_spriteBatch);
+            _uiManager.Draw(_spriteBatch); // Draw UI elements
+        }
     }
 
     public void LoadLevel(string filePath, int levelNumber)
@@ -108,8 +126,12 @@ public class LevelManager
         }
     }
 
-    private void ResetPlayerPosition() =>
-        _player.Position = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - _player.Sprite.Height);
+    private void ResetPlayerPosition()
+    {
+        if (_player is Player player)
+            player.Position = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - player.Sprite.Height);
+    }
+
 
     private EnemyType ParseEnemyType(string type)
     {

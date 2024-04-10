@@ -1,12 +1,21 @@
-﻿namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-public class PlayerHealthDecorator : GameObject
+namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
+
+public class PlayerHealthDecorator : IPlayer
 {
-    private GameObject wrappedPlayer;
+    private IPlayer wrappedPlayer;
     private int extraLifeTime = 3;
-    public PlayerHealthDecorator(GameObject player, int extraLifeTime) : base(player.Sprite, player.Position)
+
+    public PlayerHealthDecorator(IPlayer player, int extraLifeTime)
     {
-        this.wrappedPlayer = player;    
+        this.wrappedPlayer = player;
         this.extraLifeTime = extraLifeTime;
     }
+
+    public void Update(GameTime gameTime, int screenWidth)
+    {
+    }
+
 }
