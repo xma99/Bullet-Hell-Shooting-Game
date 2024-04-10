@@ -5,17 +5,37 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
 
 public class PlayerHealthDecorator : IPlayer
 {
-    private IPlayer wrappedPlayer;
+    private IPlayer _wrappedPlayer;
     private int extraLifeTime = 3;
+
+
+    public Vector2 Position
+    {
+        get => _wrappedPlayer.Position;
+        set => _wrappedPlayer.Position = value;
+    }
+
+    public Texture2D Sprite => _wrappedPlayer.Sprite;
+
+    public Rectangle BoundingBox => _wrappedPlayer.BoundingBox;
+
+    public int Health { get => _wrappedPlayer.Health; set => _wrappedPlayer.Health = value; }
+
 
     public PlayerHealthDecorator(IPlayer player, int extraLifeTime)
     {
-        this.wrappedPlayer = player;
+        this._wrappedPlayer = player;
         this.extraLifeTime = extraLifeTime;
     }
 
     public void Update(GameTime gameTime, int screenWidth)
     {
+        _wrappedPlayer.Update(gameTime, screenWidth);
+    }
+
+    public void Draw(SpriteBatch spriteBatch)
+    {
+        _wrappedPlayer.Draw(spriteBatch);
     }
 
 }

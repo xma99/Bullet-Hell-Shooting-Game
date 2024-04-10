@@ -10,6 +10,7 @@ using System.Text.Json;
 using System.IO;
 using Alpha_Danmaku_Rush_Demo.Src.Entities;
 using Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
+using System.Numerics;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
@@ -46,13 +47,10 @@ public class LevelManager
 
         InitializePlayer();
 
-        if (_player is Player player)
-        {
-            _scoreManager = new ScoreManager();
-            _collisionManager = new CollisionManager(player, _enemyManager, _scoreManager);
-            _uiManager = new UIManager(content, graphics);
-            _uiManager.InitializeHealthIcons(player.Health);
-        }
+        _scoreManager = new ScoreManager();
+        _collisionManager = new CollisionManager(_player, _enemyManager, _scoreManager);
+        _uiManager = new UIManager(content, graphics);
+        _uiManager.InitializeHealthIcons(_player.Health);
 
         // load background image
         background = _content.Load<Texture2D>("back1");
@@ -61,13 +59,13 @@ public class LevelManager
     private void InitializePlayer()
     {
         Texture2D playerTexture = _content.Load<Texture2D>("testplayer1");
-        Vector2 initialPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2 - playerTexture.Width / 2, _graphics.PreferredBackBufferHeight - playerTexture.Height);
+        Microsoft.Xna.Framework.Vector2 initialPosition = new Microsoft.Xna.Framework.Vector2(_graphics.PreferredBackBufferWidth / 2 - playerTexture.Width / 2, _graphics.PreferredBackBufferHeight - playerTexture.Height);
 
 
         // init player
         PlayerBuilder builder = new PlayerBuilder();
         _player = builder.SetSprite(playerTexture)
-            .SetPosition(new Vector2(100, 100))
+            .SetPosition(new Microsoft.Xna.Framework.Vector2(100, 100))
             .WithMovement(5.0f)
             .WithExtraHealth(20)
             .Build();
@@ -75,17 +73,14 @@ public class LevelManager
 
     public void Update(GameTime gameTime)
     {
-        if (_player is Player player)
-        {
-            _player.Update(gameTime, _graphics.GraphicsDevice.Viewport.Width);
+        _player.Update(gameTime, _graphics.GraphicsDevice.Viewport.Width);
 
-            // Here you would handle the logic for updating the level state, spawning enemies, etc.
-            // Example: Update health icons based on player's health
-            _uiManager.UpdateHealthIcons(player.Health);
-            _collisionManager.Update();
-            _scoreManager.Update(gameTime);
-            _enemyManager.Update(gameTime, player.Position);
-        }
+        // Here you would handle the logic for updating the level state, spawning enemies, etc.
+        // Example: Update health icons based on player's health
+        _uiManager.UpdateHealthIcons(_player.Health);
+        _collisionManager.Update();
+        _scoreManager.Update(gameTime);
+        _enemyManager.Update(gameTime, _player.Position);
     }
 
     public void Draw()
@@ -94,12 +89,9 @@ public class LevelManager
         _spriteBatch.Draw(background, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White);
 
         // Background, player, enemies, and health icons drawing logic
-        if (_player is Player player)
-        {
-            player.Draw(_spriteBatch);
-            _enemyManager.Draw(_spriteBatch);
-            _uiManager.Draw(_spriteBatch); // Draw UI elements
-        }
+        _player.Draw(_spriteBatch);
+        _enemyManager.Draw(_spriteBatch);
+        _uiManager.Draw(_spriteBatch); // Draw UI elements
     }
 
     public void LoadLevel(string filePath, int levelNumber)
@@ -128,8 +120,7 @@ public class LevelManager
 
     private void ResetPlayerPosition()
     {
-        if (_player is Player player)
-            player.Position = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - player.Sprite.Height);
+        _player.Position = new Microsoft.Xna.Framework.Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - _player.Sprite.Height);
     }
 
 

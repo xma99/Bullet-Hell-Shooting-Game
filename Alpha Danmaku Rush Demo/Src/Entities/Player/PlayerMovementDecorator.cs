@@ -6,14 +6,26 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
 
 public class PlayerMovementDecorator : IPlayer
 {
-    private IPlayer wrappedPlayer;
-    private float playerSpeed = 5.0f;
+    private IPlayer _wrappedPlayer;
+    private float _playerSpeed = 5.0f;
 
     public PlayerMovementDecorator(IPlayer player, float speed)
     {
-        wrappedPlayer = player;
-        playerSpeed = speed;
+        _wrappedPlayer = player;
+        _playerSpeed = speed;
     }
+    
+    public Vector2 Position
+    {
+        get => _wrappedPlayer.Position;
+        set => _wrappedPlayer.Position = value;
+    }
+    
+    public Texture2D Sprite => _wrappedPlayer.Sprite;
+
+    public Rectangle BoundingBox => _wrappedPlayer.BoundingBox;
+
+    public int Health { get => _wrappedPlayer.Health; set => _wrappedPlayer.Health = value; }
 
     public void Update(GameTime gameTime, int screenWidth)
     {
@@ -30,16 +42,18 @@ public class PlayerMovementDecorator : IPlayer
         if (direction.IsKeyDown(Keys.A) || direction.IsKeyDown(Keys.Left)) movement.X -= 1;
         if (direction.IsKeyDown(Keys.D) || direction.IsKeyDown(Keys.Right)) movement.X += 1;
 
-        if (Keyboard.GetState().IsKeyDown(Keys.LeftShift)) playerSpeed /= 2;
-        else if (Keyboard.GetState().IsKeyUp(Keys.LeftShift)) playerSpeed = 5.0f; // Reset speed if not holding shift
+        if (Keyboard.GetState().IsKeyDown(Keys.LeftShift)) _playerSpeed /= 2;
+        else if (Keyboard.GetState().IsKeyUp(Keys.LeftShift)) _playerSpeed = 5.0f;
 
         if (movement.LengthSquared() > 0) movement.Normalize();
 
-        if (wrappedPlayer is GameObject gameObject)
-        {
-            Vector2 updatePosition = gameObject.Position + movement * playerSpeed;
-            updatePosition.X = MathHelper.Clamp(updatePosition.X, 0, screenWidth - gameObject.Sprite.Width);
-            gameObject.Position = updatePosition;
-        }
+        Vector2 updatePosition = this.Position + movement * _playerSpeed;
+        updatePosition.X = MathHelper.Clamp(updatePosition.X, 0, screenWidth - this.Sprite.Width);
+        this.Position = updatePosition;
+    }
+
+    public void Draw(SpriteBatch spriteBatch)
+    {
+        _wrappedPlayer.Draw(spriteBatch);
     }
 }

@@ -8,12 +8,12 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
 public class CollisionManager
 {
-    private Player player;
+    private IPlayer player;
     private List<Bullet> bullets;
     private EnemyManager enemies;
     private ScoreManager score;
 
-    public CollisionManager(Player player, EnemyManager enemies, ScoreManager score)
+    public CollisionManager(IPlayer player, EnemyManager enemies, ScoreManager score)
     {
         this.player = player;
         this.enemies = enemies;

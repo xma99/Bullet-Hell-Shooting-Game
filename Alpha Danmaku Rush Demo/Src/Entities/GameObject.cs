@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities;
 
-public abstract class GameObject
+public class GameObject
 {
     public Texture2D Sprite { get; protected set; }
     public Vector2 Position { get; set; }
@@ -14,7 +14,7 @@ public abstract class GameObject
 
     public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, Sprite.Width, Sprite.Height);
 
-    protected GameObject(Texture2D sprite, Vector2 initialPosition)
+    public GameObject(Texture2D sprite, Vector2 initialPosition)
     {
         Sprite = sprite;
         Position = initialPosition;

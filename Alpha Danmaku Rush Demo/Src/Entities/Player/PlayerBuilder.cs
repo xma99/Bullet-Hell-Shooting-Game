@@ -24,16 +24,14 @@ public class PlayerBuilder
         return this;
     }
 
-    public PlayerBuilder WithMovement(float speed)
-    {
-        _decorators.Add(player => new PlayerMovementDecorator(player, speed));
-        return this;
-    }
-
-
     public PlayerBuilder WithExtraHealth(int extraHealth)
     {
         _decorators.Add(player => new PlayerHealthDecorator(player, extraHealth));
+        return this;
+    }
+    public PlayerBuilder WithMovement(float speed)
+    {
+        _decorators.Add(player => new PlayerMovementDecorator(player, speed));
         return this;
     }
 
