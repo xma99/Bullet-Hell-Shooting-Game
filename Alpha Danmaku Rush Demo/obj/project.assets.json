@@ -108,9 +108,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\WSU\\Cpts_487\\TeamProject\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo - Backup (1).csproj",
-      "projectName": "Alpha Danmaku Rush Demo - Backup (1)",
-      "projectPath": "E:\\WSU\\Cpts_487\\TeamProject\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo - Backup (1).csproj",
+      "projectUniqueName": "E:\\WSU\\Cpts_487\\TeamProject\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
+      "projectName": "Alpha Danmaku Rush Demo",
+      "projectPath": "E:\\WSU\\Cpts_487\\TeamProject\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
       "packagesPath": "C:\\Users\\Guangbei\\.nuget\\packages\\",
       "outputPath": "E:\\WSU\\Cpts_487\\TeamProject\\teamalpha\\Alpha Danmaku Rush Demo\\obj\\",
       "projectStyle": "PackageReference",

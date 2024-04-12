@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dXHDlKBQ5C8tIRFP9jRgCZGsf5oN3ruQ/TUwBiF1fBk7CUwS+KslfkO1XSbAEOY8smnQFKwv4DCQZOwSzZLPmQ==",
+  "dgSpecHash": "gBYLdsSkLdNzzFJIcQ74lermXoxm9GzaZPNlCUOrUrAlmPMVCWV+8Rt2BryrBbgOFEI3T/3UejJ2A6qAFRymKA==",
   "success": true,
-  "projectFilePath": "E:\\WSU\\Cpts_487\\TeamProject\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo - Backup (1).csproj",
+  "projectFilePath": "E:\\WSU\\Cpts_487\\TeamProject\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Guangbei\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
     "C:\\Users\\Guangbei\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
