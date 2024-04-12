@@ -22,27 +22,27 @@ public class CollisionManager
 
     public void Update()
     {
-        CheckEnemyBulletPlayerCollisions();
-        CheckEnemyPlayerCollisions();
+        // CheckEnemyBulletPlayerCollisions();
+        // CheckEnemyPlayerCollisions();
     }
 
-    private void CheckEnemyBulletPlayerCollisions()
-    {
-        foreach (var bullet in enemies.enemies.SelectMany(enemy => enemy.bulletList.Where(bullet => bullet.BoundingBox.Intersects(player.BoundingBox) && bullet.IsActive)))
-        {
-            player.Health -= bullet.Damage;
-            bullet.IsActive = false;
-        }
-    }
+    //private void CheckEnemyBulletPlayerCollisions()
+    //{
+    //    foreach (var bullet in enemies.enemies.SelectMany(enemy => enemy.bulletList.Where(bullet => bullet.BoundingBox.Intersects(player.BoundingBox) && bullet.IsActive)))
+    //    {
+    //        player.Health -= bullet.Damage;
+    //        bullet.IsActive = false;
+    //    }
+    //}
 
 
-    private void CheckEnemyPlayerCollisions()
-    {
-        foreach (var enemy in enemies.enemies.Where(enemy =>
-                     enemy.BoundingBox.Intersects(player.BoundingBox) && enemy.IsActive))
-        {
-            player.Health -= 1;
-            enemy.Deactivate();
-        }
-    }
+    //private void CheckEnemyPlayerCollisions()
+    //{
+    //    foreach (var enemy in enemies.enemies.Where(enemy =>
+    //                 enemy.BoundingBox.Intersects(player.BoundingBox) && enemy.IsActive))
+    //    {
+    //        player.Health -= 1;
+    //        enemy.Deactivate();
+    //    }
+    //}
 }

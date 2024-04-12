@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator;
+namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Move;
 
 public class SinusoidalMovementDecorator : EnemyDecorator
 {

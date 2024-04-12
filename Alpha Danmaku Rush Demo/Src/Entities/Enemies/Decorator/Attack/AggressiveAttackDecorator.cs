@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator;
+namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack;
 
 public class AggressiveAttackDecorator : EnemyDecorator
 {

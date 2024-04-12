@@ -4,7 +4,8 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System;
 using Microsoft.Xna.Framework.Content;
-using System.Reflection.Metadata;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Move;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
 
@@ -16,6 +17,13 @@ public class EnemyBuilder
     private Vector2 _startPosition;
     private float _movementSpeed;
     private List<Func<IEnemy, IEnemy>> _decorators = new List<Func<IEnemy, IEnemy>>();
+
+    public EnemyBuilder(ContentManager content, Vector2 startPosition, float movementSpeed)
+    {
+        _content = content;
+        _startPosition = startPosition;
+        _movementSpeed = movementSpeed;
+    }
 
     public EnemyBuilder SetSprite(Texture2D sprite)
     {

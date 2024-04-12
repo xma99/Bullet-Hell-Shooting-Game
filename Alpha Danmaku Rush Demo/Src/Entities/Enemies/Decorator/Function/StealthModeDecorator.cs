@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator;
+namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Function;
 
 public class StealthModeDecorator : EnemyDecorator
 {
@@ -9,6 +9,6 @@ public class StealthModeDecorator : EnemyDecorator
 
     public override void Draw(SpriteBatch spriteBatch)
     {
-        spriteBatch.Draw(this.Sprite, this.Position, new Color(255, 255, 255, 128));
+        spriteBatch.Draw(Sprite, Position, new Color(255, 255, 255, 128));
     }
 }

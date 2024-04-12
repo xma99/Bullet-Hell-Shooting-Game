@@ -10,7 +10,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
 public class EnemyManager
 {
-    public List<Enemy> enemies = new List<Enemy>();
+    public List<IEnemy> enemies = new List<IEnemy>();
     private Random random = new Random();
     private ContentManager Content;
     GraphicsDeviceManager _graphics;
@@ -22,7 +22,7 @@ public class EnemyManager
         _graphics = gdManager;
     }
 
-    public void Add(Enemy enemy)
+    public void Add(IEnemy enemy)
     {
         enemies.Add(enemy);
     }
@@ -59,35 +59,28 @@ public class EnemyManager
     {
         Vector2 spawnPosition = new Vector2(random.Next(_graphics.GraphicsDevice.Viewport.Width), random.Next(_graphics.GraphicsDevice.Viewport.Height));
         float enemySpeed = 3.0f; // Adjust as needed
-        Enemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.RegularA, spawnPosition, enemySpeed);
-        enemy.AddBullet(bulletType);
+        IEnemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.RegularA, spawnPosition, enemySpeed);
         Add(enemy);
     }
     public void SpawnEnemyB(EnemyBulletType bulletType)
     {
         Vector2 spawnPosition = new Vector2(random.Next(_graphics.GraphicsDevice.Viewport.Width), random.Next(_graphics.GraphicsDevice.Viewport.Height));
         float enemySpeed = 5.0f; // Adjust as needed
-        Enemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.RegularB, spawnPosition, enemySpeed);
-        enemy.AddBullet(bulletType);
+        IEnemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.RegularB, spawnPosition, enemySpeed);
         Add(enemy);
     }
     public void SpawnEnemyM(EnemyBulletType bulletType)
     {
         Vector2 spawnPosition = new Vector2(random.Next(_graphics.GraphicsDevice.Viewport.Width), random.Next(_graphics.GraphicsDevice.Viewport.Height));
         float enemySpeed = 3.0f; // Adjust as needed
-        Enemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.MidBoss, spawnPosition, enemySpeed);
-        enemy.AddBullet(bulletType);
+        IEnemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.MidBoss, spawnPosition, enemySpeed);
         Add(enemy);
     }
     public void SpawnEnemyF(EnemyBulletType bulletType)
     {
         Vector2 spawnPosition = new Vector2(random.Next(_graphics.GraphicsDevice.Viewport.Width), random.Next(_graphics.GraphicsDevice.Viewport.Height));
         float enemySpeed = 3.0f; // Adjust as needed
-        Enemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.FinalBoss, spawnPosition, enemySpeed);
-        enemy.AddBullet(bulletType);
+        IEnemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.FinalBoss, spawnPosition, enemySpeed);
         Add(enemy);
     }
-
-
-
 }

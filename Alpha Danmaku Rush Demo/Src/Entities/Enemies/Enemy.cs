@@ -37,7 +37,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         public Enemy(ContentManager content, Vector2 startPosition, float movementSpeed)
         {
             this.content = content;
-            this.gameObject = new GameObject(content.Load<Texture2D>("EnemySprite"), startPosition);
+            this.gameObject = new GameObject(content.Load<Texture2D>("a"), startPosition);
             this.speed = movementSpeed;
         }
 
