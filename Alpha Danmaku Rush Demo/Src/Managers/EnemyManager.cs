@@ -15,6 +15,41 @@ public class EnemyManager
     private ContentManager Content;
     GraphicsDeviceManager _graphics;
 
+    private List<IGameObserver> observers = new List<IGameObserver>();
+    // Other fields remain unchanged...
+
+    public void RegisterObserver(IGameObserver observer)
+    {
+        observers.Add(observer);
+    }
+
+    public void UnregisterObserver(IGameObserver observer)
+    {
+        observers.Remove(observer);
+    }
+
+    private void NotifyEnemyKilled(IEnemy enemy)
+    {
+        foreach (var observer in observers)
+        {
+            observer.OnEnemyKilled(enemy);
+        }
+    }
+
+    public void Update(GameTime gameTime, Vector2 playerPosition)
+    {
+        foreach (var enemy in enemies)
+        {
+            enemy.Update(gameTime, playerPosition);
+            if (!enemy.IsActive)
+            {
+                NotifyEnemyKilled(enemy);
+            }
+        }
+        enemies.RemoveAll(e => !e.IsActive);
+    }
+
+
     public EnemyManager(ContentManager content, GraphicsDeviceManager gdManager)
     {
         this.Content = content;
@@ -25,21 +60,6 @@ public class EnemyManager
     public void Add(IEnemy enemy)
     {
         enemies.Add(enemy);
-    }
-
-    public void Update(GameTime gameTime, Vector2 playerPosition)
-    {
-        // Update each enemy
-        foreach (var enemy in enemies)
-        {
-            enemy.Update(gameTime, playerPosition);
-        }
-
-        // Optional: Handle collisions (This is just a placeholder for where you would handle it)
-        // HandleCollisions();
-
-        // Remove inactive enemies from the list
-        enemies.RemoveAll(e => !e.IsActive);
     }
 
     public void Draw(SpriteBatch spriteBatch)

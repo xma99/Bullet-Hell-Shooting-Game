@@ -1,11 +1,23 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
+using Microsoft.Xna.Framework;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
-public class ScoreManager
+public class ScoreManager : IGameObserver
 {
     public int Score { get; private set; }
     private double timeSinceLastIncrement;
+
+
+    public void OnEnemyKilled(IEnemy enemy)
+    {
+        Score += 100;  // Increment score when an enemy is killed
+    }
+
+    public void OnHealthChanged(int currentHealth)
+    {
+        // This might not be relevant for ScoreManager; no implementation needed.
+    }
 
     public ScoreManager()
     {

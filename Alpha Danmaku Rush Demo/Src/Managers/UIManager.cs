@@ -3,10 +3,11 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
-public class UIManager
+public class UIManager : IGameObserver
 {
     private List<HealthIcon> _healthIcons = new List<HealthIcon>();
     private ContentManager _content;
@@ -16,6 +17,16 @@ public class UIManager
     {
         _content = content;
         _graphics = graphics;
+    }
+
+    public void OnEnemyKilled(IEnemy enemy)
+    {
+        // Not relevant for UIManager; no implementation needed.
+    }
+
+    public void OnHealthChanged(int currentHealth)
+    {
+        UpdateHealthIcons(currentHealth);
     }
 
     public void InitializeHealthIcons(int healthCount)

@@ -52,6 +52,9 @@ public class LevelManager
         _uiManager = new UIManager(content, graphics);
         _uiManager.InitializeHealthIcons(_player.Health);
 
+        _enemyManager.RegisterObserver(_scoreManager);
+        _enemyManager.RegisterObserver(_uiManager);
+
         // load background image
         background = _content.Load<Texture2D>("back1");
     }
