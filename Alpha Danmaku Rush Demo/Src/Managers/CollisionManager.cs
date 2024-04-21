@@ -23,7 +23,7 @@ public class CollisionManager
     public void Update()
     {
         // CheckEnemyBulletPlayerCollisions();
-        // CheckEnemyPlayerCollisions();
+        CheckEnemyPlayerCollisions();
     }
 
     //private void CheckEnemyBulletPlayerCollisions()
@@ -35,14 +35,12 @@ public class CollisionManager
     //    }
     //}
 
-
-    //private void CheckEnemyPlayerCollisions()
-    //{
-    //    foreach (var enemy in enemies.enemies.Where(enemy =>
-    //                 enemy.BoundingBox.Intersects(player.BoundingBox) && enemy.IsActive))
-    //    {
-    //        player.Health -= 1;
-    //        enemy.Deactivate();
-    //    }
-    //}
+    private void CheckEnemyPlayerCollisions()
+    {
+        foreach (var enemy in enemies.enemies.Where(enemy => enemy.BoundingBox.Intersects(player.BoundingBox) && enemy.IsActive))
+        {
+            player.Health -= 1;
+            enemy.IsActive = false;
+        }
+    }
 }
