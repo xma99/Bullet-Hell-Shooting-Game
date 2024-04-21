@@ -4,16 +4,16 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/a.png</File>
-    <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/b.png</File>
-    <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/back1.jpg</File>
-    <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bubble.png</File>
-    <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bullettest1.png</File>
-    <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/finalBoss.png</File>
-    <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/Fonts/Font.spritefont</File>
-    <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/heart.png</File>
-    <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/midBoss.png</File>
-    <File>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/testplayer1.png</File>
+    <File>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/a.png</File>
+    <File>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/b.png</File>
+    <File>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/back1.jpg</File>
+    <File>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/bubble.png</File>
+    <File>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/bullettest1.png</File>
+    <File>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/finalBoss.png</File>
+    <File>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/Fonts/Font.spritefont</File>
+    <File>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/heart.png</File>
+    <File>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/midBoss.png</File>
+    <File>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/testplayer1.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

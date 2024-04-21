@@ -22,7 +22,7 @@ public static class EnemyFactory
                 builder.WithAggressiveAttack();  // Example: RegularA has an aggressive attack
                 break;
             case EnemyType.RegularB:
-                sprite = content.Load<Texture2D>("a");
+                sprite = content.Load<Texture2D>("b");
                 builder.SetSprite(sprite);
                 // Possibly no additional decorators for RegularB
                 break;

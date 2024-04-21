@@ -1,4 +1,4 @@
-﻿using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator;
+﻿ using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;

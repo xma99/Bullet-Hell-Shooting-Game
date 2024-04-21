@@ -37,6 +37,15 @@ public class LevelManager
     // add background image
     private Texture2D background;
 
+    //Wave control
+    private int waveIndex = 0;
+    private LevelData levelData;
+    private List<WaveData> waveDatas = new List<WaveData>();
+    private int startTime = 0;
+    private int endTime = 0;
+    private TimeSpan passedTimeSpan;
+    private Boolean waveSwitch=true;
+
     public LevelManager(ContentManager content, GraphicsDeviceManager graphics, SpriteBatch spriteBatch)
     {
         
@@ -76,6 +85,12 @@ public class LevelManager
 
     public void Update(GameTime gameTime)
     {
+        //update time
+        if(waveDatas.Count > 0) {
+            startTime = int.Parse(waveDatas[waveIndex].Time[0]);
+            endTime = int.Parse(waveDatas[waveIndex].Time[1]);
+        }     
+
         _player.Update(gameTime, _graphics.GraphicsDevice.Viewport.Width);
 
         // Here you would handle the logic for updating the level state, spawning enemies, etc.
@@ -84,6 +99,24 @@ public class LevelManager
         _collisionManager.Update();
         _scoreManager.Update(gameTime);
         _enemyManager.Update(gameTime, _player.Position);
+
+        passedTimeSpan = TimeSpan.FromSeconds(gameTime.TotalGameTime.Seconds);
+        TimeSpan startTimeSpawn = TimeSpan.FromSeconds(startTime);
+        TimeSpan endTimeSpawn = TimeSpan.FromSeconds(endTime);
+        if(passedTimeSpan.Equals(startTimeSpawn)&&waveDatas.Count>0&&waveSwitch)
+        {
+            for(int i = 0; i < waveDatas[waveIndex].EnemyAmount; i++)
+            {
+                EnemyType enemyType = ParseEnemyType(waveDatas[waveIndex].EnemyType);
+                SpawnEnemy(enemyType, waveDatas[waveIndex].EnemyBulletType);
+            }
+            waveSwitch=false;
+        }
+        else if(passedTimeSpan.Equals(endTimeSpawn)&&!waveSwitch)
+        {
+            waveIndex += 1;
+            waveSwitch = true;
+        }
     }
 
     public void Draw()
@@ -105,19 +138,20 @@ public class LevelManager
 
         _currentLevel = levelNumber;
         string jsonString = File.ReadAllText(filePath);
-        LevelData levelData = JsonSerializer.Deserialize<LevelData>(jsonString);
+        levelData = JsonSerializer.Deserialize<LevelData>(jsonString);
 
         foreach (var wave in levelData.Waves)
         {
+             waveDatas.Add(wave);
             // Assuming you have a method to parse the enemy type and create an enemy
-            for (int i = 0; i < wave.EnemyAmount; i++)
-            {
-                // Here we'll need to translate string enemy types to our enum or class types
-                EnemyType enemyType = ParseEnemyType(wave.EnemyType);
+            //for (int i = 0; i < wave.EnemyAmount; i++)
+            //{
+            //    // Here we'll need to translate string enemy types to our enum or class types
+            //    EnemyType enemyType = ParseEnemyType(wave.EnemyType);
 
-                // Placeholder for spawning logic; replace with your actual implementation
-                SpawnEnemy(enemyType, wave.EnemyBulletType);
-            }
+            //    // Placeholder for spawning logic; replace with your actual implementation
+            //    SpawnEnemy(enemyType, wave.EnemyBulletType);
+            //}
         }
     }
 

@@ -2,13 +2,13 @@
   "waves": [
     {
       "id": "1",
-      "time": [ "0", "8000" ],
-      "enemyType": "RegularA",
+      "time": [ "5", "8000" ],
+      "enemyType": "RegularB",
       "enemyAmount": 5,
       "interval": 200,
       "enemyBulletType": {
         "color": "red",
-        "type": "A",
+        "type": "B",
         "amount": 20,
         "speed": 10
       }
@@ -17,7 +17,7 @@
       "id": "2",
       "time": [ "8000", "16000" ],
       "enemyType": "RegularA",
-      "enemyAmount": 1,
+      "enemyAmount": 5,
       "enemyBulletType": {
         "color": "blue",
         "type": "A",
