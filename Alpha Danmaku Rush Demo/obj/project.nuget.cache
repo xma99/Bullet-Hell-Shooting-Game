@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "AAFX62eL7KZxXp1MRwz7dX8sAHzDDrNOjFqEo0Kqq88DmsVH6njkyJyPlHfdMxYP8M8YQHXHqi8cHH7oZlawgg==",
+  "dgSpecHash": "R+P4i06lcObZoDc+ZNhzNVr+ESNA94n7P2IlYkP3WvOboYIKeEeTqrzhThh9ZF61OItYrxSxorjkLiLvR19Lpg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kyoma\\Desktop\\school\\2024spring\\cpts487\\Final\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
+  "projectFilePath": "C:\\Users\\cc873\\Desktop\\school\\487\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Kyoma\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\Kyoma\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+    "C:\\Users\\cc873\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\cc873\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/midBoss.png</SourceFile>
-  <SourceTime>2024-04-20T17:25:36.496635-07:00</SourceTime>
-  <DestFile>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/midBoss.xnb</DestFile>
-  <DestTime>2024-04-20T17:28:47.3422307-07:00</DestTime>
+  <SourceFile>C:/Users/cc873/Desktop/school/487/teamalpha/Alpha Danmaku Rush Demo/Content/midBoss.png</SourceFile>
+  <SourceTime>2024-04-22T11:01:33.4814007+08:00</SourceTime>
+  <DestFile>C:/Users/cc873/Desktop/school/487/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/midBoss.xnb</DestFile>
+  <DestTime>2024-04-22T11:06:04.7793794+08:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2022-07-26T04:44:56-07:00</ImporterTime>
+  <ImporterTime>2022-07-26T19:44:56+08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2022-07-26T04:44:56-07:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T19:44:56+08:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>
