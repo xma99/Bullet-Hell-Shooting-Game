@@ -142,7 +142,7 @@ public class LevelManager
 
         foreach (var wave in levelData.Waves)
         {
-             waveDatas.Add(wave);
+            waveDatas.Add(wave);
             // Assuming you have a method to parse the enemy type and create an enemy
             //for (int i = 0; i < wave.EnemyAmount; i++)
             //{
@@ -152,6 +152,7 @@ public class LevelManager
             //    // Placeholder for spawning logic; replace with your actual implementation
             //    SpawnEnemy(enemyType, wave.EnemyBulletType);
             //}
+
         }
     }
 
@@ -173,6 +174,11 @@ public class LevelManager
             "FinalBoss" => EnemyType.FinalBoss,
             _ => throw new ArgumentOutOfRangeException(nameof(type), $"Not expected enemy type value: {type}"),
         };
+    }
+
+    public bool IsGameOver()
+    {
+        return _player.Health <= 0;
     }
 
     private void SpawnEnemy(EnemyType enemyType, EnemyBulletType bulletType)

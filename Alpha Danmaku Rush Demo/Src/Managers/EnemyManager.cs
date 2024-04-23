@@ -49,7 +49,6 @@ public class EnemyManager
         enemies.RemoveAll(e => !e.IsActive);
     }
 
-
     public EnemyManager(ContentManager content, GraphicsDeviceManager gdManager)
     {
         this.Content = content;

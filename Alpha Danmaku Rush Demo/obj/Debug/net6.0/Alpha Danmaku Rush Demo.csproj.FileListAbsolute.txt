@@ -298,3 +298,76 @@ C:\Users\Kyoma\Desktop\school\2024spring\cpts487\Final\teamalpha\Alpha Danmaku R
 C:\Users\Kyoma\Desktop\school\2024spring\cpts487\Final\teamalpha\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.pdb
 C:\Users\Kyoma\Desktop\school\2024spring\cpts487\Final\teamalpha\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.genruntimeconfig.cache
 C:\Users\Kyoma\Desktop\school\2024spring\cpts487\Final\teamalpha\Alpha Danmaku Rush Demo\obj\Debug\net6.0\ref\Alpha Danmaku Rush Demo.dll
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\a.xnb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\b.xnb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\back1.xnb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\bubble.xnb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\bullettest1.xnb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\finalBoss.xnb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\Fonts\Font.xnb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\heart.xnb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\midBoss.xnb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\testplayer1.xnb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Alpha Danmaku Rush Demo.exe
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Alpha Danmaku Rush Demo.deps.json
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Alpha Danmaku Rush Demo.runtimeconfig.json
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Alpha Danmaku Rush Demo.dll
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Alpha Danmaku Rush Demo.pdb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\MonoGame.Framework.dll
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\linux-x64\native\libopenal.so.1
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\osx\native\libSDL2.dylib
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\osx\native\libopenal.1.dylib
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\win-x64\native\SDL2.dll
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\win-x64\native\soft_oal.dll
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\win-x86\native\SDL2.dll
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\win-x86\native\soft_oal.dll
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.csproj.AssemblyReference.cache
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.AssemblyInfoInputs.cache
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.AssemblyInfo.cs
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.csproj.CoreCompileInputs.cache
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Da.14ACD7B4.Up2Date
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.dll
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\obj\Debug\net6.0\refint\Alpha Danmaku Rush Demo.dll
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.pdb
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.genruntimeconfig.cache
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\obj\Debug\net6.0\ref\Alpha Danmaku Rush Demo.dll
+C:\Users\zhent\OneDrive\Desktop\teamalpha-Final\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\GameOver.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\a.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\b.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\back1.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\bubble.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\bullettest1.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\finalBoss.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\Fonts\Font.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\GameOver.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\heart.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\midBoss.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\testplayer1.xnb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Alpha Danmaku Rush Demo.exe
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Alpha Danmaku Rush Demo.deps.json
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Alpha Danmaku Rush Demo.runtimeconfig.json
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Alpha Danmaku Rush Demo.dll
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Alpha Danmaku Rush Demo.pdb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\MonoGame.Framework.dll
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\linux-x64\native\libopenal.so.1
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\osx\native\libSDL2.dylib
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\osx\native\libopenal.1.dylib
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\win-x64\native\SDL2.dll
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\win-x64\native\soft_oal.dll
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\win-x86\native\SDL2.dll
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\bin\Debug\net6.0\runtimes\win-x86\native\soft_oal.dll
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.csproj.AssemblyReference.cache
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.AssemblyInfoInputs.cache
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.AssemblyInfo.cs
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.csproj.CoreCompileInputs.cache
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Da.14ACD7B4.Up2Date
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.dll
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\obj\Debug\net6.0\refint\Alpha Danmaku Rush Demo.dll
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.pdb
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\obj\Debug\net6.0\Alpha Danmaku Rush Demo.genruntimeconfig.cache
+C:\Users\zhent\OneDrive\Desktop\Alpha Danmaku Rush Demo\Alpha Danmaku Rush Demo\obj\Debug\net6.0\ref\Alpha Danmaku Rush Demo.dll
+C:\Users\Kyoma\Desktop\school\2024spring\cpts487\Final\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\GameOver.xnb

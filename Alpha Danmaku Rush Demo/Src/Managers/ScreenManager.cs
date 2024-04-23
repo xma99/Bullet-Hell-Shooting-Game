@@ -14,7 +14,8 @@ public class ScreenManager
     {
         MainMenu,
         GameLevel,
-        Settings
+        Settings,
+        GameOver
     }
 
     private ScreenState _currentState;
@@ -29,6 +30,11 @@ public class ScreenManager
     private bool _isGameStarted;
     private int _currentLevel;
 
+    private Texture2D _gameOverTexture; // Texture for game over screen
+    private const float GameOverDisplayTime = 3f; // Duration to display GameOver screen in seconds
+    private float gameOverTimer = 0f;
+    private bool isGameOverDisplayed = false;
+
     public ScreenManager(ContentManager content, GraphicsDeviceManager graphics, SpriteBatch spriteBatch)
     {
         _content = content;
@@ -39,12 +45,12 @@ public class ScreenManager
         _levelManager = new LevelManager(content, graphics, spriteBatch);
         _currentState = ScreenState.MainMenu; // Start game in main menu
 
-
         // Debugging
         _currentState = ScreenState.GameLevel;  // debug to start game in level
         _currentLevel = 1; // debug to start game in level 1
         _isGameStarted = false; // debug to start game in level 1
 
+        _gameOverTexture = _content.Load<Texture2D>("GameOver"); // Load game over texture
     }
 
     public void Update(GameTime gameTime)
@@ -56,13 +62,38 @@ public class ScreenManager
                 // E.g., if New Game is selected, set _currentState to GameLevel
                 break;
             case ScreenState.GameLevel:
-                _levelManager.Update(gameTime);
+                if (_levelManager.IsGameOver()) // Check if game over
+                {
+                    _currentState = ScreenState.GameOver;
+                    // Pause the game or take any necessary actions
+                }
+                else
+                {
+                    _levelManager.Update(gameTime);
+                }
                 break;
             case ScreenState.Settings:
                 // Handle settings updates
                 break;
+            case ScreenState.GameOver:
+                // Handle game over screen updates
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
+        }
+
+        if (_levelManager.IsGameOver() && !isGameOverDisplayed)
+        {
+            isGameOverDisplayed = true;
+        }
+
+        if (isGameOverDisplayed) // Update the game over timer if the GameOver screen is displayed
+        {
+            gameOverTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (gameOverTimer >= GameOverDisplayTime)
+            {
+                Environment.Exit(0); // quit the application
+            }
         }
     }
 
@@ -92,6 +123,13 @@ public class ScreenManager
                 break;
             case ScreenState.Settings:
                 // Draw settings screen
+                break;
+            case ScreenState.GameOver:
+                // Draw game over screen
+                Texture2D gameOverTexture = _content.Load<Texture2D>("GameOver");
+                Vector2 gameOverPosition = new Vector2((_graphics.GraphicsDevice.Viewport.Width - gameOverTexture.Width) / 2, (_graphics.GraphicsDevice.Viewport.Height - gameOverTexture.Height) / 2);
+                float scale = 1f;
+                _spriteBatch.Draw(gameOverTexture, gameOverPosition, null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
