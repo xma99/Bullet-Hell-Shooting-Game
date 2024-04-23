@@ -114,6 +114,8 @@ public class LevelManager
         }
         else if(passedTimeSpan.Equals(endTimeSpawn)&&!waveSwitch)
         {
+
+            _enemyManager.Clear();
             waveIndex += 1;
             waveSwitch = true;
         }
