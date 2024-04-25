@@ -23,6 +23,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         public EnemyBulletType enemyBulletType;
         //public Vector2 position;
         public List<Bullet.Bullet> bulletList = new List<Bullet.Bullet>();
+        private SpriteBatch BulletSprite;
 
         public Vector2 Position
         {
@@ -49,7 +50,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             this.speed = movementSpeed;
             this.enemyBulletType = bulletType;
             this.loadAmmo();
-            this.Attack(null,Vector2.Zero);
+            
         }
 
         public void Update(GameTime gameTime, Vector2 playerPosition)
@@ -59,6 +60,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            setBulletSprite(spriteBatch);
             if (IsActive)
             {
                 spriteBatch.Draw(Sprite, Position, Color.White);
@@ -73,7 +75,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
                 TimeSpan interval = new TimeSpan(200);
                 RegularAAllocator RegularPattern = new RegularAAllocator(this,interval);
                 AttackCaller attackCaller = new AttackCaller(RegularPattern);
-                attackCaller.performAttack(bulletList,playerPosition,gameTime,null);
+                attackCaller.performAttack(bulletList,playerPosition,gameTime,BulletSprite);
             }
 
 
@@ -90,7 +92,10 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             }
 
         }
-
+        public void setBulletSprite(SpriteBatch spriteBatch)
+        {
+            this.BulletSprite = spriteBatch;
+        }
         private void Move(GameTime gameTime, Vector2 playerPosition)
         {
             // Implement movement logic

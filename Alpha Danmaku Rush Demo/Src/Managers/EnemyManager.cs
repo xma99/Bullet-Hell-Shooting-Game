@@ -41,6 +41,7 @@ public class EnemyManager
         foreach (var enemy in enemies)
         {
             enemy.Update(gameTime, playerPosition);
+            //enemy.Attack(gameTime, playerPosition);
             if (!enemy.IsActive)
             {
                 NotifyEnemyKilled(enemy);
@@ -68,6 +69,7 @@ public class EnemyManager
             enemy.Draw(spriteBatch);
         }
     }
+    
 
     public void Clear()
     {

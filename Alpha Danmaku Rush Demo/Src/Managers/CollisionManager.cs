@@ -37,10 +37,24 @@ public class CollisionManager
 
     private void CheckEnemyPlayerCollisions()
     {
-        foreach (var enemy in enemies.enemies.Where(enemy => enemy.BoundingBox.Intersects(player.BoundingBox) && enemy.IsActive))
+        // Check if the player is currently invincible
+        if (!player.IsInvincible)
         {
-            player.Health -= 1;
-            enemy.IsActive = false;
+            // Iterate through all active enemies
+            foreach (var enemy in enemies.enemies.Where(enemy => enemy.BoundingBox.Intersects(player.BoundingBox) && enemy.IsActive))
+            {
+                // Inflict damage to the player
+                player.Health -= 1;
+                // Disable the enemy
+                enemy.IsActive = false;
+
+                // Check if the player's health is still greater than 0
+                if (player.Health > 0)
+                {
+                    // Call the Respawn method of the player when health reaches zero
+                    player.Respawn();
+                }
+            }
         }
     }
 }

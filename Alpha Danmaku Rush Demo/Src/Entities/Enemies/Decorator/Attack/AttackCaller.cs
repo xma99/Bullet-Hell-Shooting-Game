@@ -1,5 +1,6 @@
 ﻿using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,9 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack
         {
             _attackStrategy = attackStrategy;
         }
-        public void performAttack(List<Bullet.Bullet> bullets, Vector2 playerPosition, GameTime gameTime)
+        public void performAttack(List<Bullet.Bullet> bullets, Vector2 playerPosition, GameTime gameTime,SpriteBatch sprite)
         {
-            _attackStrategy.attackstrategy(bullets, playerPosition, gameTime);
+            _attackStrategy.attackstrategy(bullets, playerPosition, gameTime,sprite);
         }
     }
 }

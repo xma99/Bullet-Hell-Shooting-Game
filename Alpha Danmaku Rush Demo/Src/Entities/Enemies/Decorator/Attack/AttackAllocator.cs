@@ -15,6 +15,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack
     {
         private TimeSpan attackInterval;
         private TimeSpan attackTimer;
+        int i = 0;
         
 
         public RegularAAllocator(IEnemy enemy, TimeSpan attackInterval) : base(enemy)
@@ -23,9 +24,14 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack
         }
         public void attackstrategy(List<Bullet.Bullet> bullets, Vector2 playerPosition, GameTime gameTime,SpriteBatch spriteBatch)
         {
+            attackInterval = TimeSpan.FromSeconds(7);
             if (bullets.Count <= 0)
                 return;
             attackTimer += gameTime.ElapsedGameTime;
+            if(attackTimer >= TimeSpan.FromSeconds(1))
+            {
+                attackInterval -= TimeSpan.FromSeconds(1);
+            }
             if (attackTimer >= attackInterval)
             {
                 attackTimer = TimeSpan.Zero; // Reset timer
@@ -36,6 +42,11 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack
                 Bullet.Bullet bullet= bullets[bullets.Count-1];
                 bullets.RemoveAt(bullets.Count-1);
                 bullet.IsActive = true;
+                spriteBatch.Begin();
+                bullet.Draw(spriteBatch);
+                spriteBatch.End();
+                //spriteBatch.Dispose();
+                i++;
                
             }
             attackstrategy(bullets, playerPosition, gameTime,spriteBatch);

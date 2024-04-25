@@ -113,6 +113,7 @@ public class LevelManager
             {
                 EnemyType enemyType = ParseEnemyType(waveDatas[waveIndex].EnemyType);
                 SpawnEnemy(enemyType, waveDatas[waveIndex].EnemyBulletType);
+
             }
             waveSwitch=false;
         }
@@ -131,6 +132,7 @@ public class LevelManager
         _spriteBatch.Draw(background, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White);
 
         // Background, player, enemies, and health icons drawing logic
+        
         _player.Draw(_spriteBatch);
         _enemyManager.Draw(_spriteBatch);
         _uiManager.Draw(_spriteBatch); // Draw UI elements
