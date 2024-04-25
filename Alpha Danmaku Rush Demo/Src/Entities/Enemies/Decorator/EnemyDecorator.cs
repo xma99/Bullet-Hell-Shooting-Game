@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator;
 
@@ -38,7 +39,7 @@ public abstract class EnemyDecorator : IEnemy
         DecoratedEnemy.Draw(spriteBatch);
     }
 
-    public virtual void Attack(GameTime gameTime, Vector2 playerPosition)
+    public virtual void Attack(GameTime gameTime, Vector2 playerPosition,EnemyBulletType bulletType = null)
     {
         DecoratedEnemy.Attack(gameTime, playerPosition);
     }

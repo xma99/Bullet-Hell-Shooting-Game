@@ -45,6 +45,8 @@ public class LevelManager
     private int endTime = 0;
     private TimeSpan passedTimeSpan;
     private Boolean waveSwitch=true;
+    //bullet control
+    private List <EnemyBulletType> enemyBulletTypes;
 
     public LevelManager(ContentManager content, GraphicsDeviceManager graphics, SpriteBatch spriteBatch)
     {
@@ -66,6 +68,8 @@ public class LevelManager
 
         // load background image
         background = _content.Load<Texture2D>("back1");
+
+        enemyBulletTypes=new List<EnemyBulletType>();
     }
 
     private void InitializePlayer()
@@ -156,6 +160,11 @@ public class LevelManager
             //}
 
         }
+        foreach(var wave in levelData.Waves)
+        {
+            enemyBulletTypes.Add(wave.EnemyBulletType);
+        }
+        
     }
 
     private void ResetPlayerPosition()

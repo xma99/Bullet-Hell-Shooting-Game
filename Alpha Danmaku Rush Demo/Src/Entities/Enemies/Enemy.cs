@@ -8,6 +8,9 @@ using Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
 using Alpha_Danmaku_Rush_Demo.Src.Utils;
 using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
 using Microsoft.Xna.Framework.Content;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack;
+using System.Text.RegularExpressions;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 {
@@ -17,6 +20,8 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         private float speed;
         private EnemyType enemyType;
         private ContentManager content;
+        public EnemyBulletType enemyBulletType;
+        //public Vector2 position;
         public List<Bullet.Bullet> bulletList = new List<Bullet.Bullet>();
 
         public Vector2 Position
@@ -35,13 +40,16 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 
         public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, Sprite.Width, Sprite.Height);
 
-        public Enemy(ContentManager content, Vector2 startPosition, float movementSpeed, EnemyType enemyType)
+        public Enemy(ContentManager content, Vector2 startPosition, float movementSpeed, EnemyType enemyType,EnemyBulletType bulletType)
         {
             this.content = content;
             this.enemyType = enemyType;
             string texturePath = GetTexturePath(enemyType);
             this.gameObject = new GameObject(content.Load<Texture2D>(texturePath), startPosition);
             this.speed = movementSpeed;
+            this.enemyBulletType = bulletType;
+            this.loadAmmo();
+            this.Attack(null,Vector2.Zero);
         }
 
         public void Update(GameTime gameTime, Vector2 playerPosition)
@@ -57,9 +65,30 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             }
         }
 
-        public void Attack(GameTime gameTime, Vector2 playerPosition)
+        public void Attack(GameTime gameTime, Vector2 playerPosition,EnemyBulletType bulletType=null)
         {
             // Implement attack logic
+           if(enemyType==EnemyType.RegularA||enemyType==EnemyType.RegularB)
+            {
+                TimeSpan interval = new TimeSpan(200);
+                RegularAAllocator RegularPattern = new RegularAAllocator(this,interval);
+                AttackCaller attackCaller = new AttackCaller(RegularPattern);
+                attackCaller.performAttack(bulletList,playerPosition,gameTime,null);
+            }
+
+
+        }
+        public void loadAmmo()
+        {
+
+            int amount = enemyBulletType.Amount;
+            for(int i = 0; i < amount; i++)
+            {
+                //ContentManager content, Vector2 position, Vector2 velocity, EnemyBulletType type
+                Bullet.Bullet bullet = BulletFactory.CreateBullet(content,Position,Vector2.Zero,enemyBulletType);
+                bulletList.Add(bullet);
+            }
+
         }
 
         private void Move(GameTime gameTime, Vector2 playerPosition)

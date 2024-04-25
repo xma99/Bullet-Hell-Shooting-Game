@@ -102,23 +102,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cc873\\.nuget\\packages\\": {},
+    "C:\\Users\\Kyoma\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cc873\\Desktop\\school\\487\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
+      "projectUniqueName": "C:\\Users\\Kyoma\\Desktop\\school\\2024spring\\cpts487\\Final\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
       "projectName": "Alpha Danmaku Rush Demo",
-      "projectPath": "C:\\Users\\cc873\\Desktop\\school\\487\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
-      "packagesPath": "C:\\Users\\cc873\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cc873\\Desktop\\school\\487\\teamalpha\\Alpha Danmaku Rush Demo\\obj\\",
+      "projectPath": "C:\\Users\\Kyoma\\Desktop\\school\\2024spring\\cpts487\\Final\\teamalpha\\Alpha Danmaku Rush Demo\\Alpha Danmaku Rush Demo.csproj",
+      "packagesPath": "C:\\Users\\Kyoma\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kyoma\\Desktop\\school\\2024spring\\cpts487\\Final\\teamalpha\\Alpha Danmaku Rush Demo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\cc873\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kyoma\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -170,7 +170,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

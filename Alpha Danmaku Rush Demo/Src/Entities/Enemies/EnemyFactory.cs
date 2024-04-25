@@ -2,15 +2,16 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
 
 public static class EnemyFactory
 {
-    public static IEnemy CreateEnemy(ContentManager content, EnemyType type, Vector2 startPosition, float movementSpeed)
+    public static IEnemy CreateEnemy(ContentManager content, EnemyType type, Vector2 startPosition, float movementSpeed,EnemyBulletType bulletType)
     {
         Texture2D sprite;
-        EnemyBuilder builder = new EnemyBuilder(content, startPosition, movementSpeed, type)
+        EnemyBuilder builder = new EnemyBuilder(content, startPosition, movementSpeed, type, bulletType)
             .SetPosition(startPosition);
 
         // Apply type-specific configurations
@@ -19,13 +20,13 @@ public static class EnemyFactory
             case EnemyType.RegularA:
                 sprite = content.Load<Texture2D>("a");
                 builder.SetSprite(sprite);
-                builder.WithAggressiveAttack();  // Example: RegularA has an aggressive attack
+                //builder.WithAggressiveAttack();  // Example: RegularA has an aggressive attack
                 break;
             case EnemyType.RegularB:
                 sprite = content.Load<Texture2D>("b");
                 builder.SetSprite(sprite);
                 // Possibly no additional decorators for RegularB
-                builder.WithAggressiveAttack();
+               // builder.WithAggressiveAttack();
                 break;
             case EnemyType.MidBoss:
                 sprite = content.Load<Texture2D>("midBoss");
@@ -36,7 +37,7 @@ public static class EnemyFactory
                 sprite = content.Load<Texture2D>("finalBoss");
                 builder.SetSprite(sprite);
                 builder.WithMovement(2.0f * movementSpeed);   // FinalBoss has significantly increased speed
-                builder.WithAggressiveAttack();             // and also an aggressive attack
+                //builder.WithAggressiveAttack();             // and also an aggressive attack
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), $"Not implemented type: {type}");

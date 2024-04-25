@@ -8,8 +8,8 @@ public class AggressiveAttackDecorator : EnemyDecorator
 
 
 
-    public override void Attack(GameTime gameTime, Vector2 playerPosition)
-    {
-        base.Attack(gameTime, playerPosition);
-    }
+    //public override void Attack(GameTime gameTime, Vector2 playerPosition)
+    //{
+    //    base.Attack(gameTime, playerPosition);
+    //}
 }
