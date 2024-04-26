@@ -8,19 +8,21 @@ public class PlayerMovementDecorator : IPlayer
 {
     private IPlayer _wrappedPlayer;
     private float _playerSpeed = 5.0f;
+    private bool isInvincible = false;
+    public bool IsInvincible => _wrappedPlayer.IsInvincible;
 
     public PlayerMovementDecorator(IPlayer player, float speed)
     {
         _wrappedPlayer = player;
         _playerSpeed = speed;
     }
-    
+
     public Vector2 Position
     {
         get => _wrappedPlayer.Position;
         set => _wrappedPlayer.Position = value;
     }
-    
+
     public Texture2D Sprite => _wrappedPlayer.Sprite;
 
     public Rectangle BoundingBox => _wrappedPlayer.BoundingBox;
@@ -30,6 +32,7 @@ public class PlayerMovementDecorator : IPlayer
     public void Update(GameTime gameTime, int screenWidth)
     {
         Move(gameTime, screenWidth);
+        _wrappedPlayer.Update(gameTime, screenWidth);
     }
 
     private void Move(GameTime gameTime, int screenWidth)
@@ -50,6 +53,12 @@ public class PlayerMovementDecorator : IPlayer
         Vector2 updatePosition = this.Position + movement * _playerSpeed;
         updatePosition.X = MathHelper.Clamp(updatePosition.X, 0, screenWidth - this.Sprite.Width);
         this.Position = updatePosition;
+    }
+
+    public void Respawn()
+    {
+        _wrappedPlayer.Respawn();
+        isInvincible = true;
     }
 
     public void Draw(SpriteBatch spriteBatch)

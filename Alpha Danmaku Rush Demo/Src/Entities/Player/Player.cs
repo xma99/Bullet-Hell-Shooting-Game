@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
 {
@@ -8,7 +9,13 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
     {
 
         public GameObject GameObject { get; private set; }
-        public int Health { get; set; } = 10;
+        public int Health { get; set; } = 5;
+        private Vector2 initialPosition;
+
+        private TimeSpan invincibilityTimer = TimeSpan.Zero;
+        private TimeSpan invincibilityDuration = TimeSpan.FromSeconds(5);
+        private bool isInvincible = false;
+        public bool IsInvincible => isInvincible;
 
         public Vector2 Position
         {
@@ -27,12 +34,27 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
 
         public void Update(GameTime gameTime, int screenWidth)
         {
-            throw new System.NotImplementedException();
+            if (isInvincible)
+            {
+                invincibilityTimer += gameTime.ElapsedGameTime;
+                if (invincibilityTimer >= invincibilityDuration)
+                {
+                    isInvincible = false;
+                }
+            }
+            //throw new System.NotImplementedException();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             GameObject.Draw(spriteBatch);
+        }
+
+        public void Respawn()
+        {
+            Position = new Vector2((800 - Sprite.Width) / 2, 1000 - Sprite.Height); // Reset player position to bottom center
+            isInvincible = true;
+            invincibilityTimer = TimeSpan.Zero;
         }
     }
 }

@@ -6,6 +6,7 @@ using System;
 using Microsoft.Xna.Framework.Content;
 using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack;
 using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Move;
+using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
 
@@ -15,14 +16,19 @@ public class EnemyBuilder
     private Vector2 _position;
     private ContentManager _content;
     private Vector2 _startPosition;
+    private EnemyType _enemyType;
     private float _movementSpeed;
+    private EnemyBulletType _bulletType;
+
     private List<Func<IEnemy, IEnemy>> _decorators = new List<Func<IEnemy, IEnemy>>();
 
-    public EnemyBuilder(ContentManager content, Vector2 startPosition, float movementSpeed)
+    public EnemyBuilder(ContentManager content, Vector2 startPosition, float movementSpeed, EnemyType enemyType,EnemyBulletType bulletType)
     {
         _content = content;
         _startPosition = startPosition;
         _movementSpeed = movementSpeed;
+        _enemyType = enemyType;
+        _bulletType = bulletType;
     }
 
     public EnemyBuilder SetSprite(Texture2D sprite)
@@ -51,7 +57,7 @@ public class EnemyBuilder
 
     public IEnemy Build()
     {
-        IEnemy enemy = new Enemy(_content, _startPosition, _movementSpeed);
+        IEnemy enemy = new Enemy(_content, _startPosition, _movementSpeed, _enemyType,_bulletType);
         foreach (var decorator in _decorators)
         {
             enemy = decorator(enemy);

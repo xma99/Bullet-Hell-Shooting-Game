@@ -13,17 +13,17 @@ public class TimedAttackDecorator : EnemyDecorator
         this.attackInterval = attackInterval;
     }
 
-    public override void Attack(GameTime gameTime, Vector2 playerPosition)
-    {
-        attackTimer += gameTime.ElapsedGameTime;
-        if (attackTimer >= attackInterval)
-        {
-            attackTimer = TimeSpan.Zero; // Reset timer
-            // Execute attack logic
-            Vector2 direction = Vector2.Normalize(playerPosition - DecoratedEnemy.Position);
-            Vector2 bulletVelocity = direction * 8f; // Example speed
-            // Potentially activate a bullet here
-        }
-        base.Attack(gameTime, playerPosition);
-    }
+    //public override void Attack(GameTime gameTime, Vector2 playerPosition)
+    //{
+    //    attackTimer += gameTime.ElapsedGameTime;
+    //    if (attackTimer >= attackInterval)
+    //    {
+    //        attackTimer = TimeSpan.Zero; // Reset timer
+    //        // Execute attack logic
+    //        Vector2 direction = Vector2.Normalize(playerPosition - DecoratedEnemy.Position);
+    //        Vector2 bulletVelocity = direction * 8f; // Example speed
+    //        // Potentially activate a bullet here
+    //    }
+    //    base.Attack(gameTime, playerPosition);
+    //}
 }

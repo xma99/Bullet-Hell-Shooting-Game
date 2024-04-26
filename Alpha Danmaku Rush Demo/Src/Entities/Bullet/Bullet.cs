@@ -2,11 +2,12 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 public abstract class Bullet
 {
     protected Texture2D Sprite;
-
+    public int i;
     public Vector2 Position { get; set; }
     public Vector2 Velocity { get; set; }
     public Color Color { get; set; }
@@ -25,6 +26,7 @@ public abstract class Bullet
         Velocity = velocity;
         Color = color;
         IsActive = false;
+        i = 0;
     }
 
     public abstract void Update(GameTime gameTime);
@@ -33,7 +35,12 @@ public abstract class Bullet
     {
         if (IsActive)
         {
+        
+            //spriteBatch.Begin();
             spriteBatch.Draw(Sprite, Position, Color);
+            //Console.Write("flag");
+            //spriteBatch.End();
+            //i++;
         }
     }
 

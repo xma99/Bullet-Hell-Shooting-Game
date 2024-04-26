@@ -9,8 +9,11 @@ public interface IPlayer
     Texture2D Sprite { get; }
     Rectangle BoundingBox { get; }
     int Health { get; set; }
+    bool IsInvincible { get; }
 
     public void Update(GameTime gameTime, int screenWidth);
 
     public void Draw(SpriteBatch spriteBatch);
+
+    void Respawn();
 }

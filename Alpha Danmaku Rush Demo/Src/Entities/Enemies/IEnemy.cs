@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
 
@@ -12,5 +13,5 @@ public interface IEnemy
 
     void Update(GameTime gameTime, Vector2 playerPosition);
     void Draw(SpriteBatch spriteBatch);
-    void Attack(GameTime gameTime, Vector2 playerPosition);
+    void Attack(GameTime gameTime, Vector2 playerPosition,EnemyBulletType bulletType=null);
 }

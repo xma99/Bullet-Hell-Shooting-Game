@@ -16,3 +16,5 @@ public class EnemyBulletType
     [JsonPropertyName("speed")]
     public int Speed { get; set; }
 }
+
+//string Color string Type int Speed
