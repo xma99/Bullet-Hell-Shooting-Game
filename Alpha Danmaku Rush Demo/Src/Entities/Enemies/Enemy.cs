@@ -56,6 +56,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         public void Update(GameTime gameTime, Vector2 playerPosition)
         {
             Move(gameTime, playerPosition);
+            Attack(gameTime, playerPosition);
         }
 
         public void Draw(SpriteBatch spriteBatch)
