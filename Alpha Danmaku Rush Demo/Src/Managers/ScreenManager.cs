@@ -120,6 +120,7 @@ public class ScreenManager
                     _isGameStarted = true;
                 }
                 _levelManager.Draw();
+               
                 break;
             case ScreenState.Settings:
                 // Draw settings screen

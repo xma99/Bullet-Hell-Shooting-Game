@@ -16,7 +16,7 @@ public static class BulletFactory
         switch (type.Type)
         {
             case "A":   
-                newBullet = new BulletA(content.Load<Texture2D>("bullettest1"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color));
+                newBullet = new BulletA(content.Load<Texture2D>("bubble"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color));
                 newBullet.Speed = type.Speed;
                 return newBullet;
             case "B":

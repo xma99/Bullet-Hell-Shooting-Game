@@ -41,7 +41,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 
         public Rectangle BoundingBox => new Rectangle((int)Position.X, (int)Position.Y, Sprite.Width, Sprite.Height);
 
-        public Enemy(ContentManager content, Vector2 startPosition, float movementSpeed, EnemyType enemyType,EnemyBulletType bulletType)
+        public Enemy(ContentManager content, Vector2 startPosition, float movementSpeed, EnemyType enemyType,EnemyBulletType bulletType,SpriteBatch spriteBatch)
         {
             this.content = content;
             this.enemyType = enemyType;
@@ -50,6 +50,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             this.speed = movementSpeed;
             this.enemyBulletType = bulletType;
             this.loadAmmo();
+            BulletSprite = spriteBatch;
             
         }
 
@@ -61,7 +62,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            setBulletSprite(spriteBatch);
+            //setBulletSprite(spriteBatch);
             if (IsActive)
             {
                 spriteBatch.Draw(Sprite, Position, Color.White);

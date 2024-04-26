@@ -59,11 +59,15 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack
             { return; }
             foreach(var bullet in FiredBullets)
             {
-                SB.Begin();
-                bullet.Draw(SB);
-                SB.End();
                 bullet.Update(gameTime);
-
+                //SB.Begin();
+                bullet.Draw(SB);
+                //SB.End();
+                
+                //if (!bullet.IsActive)
+                //{
+                //    FiredBullets.Remove(bullet);
+                //}
             }
 
         }

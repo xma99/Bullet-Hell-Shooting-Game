@@ -17,6 +17,7 @@ public class BulletA : Bullet
         // Example update logic for BulletA
         Vector2 defaultT = new Vector2(0, 1);
         //Position +=defaultT * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-        Position += defaultT * 10.0f ;
+        Position += defaultT * 5.0f ;
     }
 }
+

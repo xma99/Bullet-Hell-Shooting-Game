@@ -19,16 +19,18 @@ public class EnemyBuilder
     private EnemyType _enemyType;
     private float _movementSpeed;
     private EnemyBulletType _bulletType;
+    private SpriteBatch _spriteBatch;
 
     private List<Func<IEnemy, IEnemy>> _decorators = new List<Func<IEnemy, IEnemy>>();
 
-    public EnemyBuilder(ContentManager content, Vector2 startPosition, float movementSpeed, EnemyType enemyType,EnemyBulletType bulletType)
+    public EnemyBuilder(ContentManager content, Vector2 startPosition, float movementSpeed, EnemyType enemyType,EnemyBulletType bulletType,SpriteBatch spriteBatch)
     {
         _content = content;
         _startPosition = startPosition;
         _movementSpeed = movementSpeed;
         _enemyType = enemyType;
         _bulletType = bulletType;
+        _spriteBatch = spriteBatch;
     }
 
     public EnemyBuilder SetSprite(Texture2D sprite)
@@ -51,13 +53,13 @@ public class EnemyBuilder
 
     public EnemyBuilder WithAggressiveAttack()
     {
-        _decorators.Add(enemy => new AggressiveAttackDecorator(enemy));
+        //_decorators.Add(enemy => new AggressiveAttackDecorator(enemy));
         return this;
     }
 
     public IEnemy Build()
     {
-        IEnemy enemy = new Enemy(_content, _startPosition, _movementSpeed, _enemyType,_bulletType);
+        IEnemy enemy = new Enemy(_content, _startPosition, _movementSpeed, _enemyType,_bulletType,_spriteBatch);
         foreach (var decorator in _decorators)
         {
             enemy = decorator(enemy);

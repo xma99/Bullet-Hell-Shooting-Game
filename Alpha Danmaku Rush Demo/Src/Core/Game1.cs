@@ -45,16 +45,16 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Core
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            _screenManager.Update(gameTime);
+            //_screenManager.Update(gameTime);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             _spriteBatch.Begin();
             _screenManager.Draw();
+            _screenManager.Update(gameTime);
             _spriteBatch.End();
 
             base.Draw(gameTime);

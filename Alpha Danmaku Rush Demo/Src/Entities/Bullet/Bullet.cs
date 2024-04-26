@@ -35,12 +35,8 @@ public abstract class Bullet
     {
         if (IsActive)
         {
-        
-            //spriteBatch.Begin();
-            spriteBatch.Draw(Sprite, Position, Color);
-            //Console.Write("flag");
-            //spriteBatch.End();
-            //i++;
+            spriteBatch.Draw(Sprite, Position, Color.Black);
+            
         }
     }
 

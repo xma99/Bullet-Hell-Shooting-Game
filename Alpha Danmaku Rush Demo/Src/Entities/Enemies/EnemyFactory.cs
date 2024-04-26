@@ -8,10 +8,10 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
 
 public static class EnemyFactory
 {
-    public static IEnemy CreateEnemy(ContentManager content, EnemyType type, Vector2 startPosition, float movementSpeed,EnemyBulletType bulletType)
+    public static IEnemy CreateEnemy(ContentManager content, EnemyType type, Vector2 startPosition, float movementSpeed,EnemyBulletType bulletType,SpriteBatch spriteBatch)
     {
         Texture2D sprite;
-        EnemyBuilder builder = new EnemyBuilder(content, startPosition, movementSpeed, type, bulletType)
+        EnemyBuilder builder = new EnemyBuilder(content, startPosition, movementSpeed, type, bulletType,spriteBatch)
             .SetPosition(startPosition);
 
         // Apply type-specific configurations

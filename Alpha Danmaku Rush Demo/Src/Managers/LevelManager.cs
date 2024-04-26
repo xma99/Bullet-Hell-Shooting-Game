@@ -80,8 +80,8 @@ public class LevelManager
 
         // init player
         PlayerBuilder builder = new PlayerBuilder();
-        _player = builder.SetSprite(playerTexture)
-            .SetPosition(new Microsoft.Xna.Framework.Vector2(100, 100))
+        _player = builder.SetPosition(initialPosition)
+            .SetSprite(playerTexture)            
             .WithMovement(5.0f)
             .WithExtraHealth(20)
             .Build();
@@ -124,6 +124,10 @@ public class LevelManager
             waveIndex += 1;
             waveSwitch = true;
         }
+        foreach(var enemy in  _enemyManager.enemies)
+        {
+            enemy.Update(gameTime,_player.Position);
+        }
     }
 
     public void Draw()
@@ -135,6 +139,7 @@ public class LevelManager
         
         _player.Draw(_spriteBatch);
         _enemyManager.Draw(_spriteBatch);
+        
         _uiManager.Draw(_spriteBatch); // Draw UI elements
     }
 
@@ -200,16 +205,16 @@ public class LevelManager
         switch (enemyType)
         {
             case EnemyType.RegularA:
-                _enemyManager.SpawnEnemyA(bulletType);
+                _enemyManager.SpawnEnemyA(bulletType,_spriteBatch);
                 break;
             case EnemyType.RegularB:
-                _enemyManager.SpawnEnemyB(bulletType);
+                _enemyManager.SpawnEnemyB(bulletType, _spriteBatch);
                 break;
             case EnemyType.MidBoss:
-                _enemyManager.SpawnEnemyM(bulletType);
+                _enemyManager.SpawnEnemyM(bulletType, _spriteBatch);
                 break;
             case EnemyType.FinalBoss:
-                _enemyManager.SpawnEnemyF(bulletType);
+                _enemyManager.SpawnEnemyF(bulletType, _spriteBatch);
                 break;
             default: ;
                 break;
