@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Alpha Danmaku Rush Demo - Backup")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+39aece134fe69ee46a6fbefbbb05011566c8d325")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac14376f3dd70f5dcd99c101e4398c29cd693330")]
 [assembly: System.Reflection.AssemblyProductAttribute("Alpha Danmaku Rush Demo - Backup")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Alpha Danmaku Rush Demo - Backup")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
