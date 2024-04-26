@@ -16,8 +16,8 @@ public class BulletA : Bullet
         CheckOffScreen();
         // Example update logic for BulletA
         Vector2 defaultT = new Vector2(0, 1);
-        //Position +=defaultT * gameTime.ElapsedGameTime.Milliseconds / 1000f;
-        Position += defaultT * 5.0f ;
+        Position +=Velocity* gameTime.ElapsedGameTime.Milliseconds / 1000f;
+        //Position += defaultT * 5.0f ;
     }
 }
 

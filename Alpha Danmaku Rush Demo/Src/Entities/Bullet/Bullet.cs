@@ -25,8 +25,8 @@ public abstract class Bullet
         Position = position;
         Velocity = velocity;
         Color = color;
-        IsActive = false;
-        i = 0;
+        //IsActive = false;
+        //i = 0;
     }
 
     public abstract void Update(GameTime gameTime);
@@ -35,7 +35,7 @@ public abstract class Bullet
     {
         if (IsActive)
         {
-            spriteBatch.Draw(Sprite, Position, Color.Black);
+            spriteBatch.Draw(Sprite, Position, Color);
             
         }
     }

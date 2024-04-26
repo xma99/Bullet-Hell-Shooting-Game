@@ -11,6 +11,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack
 {
     public interface AttackStrategy
     {
+        
         void attackstrategy(List<Bullet.Bullet> bullets, Vector2 playerPosition, GameTime gameTime,SpriteBatch spriteBatch=null);
     }
 }

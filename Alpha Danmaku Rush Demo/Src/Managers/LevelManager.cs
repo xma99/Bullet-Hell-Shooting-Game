@@ -124,9 +124,12 @@ public class LevelManager
             waveIndex += 1;
             waveSwitch = true;
         }
-        foreach(var enemy in  _enemyManager.enemies)
+        if (!waveSwitch)
         {
-            enemy.Update(gameTime,_player.Position);
+            foreach (var enemy in _enemyManager.enemies)
+            {
+                enemy.Update(gameTime, _player.Position);
+            }
         }
     }
 

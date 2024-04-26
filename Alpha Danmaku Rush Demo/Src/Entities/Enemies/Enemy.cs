@@ -24,6 +24,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         //public Vector2 position;
         public List<Bullet.Bullet> bulletList = new List<Bullet.Bullet>();
         private SpriteBatch BulletSprite;
+        private TimeSpan AttackTimer;
 
         public Vector2 Position
         {
@@ -49,14 +50,16 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             this.gameObject = new GameObject(content.Load<Texture2D>(texturePath), startPosition);
             this.speed = movementSpeed;
             this.enemyBulletType = bulletType;
-            this.loadAmmo();
+            //this.loadAmmo();
             BulletSprite = spriteBatch;
+            AttackTimer=TimeSpan.Zero;
             
         }
 
         public void Update(GameTime gameTime, Vector2 playerPosition)
         {
             Move(gameTime, playerPosition);
+            
             Attack(gameTime, playerPosition);
         }
 
@@ -67,18 +70,23 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             {
                 spriteBatch.Draw(Sprite, Position, Color.White);
             }
+            this.loadAmmo();
         }
 
         public void Attack(GameTime gameTime, Vector2 playerPosition,EnemyBulletType bulletType=null)
         {
+            AttackTimer+= gameTime.ElapsedGameTime;
             // Implement attack logic
-           if(enemyType==EnemyType.RegularA||enemyType==EnemyType.RegularB)
+            if (AttackTimer > TimeSpan.FromMilliseconds(2000)) ;
             {
-                TimeSpan interval = new TimeSpan(200);
-                RegularAAllocator RegularPattern = new RegularAAllocator(this,interval);
-                AttackCaller attackCaller = new AttackCaller(RegularPattern);
-                attackCaller.performAttack(bulletList,playerPosition,gameTime,BulletSprite);
-            }
+                AttackTimer = TimeSpan.Zero;
+                if (enemyType == EnemyType.RegularA || enemyType == EnemyType.RegularB)
+                {
+                    TimeSpan interval = new TimeSpan(200);
+                    RegularAAllocator RegularPattern = new RegularAAllocator(this, interval);
+                    AttackCaller attackCaller = new AttackCaller(RegularPattern);
+                    attackCaller.performAttack(bulletList, playerPosition, gameTime, BulletSprite);
+                } }
 
 
         }
