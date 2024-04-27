@@ -11,9 +11,10 @@ public class BulletB : Bullet
         Damage = 2;
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime=null)
     {
         // Example update logic for BulletB, potentially different from BulletA
-        Position += Velocity * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+        Vector2 defaultT=new Vector2(0,1);
+        Position += defaultT * 10.0f;
     }
 }

@@ -32,6 +32,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack
                 this.SB = spriteBatch;
 
             attackInterval = TimeSpan.FromSeconds(2);
+            if (bullets == null) return;
             if (bullets.Count <= 0)
                 return;
 
@@ -50,27 +51,30 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack
                 FiredBullets.Add(bullet);
 
                 attackSwitch = false;
-                DrawBullet();
+                
                 return;
             }
-
+            updateAttack(gameTime);
             attackstrategy(bullets, playerPosition, gameTime, spriteBatch); // Added spriteBatch parameter
         }
 
-        public void updateAttack(GameTime gameTime) 
+        public void updateAttack(GameTime gameTime)
         {
             if (FiredBullets.Count <= 0)
                 return;
 
             for (int i = 0; i < FiredBullets.Count; i++)
             {
+                FiredBullets[i].Draw(SB);
                 FiredBullets[i].Update(gameTime);
+                //SB.Begin();
 
-                if (!FiredBullets[i].IsActive)
-                {
-                    FiredBullets.RemoveAt(i);
-                    i--; // Adjust index due to removal
-                }
+                //SB.End();
+
+                //if (!bullet.IsActive)
+                //{
+                //    FiredBullets.Remove(bullet);
+                //}
             }
         }
 

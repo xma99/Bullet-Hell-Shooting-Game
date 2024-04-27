@@ -11,13 +11,12 @@ public class BulletA : Bullet
         Damage = 1;
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime=null)
     {
         CheckOffScreen();
         // Example update logic for BulletA
         Vector2 defaultT = new Vector2(0, 1);
-        Position +=defaultT* (float)10.0f;
-        //Position += defaultT * 5.0f ;
+        //Position +=defaultT * gameTime.ElapsedGameTime.Milliseconds / 1000f;
+        Position += defaultT * 5.0f ;
     }
 }
-

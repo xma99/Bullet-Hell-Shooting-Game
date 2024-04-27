@@ -29,7 +29,7 @@ public abstract class Bullet
         //i = 0;
     }
 
-    public abstract void Update(GameTime gameTime);
+    public abstract void Update(GameTime gameTime=null);
 
     public void Draw(SpriteBatch spriteBatch)
     {

@@ -53,7 +53,7 @@ public class EnemyBuilder
 
     public EnemyBuilder WithAggressiveAttack()
     {
-        //_decorators.Add(enemy => new AggressiveAttackDecorator(enemy));
+        _decorators.Add(enemy => new AggressiveAttackDecorator(enemy));
         return this;
     }
 

@@ -11,6 +11,8 @@ using System.IO;
 using Alpha_Danmaku_Rush_Demo.Src.Entities;
 using Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
 using System.Numerics;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
+using System.Reflection.Metadata;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
@@ -45,8 +47,13 @@ public class LevelManager
     private int endTime = 0;
     private TimeSpan passedTimeSpan;
     private Boolean waveSwitch=true;
+    private WaveData currWave;
     //bullet control
     private List <EnemyBulletType> enemyBulletTypes;
+    private Queue<Bullet> currBullets = new Queue<Bullet>();
+    private Bullet testbullet;
+    private Queue<Bullet> LoadedBullets = new Queue<Bullet>();
+    TimeSpan AttackTimer = TimeSpan.Zero;
 
     public LevelManager(ContentManager content, GraphicsDeviceManager graphics, SpriteBatch spriteBatch)
     {
@@ -74,14 +81,15 @@ public class LevelManager
 
     private void InitializePlayer()
     {
+        
         Texture2D playerTexture = _content.Load<Texture2D>("testplayer1");
         Microsoft.Xna.Framework.Vector2 initialPosition = new Microsoft.Xna.Framework.Vector2(_graphics.PreferredBackBufferWidth / 2 - playerTexture.Width / 2, _graphics.PreferredBackBufferHeight - playerTexture.Height);
 
 
         // init player
         PlayerBuilder builder = new PlayerBuilder();
-        _player = builder.SetPosition(initialPosition)
-            .SetSprite(playerTexture)            
+        _player = builder.SetSprite(playerTexture)
+            .SetPosition(new Microsoft.Xna.Framework.Vector2(100, 100))
             .WithMovement(5.0f)
             .WithExtraHealth(20)
             .Build();
@@ -93,10 +101,19 @@ public class LevelManager
         if(waveDatas.Count > 0) {
             startTime = int.Parse(waveDatas[waveIndex].Time[0]);
             endTime = int.Parse(waveDatas[waveIndex].Time[1]);
-        }     
-
+            currWave = waveDatas[waveIndex];
+        }
+        
+        if(currWave != null)
+        {
+            loadAmmo();
+        }
         _player.Update(gameTime, _graphics.GraphicsDevice.Viewport.Width);
+        if (testbullet == null)
+        {
+            testbullet = BulletFactory.CreateBullet(_content, new Microsoft.Xna.Framework.Vector2(1, 1), new Microsoft.Xna.Framework.Vector2(1, 1), currWave.EnemyBulletType);
 
+        }
         // Here you would handle the logic for updating the level state, spawning enemies, etc.
         // Example: Update health icons based on player's health
         _uiManager.UpdateHealthIcons(_player.Health);
@@ -123,14 +140,34 @@ public class LevelManager
             _enemyManager.Clear();
             waveIndex += 1;
             waveSwitch = true;
+            currWave = waveDatas[waveIndex];
         }
-        if (!waveSwitch)
+        foreach(var enemy in  _enemyManager.enemies)
         {
-            foreach (var enemy in _enemyManager.enemies)
-            {
-                enemy.Update(gameTime, _player.Position);
-            }
+            enemy.Update(gameTime,_player.Position);
         }
+        //foreach (var item in currBullets)
+        //{
+        //    if((int)gameTime.ElapsedGameTime.TotalSeconds%2==0) { item.Draw(_spriteBatch); 
+        //         }
+
+        //    item.Update();
+        //}
+        
+        testbullet.Draw(_spriteBatch);
+        TimeSpan timeSpan = TimeSpan.Zero;
+        timeSpan += gameTime.ElapsedGameTime;
+        testbullet.Update();
+        if (timeSpan> TimeSpan.FromMilliseconds(2000))
+        {
+           
+
+        }
+        updateAttack(gameTime);
+        if(LoadedBullets.Count>0) {
+            updateBullet();
+        }
+        
     }
 
     public void Draw()
@@ -142,7 +179,6 @@ public class LevelManager
         
         _player.Draw(_spriteBatch);
         _enemyManager.Draw(_spriteBatch);
-        
         _uiManager.Draw(_spriteBatch); // Draw UI elements
     }
 
@@ -176,7 +212,44 @@ public class LevelManager
         }
         
     }
+   /// <summary>
+   /// This function should push bullet in an enemy holding bulletqueue into loadedbullet queue in this scope
+   /// Extra parameter may be added to decide at what time a bullet should be loaded
+   /// </summary>
+   /// <param name="gameTime"></param>
+    private void updateAttack(GameTime gameTime,int interval=0)
+    {
+       
+        if (interval != 0)
+        {
+            //Do control logic
+        }
+        else
+        {
+            AttackTimer += gameTime.ElapsedGameTime;
+            if(AttackTimer.TotalSeconds > 2)//default attack interval
+            {
+                AttackTimer = TimeSpan.Zero;
+                foreach(var enemy in _enemyManager.enemies)
+                {
+                   Bullet bullet= enemy.bulletList.Dequeue();
+                    LoadedBullets.Enqueue(bullet);
+                }
 
+            }
+        }
+    }
+    private void updateBullet()
+    {
+        if(LoadedBullets.Count > 0)
+        {
+            foreach (var item in LoadedBullets)
+            {
+                item.Draw(_spriteBatch);
+                item.Update();
+            }
+        }
+    }
     private void ResetPlayerPosition()
     {
         _player.Position = new Microsoft.Xna.Framework.Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - _player.Sprite.Height);
@@ -195,6 +268,39 @@ public class LevelManager
             "FinalBoss" => EnemyType.FinalBoss,
             _ => throw new ArgumentOutOfRangeException(nameof(type), $"Not expected enemy type value: {type}"),
         };
+    }
+    public void loadAmmo()
+    {
+        _enemyManager.enemies.ForEach(enemy =>
+        {
+            Queue<Bullet> bullets = new Queue<Bullet>();
+            
+            for(int i = 0; i < currWave.EnemyBulletType.Amount; i++)
+            {
+                Microsoft.Xna.Framework.Vector2 startPosition = new Microsoft.Xna.Framework.Vector2(enemy.Position.X, enemy.Position.Y);
+                Bullet bullet=BulletFactory.CreateBullet(_content, startPosition, Microsoft.Xna.Framework.Vector2.Zero,currWave.EnemyBulletType);
+                bullets.Enqueue(bullet);
+                //bullet.Update();
+                currBullets.Enqueue(bullet);
+                
+            }
+            enemy.bulletList = bullets;
+
+
+        });
+        //int amount = enemyBulletType.Amount;
+        //for (int i = 0; i < amount; i++)
+        //{
+        //    //ContentManager content, Vector2 position, Vector2 velocity, EnemyBulletType type
+        //    float x = Position.X;
+        //    float y = Position.Y;
+        //    Vector2 something = new Vector2(x, y);//实时更新实际位置的变量
+
+
+        //    Bullet bullet = BulletFactory.CreateBullet(content, something, Vector2.Zero, enemyBulletType);
+        //    bulletList.Add(bullet);
+        //}
+
     }
 
     public bool IsGameOver()

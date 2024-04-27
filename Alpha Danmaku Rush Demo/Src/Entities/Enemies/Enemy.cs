@@ -22,9 +22,15 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         private ContentManager content;
         public EnemyBulletType enemyBulletType;
         //public Vector2 position;
-        public List<Bullet.Bullet> bulletList = new List<Bullet.Bullet>();
+        
         private SpriteBatch BulletSprite;
         private TimeSpan AttackTimer;
+        private Queue<Bullet.Bullet> _bullets=new Queue<Bullet.Bullet>();
+
+        public Queue<Bullet.Bullet> bulletList { 
+            get { return this._bullets; }
+            set { _bullets= value; }
+        }
 
         public Vector2 Position
         {
@@ -60,7 +66,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         {
             Move(gameTime, playerPosition);
             
-            Attack(gameTime, playerPosition);
+            //Attack(gameTime, playerPosition);
 
 
         }
@@ -72,11 +78,20 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             {
                 spriteBatch.Draw(Sprite, Position, Color.White);
             }
-            this.loadAmmo();
+            //this.loadAmmo();
         }
 
         public void Attack(GameTime gameTime, Vector2 playerPosition,EnemyBulletType bulletType=null)
         {
+
+            //测试。在这个block以及Attackallocator类里hard code创建一个enemy对象看是否能成功绘制，实现移动。
+            //尝试重写Bullet。
+            //可能是某一层的指针调用出错
+            foreach(var bullet in _bullets)
+            {
+                bullet.Draw(BulletSprite);
+                bullet.Update(gameTime);
+            }
             AttackTimer+= gameTime.ElapsedGameTime;
             TimeSpan interval = new TimeSpan(200);
             RegularAAllocator RegularPattern = new RegularAAllocator(this, interval);
@@ -89,16 +104,14 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
                     
                    
                     AttackCaller attackCaller = new AttackCaller(RegularPattern);
-                    attackCaller.performAttack(bulletList, playerPosition, gameTime, BulletSprite);
+                    //attackCaller.performAttack(_bullets , playerPosition, gameTime, BulletSprite);
                 } 
             }
-            RegularPattern.updateAttack(gameTime);
+            //RegularPattern.updateAttack(gameTime);
             foreach(var Bullet in RegularPattern.FiredBullets)
             {
                 Bullet.Update(gameTime);
-            }
-
-            
+            }            
 
 
         }
@@ -109,8 +122,13 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             for(int i = 0; i < amount; i++)
             {
                 //ContentManager content, Vector2 position, Vector2 velocity, EnemyBulletType type
-                Bullet.Bullet bullet = BulletFactory.CreateBullet(content,Position,Vector2.Zero,enemyBulletType);
-                bulletList.Add(bullet);
+                float x = Position.X;
+                float y = Position.Y;
+                Vector2 something = new Vector2(x, y);//实时更新实际位置的变量
+                
+
+                Bullet.Bullet bullet = BulletFactory.CreateBullet(content,something,Vector2.Zero,enemyBulletType);
+                _bullets.Enqueue(bullet);
             }
 
         }
@@ -122,6 +140,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         {
             // Implement movement logic
             Vector2 direction = Vector2.Normalize(playerPosition - Position);
+
             Position += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
 

@@ -1,12 +1,18 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
+using System.Collections.Generic;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator;
 
 public abstract class EnemyDecorator : IEnemy
 {
     protected IEnemy DecoratedEnemy;
+
+    public Queue<Bullet.Bullet> bulletList
+    {
+        get; set;
+    }
 
     public EnemyDecorator(IEnemy enemy)
     {

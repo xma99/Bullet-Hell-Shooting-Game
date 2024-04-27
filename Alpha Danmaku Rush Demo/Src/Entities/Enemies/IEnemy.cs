@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
+using System.Collections.Generic;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
 
@@ -10,6 +11,8 @@ public interface IEnemy
     Texture2D Sprite { get; }
     bool IsActive { get; set; }
     Rectangle BoundingBox { get; }
+
+    Queue<Bullet.Bullet> bulletList { get; set; }
 
     void Update(GameTime gameTime, Vector2 playerPosition);
     void Draw(SpriteBatch spriteBatch);

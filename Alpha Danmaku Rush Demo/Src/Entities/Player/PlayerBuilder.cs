@@ -37,7 +37,6 @@ public class PlayerBuilder
 
     public IPlayer Build()
     {
-
         IPlayer player = new Player(_sprite, _position);
         foreach (var decorator in _decorators)
         {
