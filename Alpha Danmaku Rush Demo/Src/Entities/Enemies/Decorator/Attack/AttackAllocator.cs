@@ -11,72 +11,82 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack
 {
 
 
-    public class RegularAAllocator: EnemyDecorator,AttackStrategy
+    public class RegularAAllocator : AttackStrategy
     {
         private TimeSpan attackInterval;
         private TimeSpan attackTimer;
-        private Boolean attackSwitch;
+        private bool attackSwitch;
         private SpriteBatch SB;
-        List<Bullet.Bullet> FiredBullets;
+        public List<Bullet.Bullet> FiredBullets;
 
-        public RegularAAllocator(IEnemy enemy, TimeSpan attackInterval) : base(enemy)
+        public RegularAAllocator(IEnemy enemy, TimeSpan attackInterval)
         {
             this.attackInterval = attackInterval;
             this.FiredBullets = new List<Bullet.Bullet>();
             this.attackSwitch = true;
         }
-        public void attackstrategy(List<Bullet.Bullet> bullets, Vector2 playerPosition, GameTime gameTime,SpriteBatch spriteBatch = null)
+
+        public void attackstrategy(List<Bullet.Bullet> bullets, Vector2 playerPosition, GameTime gameTime, SpriteBatch spriteBatch = null)
         {
-            if(spriteBatch!=null)
-            this.SB = spriteBatch;
+            if (spriteBatch != null)
+                this.SB = spriteBatch;
+
             attackInterval = TimeSpan.FromSeconds(2);
             if (bullets.Count <= 0)
                 return;
+
             attackTimer += gameTime.ElapsedGameTime;
             if (attackTimer > TimeSpan.FromSeconds(1))
-            {
                 attackSwitch = true;
-            }
 
-            if (attackTimer >= attackInterval&&attackSwitch==true)
+            if (attackTimer >= attackInterval && attackSwitch == true)
             {
                 attackTimer = TimeSpan.Zero; // Reset timer
-                                             // Execute attack logic
-                Vector2 direction = Vector2.Normalize(playerPosition - DecoratedEnemy.Position);
-                Vector2 bulletVelocity = direction * 8f; // Example speed
-                                                         // Potentially activate a bullet here
-                Bullet.Bullet bullet= bullets[bullets.Count-1];
-                bullets.RemoveAt(bullets.Count-1);
+
+                // Execute attack logic
+                Bullet.Bullet bullet = bullets[bullets.Count - 1];
+                bullets.RemoveAt(bullets.Count - 1);
                 bullet.IsActive = true;
                 FiredBullets.Add(bullet);
-                //bullet.Draw(SB);
-                
-                //spriteBatch.Dispose();
+
                 attackSwitch = false;
-                updateAttack(gameTime);
+                DrawBullet();
                 return;
             }
-            
-            attackstrategy(bullets, playerPosition, gameTime);
-            //attackHelper(attackTimer,bullets, playerPosition, gameTime);
+
+            attackstrategy(bullets, playerPosition, gameTime, spriteBatch); // Added spriteBatch parameter
         }
-        public void updateAttack(GameTime gameTime)
+
+        public void updateAttack(GameTime gameTime) 
         {
-            if(FiredBullets.Count <=0)
-            { return; }
-            for(int i = 0; i < FiredBullets.Count; i++)
+            if (FiredBullets.Count <= 0)
+                return;
+
+            for (int i = 0; i < FiredBullets.Count; i++)
             {
-
                 FiredBullets[i].Update(gameTime);
-                FiredBullets[i].Draw(SB);
-                if (FiredBullets[i].IsActive == false) { FiredBullets.RemoveAt(i); } 
-            }
 
+                if (!FiredBullets[i].IsActive)
+                {
+                    FiredBullets.RemoveAt(i);
+                    i--; // Adjust index due to removal
+                }
+            }
         }
-        
-       
+
+        public void DrawBullet()
+        {
+            if (SB == null)
+                return;
+
+            foreach (var bullet in FiredBullets)
+            {
+                bullet.Draw(SB);
+            }
+        }
     }
-    public class BossAllocator: EnemyDecorator,AttackStrategy {
+
+public class BossAllocator: EnemyDecorator,AttackStrategy {
         private TimeSpan attackInterval;
         private TimeSpan attackTimer;
 

@@ -61,6 +61,8 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             Move(gameTime, playerPosition);
             
             Attack(gameTime, playerPosition);
+
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -76,17 +78,27 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
         public void Attack(GameTime gameTime, Vector2 playerPosition,EnemyBulletType bulletType=null)
         {
             AttackTimer+= gameTime.ElapsedGameTime;
+            TimeSpan interval = new TimeSpan(200);
+            RegularAAllocator RegularPattern = new RegularAAllocator(this, interval);
             // Implement attack logic
             if (AttackTimer > TimeSpan.FromMilliseconds(2000)) ;
             {
                 AttackTimer = TimeSpan.Zero;
                 if (enemyType == EnemyType.RegularA || enemyType == EnemyType.RegularB)
                 {
-                    TimeSpan interval = new TimeSpan(200);
-                    RegularAAllocator RegularPattern = new RegularAAllocator(this, interval);
+                    
+                   
                     AttackCaller attackCaller = new AttackCaller(RegularPattern);
                     attackCaller.performAttack(bulletList, playerPosition, gameTime, BulletSprite);
-                } }
+                } 
+            }
+            RegularPattern.updateAttack(gameTime);
+            foreach(var Bullet in RegularPattern.FiredBullets)
+            {
+                Bullet.Update(gameTime);
+            }
+
+            
 
 
         }
