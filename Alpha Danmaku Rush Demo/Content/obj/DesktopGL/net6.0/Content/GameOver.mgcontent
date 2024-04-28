@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/GameOver.png</SourceFile>
-  <SourceTime>2024-04-22T03:18:36-07:00</SourceTime>
+  <SourceTime>2024-04-27T19:08:16-07:00</SourceTime>
   <DestFile>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/GameOver.xnb</DestFile>
-  <DestTime>2024-04-22T23:59:47.8831387-07:00</DestTime>
+  <DestTime>2024-04-27T23:30:46.0345002-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T04:44:56-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -10,7 +10,6 @@ using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
 using Microsoft.Xna.Framework.Content;
 using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack;
 using System.Text.RegularExpressions;
-using Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
 {
@@ -59,7 +58,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             //this.loadAmmo();
             BulletSprite = spriteBatch;
             AttackTimer=TimeSpan.Zero;
-            
         }
 
         public void Update(GameTime gameTime, Vector2 playerPosition)
@@ -67,8 +65,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             Move(gameTime, playerPosition);
             
             //Attack(gameTime, playerPosition);
-
-
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -101,10 +97,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
                 AttackTimer = TimeSpan.Zero;
                 if (enemyType == EnemyType.RegularA || enemyType == EnemyType.RegularB)
                 {
-                    
-                   
                     AttackCaller attackCaller = new AttackCaller(RegularPattern);
-                    //attackCaller.performAttack(_bullets , playerPosition, gameTime, BulletSprite);
                 } 
             }
             //RegularPattern.updateAttack(gameTime);
@@ -112,35 +105,29 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies
             {
                 Bullet.Update(gameTime);
             }            
-
-
         }
         public void loadAmmo()
         {
-
             int amount = enemyBulletType.Amount;
             for(int i = 0; i < amount; i++)
             {
-                //ContentManager content, Vector2 position, Vector2 velocity, EnemyBulletType type
                 float x = Position.X;
                 float y = Position.Y;
                 Vector2 something = new Vector2(x, y);//实时更新实际位置的变量
                 
-
                 Bullet.Bullet bullet = BulletFactory.CreateBullet(content,something,Vector2.Zero,enemyBulletType);
+                bullet.IsActive = true;
                 _bullets.Enqueue(bullet);
             }
-
         }
+
         public void setBulletSprite(SpriteBatch spriteBatch)
         {
             this.BulletSprite = spriteBatch;
         }
         private void Move(GameTime gameTime, Vector2 playerPosition)
         {
-            // Implement movement logic
             Vector2 direction = Vector2.Normalize(playerPosition - Position);
-
             Position += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
 

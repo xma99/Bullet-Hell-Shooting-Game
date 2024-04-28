@@ -6,7 +6,7 @@
       "enemyType": "RegularA",
       "enemyAmount": 5,
       "enemyBulletType": {
-        "color": "red",
+        "color": "blue",
         "type": "A",
         "amount": 10,
         "speed": 10
@@ -30,8 +30,8 @@
       "enemyType": "MidBoss",
       "enemyAmount": 1,
       "enemyBulletType": {
-        "color": "blue",
-        "type": "A",
+        "color": "white",
+        "type": "BossAbility1",
         "amount": 10,
         "speed": 5
       }

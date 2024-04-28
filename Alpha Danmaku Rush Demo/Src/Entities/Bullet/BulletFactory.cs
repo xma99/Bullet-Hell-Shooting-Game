@@ -20,7 +20,15 @@ public static class BulletFactory
                 newBullet.Speed = type.Speed;
                 return newBullet;
             case "B":
-                newBullet = new BulletB(content.Load<Texture2D>("bullettest1"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color));
+                newBullet = new BulletB(content.Load<Texture2D>("bubble"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color));
+                newBullet.Speed = type.Speed;
+                return newBullet;
+            case "BossAbility1":
+                newBullet = new BulletB(content.Load<Texture2D>("BossAbility1"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color));
+                newBullet.Speed = type.Speed;
+                return newBullet;
+            case "BossAbility2":
+                newBullet = new BulletB(content.Load<Texture2D>("BossAbility2"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color));
                 newBullet.Speed = type.Speed;
                 return newBullet;
             default:

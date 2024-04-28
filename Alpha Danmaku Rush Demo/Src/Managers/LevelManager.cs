@@ -109,11 +109,11 @@ public class LevelManager
             loadAmmo();
         }
         _player.Update(gameTime, _graphics.GraphicsDevice.Viewport.Width);
-        if (testbullet == null)
+        /*if (testbullet == null)
         {
             testbullet = BulletFactory.CreateBullet(_content, new Microsoft.Xna.Framework.Vector2(1, 1), new Microsoft.Xna.Framework.Vector2(1, 1), currWave.EnemyBulletType);
 
-        }
+        }*/
         // Here you would handle the logic for updating the level state, spawning enemies, etc.
         // Example: Update health icons based on player's health
         _uiManager.UpdateHealthIcons(_player.Health);
@@ -154,10 +154,10 @@ public class LevelManager
         //    item.Update();
         //}
         
-        testbullet.Draw(_spriteBatch);
+        // testbullet.Draw(_spriteBatch);
         TimeSpan timeSpan = TimeSpan.Zero;
         timeSpan += gameTime.ElapsedGameTime;
-        testbullet.Update();
+        // testbullet.Update();
         if (timeSpan> TimeSpan.FromMilliseconds(2000))
         {
            

@@ -3,6 +3,7 @@ using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies;
 using System.Collections.Generic;
 using System.Linq;
 using Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
+using System;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
@@ -22,18 +23,31 @@ public class CollisionManager
 
     public void Update()
     {
-        // CheckEnemyBulletPlayerCollisions();
+        CheckEnemyBulletPlayerCollisions();
         CheckEnemyPlayerCollisions();
     }
 
-    //private void CheckEnemyBulletPlayerCollisions()
-    //{
-    //    foreach (var bullet in enemies.enemies.SelectMany(enemy => enemy.bulletList.Where(bullet => bullet.BoundingBox.Intersects(player.BoundingBox) && bullet.IsActive)))
-    //    {
-    //        player.Health -= bullet.Damage;
-    //        bullet.IsActive = false;
-    //    }
-    //}
+    private void CheckEnemyBulletPlayerCollisions()
+    {
+        if (!player.IsInvincible)
+        {
+            foreach (var enemy in enemies.enemies.Where(enemy => enemy.IsActive))
+            {
+                foreach (var bullet in enemy.bulletList.Where(bullet => bullet.IsActive && bullet.BoundingBox.Intersects(player.BoundingBox)))
+                {
+                    player.Health -= bullet.Damage;
+                    bullet.IsActive = false;
+
+                    // Check if the player's health is still greater than 0
+                    if (player.Health > 0)
+                    {
+                        // Call the Respawn method of the player when health reaches zero
+                        player.Respawn();
+                    }
+                }
+            }
+        }
+    }
 
     private void CheckEnemyPlayerCollisions()
     {
