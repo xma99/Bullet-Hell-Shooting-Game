@@ -13,6 +13,7 @@ using Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
 using System.Numerics;
 using Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
 using System.Reflection.Metadata;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Enemies.Decorator.Attack;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
@@ -51,9 +52,9 @@ public class LevelManager
     //bullet control
     private List <EnemyBulletType> enemyBulletTypes;
     private Queue<Bullet> currBullets = new Queue<Bullet>();
-    private Bullet testbullet;
-    private Queue<Bullet> LoadedBullets = new Queue<Bullet>();
-    TimeSpan AttackTimer = TimeSpan.Zero;
+    //private AttackManager _attackManager;
+    private AttackAction Action;
+    private Boolean AttackInitiate = false;
 
     public LevelManager(ContentManager content, GraphicsDeviceManager graphics, SpriteBatch spriteBatch)
     {
@@ -62,6 +63,7 @@ public class LevelManager
         _graphics = graphics;
         _spriteBatch = spriteBatch;
         _enemyManager = new EnemyManager(content, graphics);
+        //_attackManager = new AttackManager(_enemyManager, _spriteBatch);
 
         InitializePlayer();
 
@@ -107,7 +109,17 @@ public class LevelManager
         if(currWave != null)
         {
             loadAmmo();
+            
         }
+
+        if(currWave!= null&&!AttackInitiate) { 
+            EnemyType enemyType = new EnemyType();
+            enemyType=ParseEnemyType(currWave.EnemyType);
+            UpdateAttackStrategy(enemyType);
+            AttackInitiate = true;
+
+        }
+        
         _player.Update(gameTime, _graphics.GraphicsDevice.Viewport.Width);
         /*if (testbullet == null)
         {
@@ -120,7 +132,7 @@ public class LevelManager
         _collisionManager.Update();
         _scoreManager.Update(gameTime);
         _enemyManager.Update(gameTime, _player.Position);
-
+        //_attackManager.update(_enemyManager);
         passedTimeSpan = TimeSpan.FromSeconds(gameTime.TotalGameTime.Seconds);
         TimeSpan startTimeSpawn = TimeSpan.FromSeconds(startTime);
         TimeSpan endTimeSpawn = TimeSpan.FromSeconds(endTime);
@@ -136,37 +148,17 @@ public class LevelManager
         }
         else if(passedTimeSpan.Equals(endTimeSpawn)&&!waveSwitch)
         {
-
             _enemyManager.Clear();
             waveIndex += 1;
             waveSwitch = true;
             currWave = waveDatas[waveIndex];
+            UpdateAttackStrategy(ParseEnemyType(currWave.EnemyType));
         }
         foreach(var enemy in  _enemyManager.enemies)
         {
             enemy.Update(gameTime,_player.Position);
         }
-        //foreach (var item in currBullets)
-        //{
-        //    if((int)gameTime.ElapsedGameTime.TotalSeconds%2==0) { item.Draw(_spriteBatch); 
-        //         }
-
-        //    item.Update();
-        //}
-        
-        // testbullet.Draw(_spriteBatch);
-        TimeSpan timeSpan = TimeSpan.Zero;
-        timeSpan += gameTime.ElapsedGameTime;
-        // testbullet.Update();
-        if (timeSpan> TimeSpan.FromMilliseconds(2000))
-        {
-           
-
-        }
-        updateAttack(gameTime);
-        if(LoadedBullets.Count>0) {
-            updateBullet();
-        }
+        Action.performAttack(gameTime);
         
     }
 
@@ -196,60 +188,14 @@ public class LevelManager
         {
             waveDatas.Add(wave);
             // Assuming you have a method to parse the enemy type and create an enemy
-            //for (int i = 0; i < wave.EnemyAmount; i++)
-            //{
-            //    // Here we'll need to translate string enemy types to our enum or class types
-            //    EnemyType enemyType = ParseEnemyType(wave.EnemyType);
-
-            //    // Placeholder for spawning logic; replace with your actual implementation
-            //    SpawnEnemy(enemyType, wave.EnemyBulletType);
-            //}
-
-        }
+                   }
         foreach(var wave in levelData.Waves)
         {
             enemyBulletTypes.Add(wave.EnemyBulletType);
         }
         
     }
-   /// <summary>
-   /// This function should push bullet in an enemy holding bulletqueue into loadedbullet queue in this scope
-   /// Extra parameter may be added to decide at what time a bullet should be loaded
-   /// </summary>
-   /// <param name="gameTime"></param>
-    private void updateAttack(GameTime gameTime,int interval=0)
-    {
-       
-        if (interval != 0)
-        {
-            //Do control logic
-        }
-        else
-        {
-            AttackTimer += gameTime.ElapsedGameTime;
-            if(AttackTimer.TotalSeconds > 2)//default attack interval
-            {
-                AttackTimer = TimeSpan.Zero;
-                foreach(var enemy in _enemyManager.enemies)
-                {
-                   Bullet bullet= enemy.bulletList.Dequeue();
-                    LoadedBullets.Enqueue(bullet);
-                }
-
-            }
-        }
-    }
-    private void updateBullet()
-    {
-        if(LoadedBullets.Count > 0)
-        {
-            foreach (var item in LoadedBullets)
-            {
-                item.Draw(_spriteBatch);
-                item.Update();
-            }
-        }
-    }
+   
     private void ResetPlayerPosition()
     {
         _player.Position = new Microsoft.Xna.Framework.Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - _player.Sprite.Height);
@@ -268,6 +214,27 @@ public class LevelManager
             "FinalBoss" => EnemyType.FinalBoss,
             _ => throw new ArgumentOutOfRangeException(nameof(type), $"Not expected enemy type value: {type}"),
         };
+    }
+    private void UpdateAttackStrategy(EnemyType enemyType)
+    {
+        switch (enemyType) {
+            case EnemyType.RegularA:
+                Action = new AttackAction(new Regular( _enemyManager, _spriteBatch));
+                break;
+            case EnemyType.RegularB:
+                Action = new AttackAction(new Regular(_enemyManager, _spriteBatch));
+                break;
+            case EnemyType.MidBoss:
+                Action = new AttackAction(new Regular(_enemyManager, _spriteBatch));
+                break;
+            case EnemyType.FinalBoss:
+                Action = new AttackAction(new Regular(_enemyManager, _spriteBatch));
+                break;
+            default:
+                ;
+                break;
+        }
+            
     }
     public void loadAmmo()
     {
@@ -288,19 +255,7 @@ public class LevelManager
 
 
         });
-        //int amount = enemyBulletType.Amount;
-        //for (int i = 0; i < amount; i++)
-        //{
-        //    //ContentManager content, Vector2 position, Vector2 velocity, EnemyBulletType type
-        //    float x = Position.X;
-        //    float y = Position.Y;
-        //    Vector2 something = new Vector2(x, y);//实时更新实际位置的变量
-
-
-        //    Bullet bullet = BulletFactory.CreateBullet(content, something, Vector2.Zero, enemyBulletType);
-        //    bulletList.Add(bullet);
-        //}
-
+   
     }
 
     public bool IsGameOver()
