@@ -1,11 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
 
-public class BossAbility1 : Bullet
+public class MidBossBullet : Bullet
 {
-    public BossAbility1(Texture2D sprite, Vector2 position, Vector2 velocity, Color color, Vector2 playerPosition)
+    Random random= new Random();
+    public MidBossBullet(Texture2D sprite, Vector2 position, Vector2 velocity, Color color)
             : base(sprite, position, velocity, color)
     {
         Damage = 2;
@@ -16,6 +18,12 @@ public class BossAbility1 : Bullet
         CheckOffScreen();
         Vector2 defaultT = new Vector2(0, 1);
         Position += defaultT * 5.0f;
+    }
+    public void update1()
+    {
+        CheckOffScreen();
+        //Vector2 Ability1_Target = new Vector2(Velocity, 1);
+        Position += Velocity * 0.5f;
     }
 }
 

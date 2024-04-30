@@ -30,7 +30,7 @@
       "enemyType": "MidBoss",
       "enemyAmount": 1,
       "enemyBulletType": {
-        "color": "white",
+        "color": "black",
         "type": "BossAbility1",
         "amount": 10,
         "speed": 5

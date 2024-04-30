@@ -24,7 +24,7 @@ public static class BulletFactory
                 newBullet.Speed = type.Speed;
                 return newBullet;
             case "BossAbility1":
-                newBullet = new BulletB(content.Load<Texture2D>("BossAbility1"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color));
+                newBullet = new MidBossBullet(content.Load<Texture2D>("BossAbility1"), position, AdjustVelocity(velocity, type.Speed), ColorHelper.FromName(type.Color));
                 newBullet.Speed = type.Speed;
                 return newBullet;
             case "BossAbility2":

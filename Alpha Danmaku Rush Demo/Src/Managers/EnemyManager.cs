@@ -49,6 +49,10 @@ public class EnemyManager
         }
         enemies.RemoveAll(e => !e.IsActive);
     }
+    public int[] getSize()
+    {
+        return new int[] { _graphics.GraphicsDevice.Viewport.Width, _graphics.GraphicsDevice.Viewport.Height };
+    }
 
     public EnemyManager(ContentManager content, GraphicsDeviceManager gdManager)
     {
@@ -92,8 +96,8 @@ public class EnemyManager
     }
     public void SpawnEnemyM(EnemyBulletType bulletType,SpriteBatch spriteBatch)
     {
-        Vector2 spawnPosition = new Vector2(random.Next(_graphics.GraphicsDevice.Viewport.Width), random.Next(_graphics.GraphicsDevice.Viewport.Height));
-        float enemySpeed = 3.0f; // Adjust as needed
+        Vector2 spawnPosition = new Vector2(0,0);
+        float enemySpeed = 1.0f; // Adjust as needed
         IEnemy enemy = EnemyFactory.CreateEnemy(Content, EnemyType.MidBoss, spawnPosition, enemySpeed, bulletType, spriteBatch);
         Add(enemy);
     }

@@ -225,7 +225,7 @@ public class LevelManager
                 Action = new AttackAction(new Regular(_enemyManager, _spriteBatch));
                 break;
             case EnemyType.MidBoss:
-                Action = new AttackAction(new Regular(_enemyManager, _spriteBatch));
+                Action = new AttackAction(new MidBoss(_enemyManager, _spriteBatch,_content,currWave.EnemyBulletType));
                 break;
             case EnemyType.FinalBoss:
                 Action = new AttackAction(new Regular(_enemyManager, _spriteBatch));
