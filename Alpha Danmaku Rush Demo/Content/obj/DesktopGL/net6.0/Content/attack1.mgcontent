@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/attack1.wav</SourceFile>
-  <SourceTime>2024-02-29T09:32:14.8765566-08:00</SourceTime>
-  <DestFile>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/attack1.xnb</DestFile>
-  <DestTime>2024-05-01T05:09:23.9685806-07:00</DestTime>
+  <SourceFile>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/attack1.wav</SourceFile>
+  <SourceTime>2024-04-30T18:56:23.4548472-07:00</SourceTime>
+  <DestFile>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/attack1.xnb</DestFile>
+  <DestTime>2024-05-01T15:19:17.1065358-07:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2022-07-26T04:44:56-07:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

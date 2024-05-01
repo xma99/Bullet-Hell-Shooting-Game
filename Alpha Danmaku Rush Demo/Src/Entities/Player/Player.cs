@@ -17,6 +17,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
         private TimeSpan invincibilityDuration = TimeSpan.FromSeconds(5);
         private bool isInvincible = false;
         public bool IsInvincible => isInvincible;
+        public int flag = 1;
 
         public Vector2 Position
         {
@@ -35,7 +36,16 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
 
         public void Update(GameTime gameTime, int screenWidth)
         {
-            if (isInvincible)
+            // Check for keyboard input to toggle invincibility
+            KeyboardState keyboardState = Keyboard.GetState();
+            if (keyboardState.IsKeyDown(Keys.H))
+            {
+                // Toggle invincibility
+                isInvincible = true;
+                flag = 0;
+            }
+
+            if (isInvincible && flag != 0)
             {
                 invincibilityTimer += gameTime.ElapsedGameTime;
                 if (invincibilityTimer >= invincibilityDuration)
@@ -43,12 +53,20 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
                     isInvincible = false;
                 }
             }
-            //throw new System.NotImplementedException();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            GameObject.Draw(spriteBatch);
+            // Check if player is in hack mode
+            if (isInvincible)
+            {
+                spriteBatch.Draw(Sprite, Position, Color.Red);
+            }
+            else
+            {
+                // Draw the player normally
+                GameObject.Draw(spriteBatch);
+            }
         }
 
         public void Respawn()

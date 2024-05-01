@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bgm.mp3</SourceFile>
-  <SourceTime>2024-04-30T18:08:05.8039305-07:00</SourceTime>
-  <DestFile>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/bgm.xnb</DestFile>
-  <DestTime>2024-05-01T05:09:26.2270181-07:00</DestTime>
+  <SourceFile>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/bgm.mp3</SourceFile>
+  <SourceTime>2024-04-30T18:56:23.4867879-07:00</SourceTime>
+  <DestFile>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/bgm.xnb</DestFile>
+  <DestTime>2024-05-01T15:19:21.6940515-07:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2022-07-26T04:44:56-07:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/bgm.ogg</string>
+    <string>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/bgm.ogg</string>
   </BuildOutput>
 </PipelineBuildEvent>
