@@ -380,3 +380,5 @@ C:\Users\Kyoma\Desktop\school\2024spring\cpts487\Final\teamalpha\Alpha Danmaku R
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\BossAbility1.xnb
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\BossAbility2.xnb
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\GameOver.xnb
+E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\bgm.ogg
+E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\bgm.xnb

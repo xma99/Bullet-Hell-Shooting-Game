@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bgm.mp3</SourceFile>
+  <SourceTime>2024-04-30T18:08:05.8039305-07:00</SourceTime>
+  <DestFile>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/bgm.xnb</DestFile>
+  <DestTime>2024-04-30T18:13:21.1290135-07:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2022-07-26T04:44:56-07:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2022-07-26T04:44:56-07:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/bgm.ogg</string>
+  </BuildOutput>
+</PipelineBuildEvent>

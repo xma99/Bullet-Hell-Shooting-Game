@@ -26,6 +26,7 @@ public class LevelManager
     private IPlayer _player;
     private CollisionManager _collisionManager;
     private ScoreManager _scoreManager;
+    private SoundManager _soundManager;
 
 
     private TimeSpan _spawnIntervalMin;
@@ -74,6 +75,12 @@ public class LevelManager
 
         _enemyManager.RegisterObserver(_scoreManager);
         _enemyManager.RegisterObserver(_uiManager);
+
+        _soundManager = new SoundManager(content);
+        // Load and play background music
+        _soundManager.LoadBackgroundMusic("bgm");
+        _soundManager.PlayBackgroundMusic();
+
 
         // load background image
         background = _content.Load<Texture2D>("back1");
