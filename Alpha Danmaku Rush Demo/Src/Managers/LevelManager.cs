@@ -188,7 +188,7 @@ public class LevelManager
         {
             waveDatas.Add(wave);
             // Assuming you have a method to parse the enemy type and create an enemy
-                   }
+        }
         foreach(var wave in levelData.Waves)
         {
             enemyBulletTypes.Add(wave.EnemyBulletType);
