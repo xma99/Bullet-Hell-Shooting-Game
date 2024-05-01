@@ -83,7 +83,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
             // e.g., FireBullet();
             // Reset attacking state if needed
 
-            newBullet = new BulletA(content.Load<Texture2D>("bubble"), Position, BulletFactory.AdjustVelocity(Microsoft.Xna.Framework.Vector2.Zero, 10), ColorHelper.FromName("yellow"));
+            newBullet = new PlayerBullet(content.Load<Texture2D>("bubble"), Position, BulletFactory.AdjustVelocity(new Vector2(0, 1), -10), ColorHelper.FromName("yellow"));
             newBullet.Speed = 10;
         }
 
