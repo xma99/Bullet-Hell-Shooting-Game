@@ -51,8 +51,7 @@ public class LevelManager
     private Boolean waveSwitch=true;
     private WaveData currWave;
     //bullet control
-    private List <EnemyBulletType> enemyBulletTypes;
-    private Queue<Bullet> currBullets = new Queue<Bullet>();
+    
     //private AttackManager _attackManager;
     private AttackAction Action;
     private Boolean AttackInitiate = false;
@@ -85,7 +84,7 @@ public class LevelManager
         // load background image
         background = _content.Load<Texture2D>("back1");
 
-        enemyBulletTypes=new List<EnemyBulletType>();
+       
     }
 
     private void InitializePlayer()
@@ -115,7 +114,7 @@ public class LevelManager
         
         if(currWave != null)
         {
-            loadAmmo();
+            _enemyManager.loadAmmo(waveDatas[waveIndex].EnemyBulletType);
             
         }
 
@@ -196,10 +195,7 @@ public class LevelManager
             waveDatas.Add(wave);
             // Assuming you have a method to parse the enemy type and create an enemy
         }
-        foreach(var wave in levelData.Waves)
-        {
-            enemyBulletTypes.Add(wave.EnemyBulletType);
-        }
+       
         
     }
    
@@ -243,27 +239,7 @@ public class LevelManager
         }
             
     }
-    public void loadAmmo()
-    {
-        _enemyManager.enemies.ForEach(enemy =>
-        {
-            Queue<Bullet> bullets = new Queue<Bullet>();
-            
-            for(int i = 0; i < currWave.EnemyBulletType.Amount; i++)
-            {
-                Microsoft.Xna.Framework.Vector2 startPosition = new Microsoft.Xna.Framework.Vector2(enemy.Position.X, enemy.Position.Y);
-                Bullet bullet=BulletFactory.CreateBullet(_content, startPosition, Microsoft.Xna.Framework.Vector2.Zero,currWave.EnemyBulletType);
-                bullets.Enqueue(bullet);
-                //bullet.Update();
-                currBullets.Enqueue(bullet);
-                
-            }
-            enemy.bulletList = bullets;
-
-
-        });
    
-    }
 
     public bool IsGameOver()
     {

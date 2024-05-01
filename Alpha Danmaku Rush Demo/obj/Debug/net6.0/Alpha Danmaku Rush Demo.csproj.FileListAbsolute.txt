@@ -385,3 +385,8 @@ E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\C
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\attack1.xnb
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\attack2.xnb
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\hit.xnb
+C:\Users\Kyoma\Desktop\school\2024spring\cpts487\Final\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\attack1.xnb
+C:\Users\Kyoma\Desktop\school\2024spring\cpts487\Final\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\attack2.xnb
+C:\Users\Kyoma\Desktop\school\2024spring\cpts487\Final\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\bgm.ogg
+C:\Users\Kyoma\Desktop\school\2024spring\cpts487\Final\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\bgm.xnb
+C:\Users\Kyoma\Desktop\school\2024spring\cpts487\Final\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\hit.xnb

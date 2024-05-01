@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/testplayer1.png</SourceFile>
-  <SourceTime>2024-04-30T17:32:58.8519583-07:00</SourceTime>
-  <DestFile>E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/testplayer1.xnb</DestFile>
-  <DestTime>2024-04-30T17:35:18.8899427-07:00</DestTime>
+  <SourceFile>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/testplayer1.png</SourceFile>
+  <SourceTime>2024-04-30T18:56:23.7151519-07:00</SourceTime>
+  <DestFile>C:/Users/Kyoma/Desktop/school/2024spring/cpts487/Final/teamalpha/Alpha Danmaku Rush Demo/Content/bin/DesktopGL/Content/testplayer1.xnb</DestFile>
+  <DestTime>2024-04-30T19:05:32.7728318-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T04:44:56-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

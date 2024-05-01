@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Alpha_Danmaku_Rush_Demo.Src.Managers.Level;
+using Alpha_Danmaku_Rush_Demo.Src.Entities.Bullet;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
@@ -71,10 +72,32 @@ public class EnemyManager
         foreach (var enemy in enemies)
         {
             enemy.Draw(spriteBatch);
+            
         }
     }
-    
 
+    public void loadAmmo(EnemyBulletType type)
+    {
+       enemies.ForEach(enemy =>
+        {
+            Queue<Bullet> bullets = new Queue<Bullet>();
+
+            for (int i = 0; i < type.Amount; i++)
+            {
+                Microsoft.Xna.Framework.Vector2 startPosition = new Microsoft.Xna.Framework.Vector2(enemy.Position.X, enemy.Position.Y);
+                Bullet bullet = BulletFactory.CreateBullet(Content, startPosition, Microsoft.Xna.Framework.Vector2.Zero, type);
+                bullets.Enqueue(bullet);
+                //bullet.Update();
+                
+                
+
+            }
+            enemy.bulletList = bullets;
+
+
+        });
+
+    }
     public void Clear()
     {
         enemies.Clear();
