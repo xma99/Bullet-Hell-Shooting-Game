@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -55,6 +56,10 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
             Position = new Vector2((800 - Sprite.Width) / 2, 1000 - Sprite.Height); // Reset player position to bottom center
             isInvincible = true;
             invincibilityTimer = TimeSpan.Zero;
+        }
+
+        public void SetContent(ContentManager content)
+        {
         }
     }
 }

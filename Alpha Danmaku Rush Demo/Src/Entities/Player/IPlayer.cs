@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
 
@@ -14,6 +15,8 @@ public interface IPlayer
     public void Update(GameTime gameTime, int screenWidth);
 
     public void Draw(SpriteBatch spriteBatch);
+
+    public void SetContent(ContentManager content);
 
     void Respawn();
 }

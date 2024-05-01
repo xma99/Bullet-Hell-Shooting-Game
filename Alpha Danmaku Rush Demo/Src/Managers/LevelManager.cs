@@ -100,7 +100,10 @@ public class LevelManager
             .SetPosition(new Microsoft.Xna.Framework.Vector2(100, 100))
             .WithMovement(5.0f)
             .WithExtraHealth(20)
+            .WithAttack()
             .Build();
+
+        _player.SetContent(_content);
     }
 
     public void Update(GameTime gameTime)

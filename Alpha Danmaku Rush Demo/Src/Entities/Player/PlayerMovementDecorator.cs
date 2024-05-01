@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
 
@@ -64,5 +65,9 @@ public class PlayerMovementDecorator : IPlayer
     public void Draw(SpriteBatch spriteBatch)
     {
         _wrappedPlayer.Draw(spriteBatch);
+    }
+
+    public void SetContent(ContentManager content)
+    {
     }
 }

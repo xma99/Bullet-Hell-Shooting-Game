@@ -38,7 +38,7 @@ public static class BulletFactory
     }
 
     // Adjusts the velocity vector based on the desired speed
-    private static Vector2 AdjustVelocity(Vector2 originalVelocity, int speed)
+    public static Vector2 AdjustVelocity(Vector2 originalVelocity, int speed)
     {
         // Normalize the velocity vector to get direction, then scale by speed
         if (originalVelocity != Vector2.Zero)

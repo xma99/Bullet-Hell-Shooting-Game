@@ -35,6 +35,12 @@ public class PlayerBuilder
         return this;
     }
 
+    public PlayerBuilder WithAttack()
+    {
+        _decorators.Add(player => new PlayerAttackDecorator(player, 10));
+        return this;
+    }
+
     public IPlayer Build()
     {
         IPlayer player = new Player(_sprite, _position);

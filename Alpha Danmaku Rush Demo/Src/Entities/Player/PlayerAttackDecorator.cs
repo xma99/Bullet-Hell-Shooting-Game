@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Alpha_Danmaku_Rush_Demo.Src.Utils;
+using System.Reflection.Metadata;
+using Microsoft.Xna.Framework.Content;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
 {
@@ -15,6 +18,8 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
         private IPlayer _wrappedPlayer;
         private float _attackSpeed = 1.0f;
         private bool _isAttacking = false;
+        private ContentManager content;
+        private Bullet.Bullet newBullet;
 
         public PlayerAttackDecorator(IPlayer player, float attackSpeed)
         {
@@ -49,17 +54,42 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
             {
                 PerformAttack();
             }
+
+            if (newBullet != null)
+            {
+                if (newBullet.IsActive == false)
+                {
+                    _isAttacking = false;
+                }
+                newBullet.Update(gameTime);
+            }
+            else
+            {
+                _isAttacking = false;
+            }
         }
 
         private void PerformAttack()
         {
+            if (_isAttacking)
+            {
+                return;
+            }
+
             // Example: Trigger attack logic
             // This could be creating bullets, playing an attack animation, etc.
             _isAttacking = true;
             // If you have a method to actually "fire", call it here
             // e.g., FireBullet();
             // Reset attacking state if needed
-            _isAttacking = false;
+
+            newBullet = new BulletA(content.Load<Texture2D>("bubble"), Position, BulletFactory.AdjustVelocity(Microsoft.Xna.Framework.Vector2.Zero, 10), ColorHelper.FromName("yellow"));
+            newBullet.Speed = 10;
+        }
+
+        public void SetContent(ContentManager content)
+        {
+            this.content = content;
         }
 
         public void Respawn()
@@ -72,7 +102,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
             _wrappedPlayer.Draw(spriteBatch);
             if (_isAttacking)
             {
-                // Optional: Draw attack visuals
+                newBullet.Draw(spriteBatch);
             }
         }
     }

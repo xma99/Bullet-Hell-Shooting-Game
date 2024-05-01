@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
@@ -44,4 +45,7 @@ public class PlayerHealthDecorator : IPlayer
         _wrappedPlayer.Draw(spriteBatch);
     }
 
+    public void SetContent(ContentManager content)
+    {
+    }
 }
