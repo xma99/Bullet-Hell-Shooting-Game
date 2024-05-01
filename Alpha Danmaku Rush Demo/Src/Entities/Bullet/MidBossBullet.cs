@@ -28,5 +28,14 @@ public class MidBossBullet : Bullet
         else
             Position += Velocity * s;
     }
+    public void update2(Vector2 v,float s = 0)
+    {
+        CheckOffScreen();
+        //Vector2 Ability1_Target = new Vector2(Velocity, 1);
+        if (s <= 0)
+            Position += Velocity * 0.5f*v;
+        else
+            Position += Velocity * s*v;
+    }
 }
 

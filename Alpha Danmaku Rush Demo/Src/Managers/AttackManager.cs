@@ -105,7 +105,10 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Managers
         TimeSpan firstTimer = TimeSpan.Zero;
         TimeSpan secondTimer = TimeSpan.Zero;
         int w, h;
+        int yr = 10;
         Random rand = new Random();
+        Boolean revert=false;
+        float angle=(float) Math.PI;
         public MidBoss(EnemyManager enemymanager, SpriteBatch sprite, ContentManager _content, EnemyBulletType type)
         {
             _enemyManager = enemymanager;
@@ -244,31 +247,55 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Managers
                         subWave.Clear();
                         firstTimer = TimeSpan.Zero;
                         secondTimer = TimeSpan.Zero;
+                        r = 30;
                     }
-                    if (firstTimer >= TimeSpan.FromMilliseconds(150) && firstTimer <= TimeSpan.FromMilliseconds(250))
-                    {
+                    if (!revert) {
+                        if (firstTimer >= TimeSpan.FromMilliseconds(150) && firstTimer <= TimeSpan.FromMilliseconds(250))
+                        {
 
-                        if (r == 0)
-                        {
-                            r = w / 2;
+                            if (r <= 0)
+                            {
+                                r = w - 50;
+                            }
+                            else
+                            {
+                                r -= 50;
+                            }
+                            MidBossBullet bullet = (MidBossBullet)BulletFactory.CreateBullet(_content, new Vector2(r, h / 2), new Vector2(0, 1), Type);
+                            bulletWave.Push(bullet);
+
+                            firstTimer = TimeSpan.Zero;
+                            if(r<=0)
+                                revert=true;
                         }
-                        if (r > 0)
-                        {
-                            r = r - 2 * prior - 10;
-                        }
-                        else if (r < 0)
-                        {
-                            r = r - 2 * prior + 10;
-                        }
-                        prior += 10;
-                        if (prior < 0 || prior > w)
-                        {
-                            prior = 20;
-                        }
-                        MidBossBullet bullet = (MidBossBullet)BulletFactory.CreateBullet(_content, new Vector2(w / 2 + r, h / 2), new Vector2(0, 1), Type);
-                        bulletWave.Push(bullet);
-                        firstTimer = TimeSpan.Zero;
                     }
+                    if (revert)
+                    {
+                        if (firstTimer >= TimeSpan.FromMilliseconds(150) && firstTimer <= TimeSpan.FromMilliseconds(250))
+                        {
+                            if (r <= 0)
+                                r = 50;
+
+                            if (r >= w)
+                            {
+                                r =50;
+                            }
+                            else
+                            {
+                                r += 50;
+                            }
+                            MidBossBullet bullet = (MidBossBullet)BulletFactory.CreateBullet(_content, new Vector2(r, h / 2), new Vector2(0, 1), Type);
+                            bulletWave.Push(bullet);
+
+                            firstTimer = TimeSpan.Zero;
+                            if (r >= w)
+                            {
+                                revert = false;
+                            }
+                        }
+                        
+                    }
+                    
                     //foreach(var bullet in bulletWave)
                     //{
                     //    f += 30;
@@ -316,6 +343,46 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Managers
 
                     break;
                 case 3:
+                    firstTimer += gameTime.ElapsedGameTime;
+                    secondTimer += gameTime.ElapsedGameTime;
+                    if (secondTimer >= TimeSpan.FromMilliseconds(5000))
+                    {
+                        AbilityCount++;
+                        bulletWave.Clear();
+                        subWave.Clear();
+                        firstTimer = TimeSpan.Zero;
+                        secondTimer = TimeSpan.Zero;
+                        r = 10;
+                    }
+                    if (firstTimer >= TimeSpan.FromMilliseconds(100) && firstTimer <= TimeSpan.FromMilliseconds(150))
+                    {
+                        yr += 100;
+                        r += 50;
+                        MidBossBullet bullet = (MidBossBullet)BulletFactory.CreateBullet(_content, new Vector2(w / 2, h / 2), new Vector2(r, yr), Type);
+                        MidBossBullet bullet1 = (MidBossBullet)BulletFactory.CreateBullet(_content, new Vector2(w / 2, h / 2), new Vector2(r + 50, yr + 200), Type);
+                        MidBossBullet bullet2 = (MidBossBullet)BulletFactory.CreateBullet(_content, new Vector2(w / 2, h / 2), new Vector2(r + 100, yr + 400), Type);
+                        bulletWave.Push(bullet);
+                        bulletWave.Push(bullet1);
+                        bulletWave.Push(bullet2);
+                        MidBossBullet bullet3 = (MidBossBullet)BulletFactory.CreateBullet(_content, new Vector2(w / 2, h / 2), new Vector2(r + 150, yr + 600), Type);
+                        MidBossBullet bullet4 = (MidBossBullet)BulletFactory.CreateBullet(_content, new Vector2(w / 2, h / 2), new Vector2(r + 200, yr + 800), Type);
+                        MidBossBullet bullet5 = (MidBossBullet)BulletFactory.CreateBullet(_content, new Vector2(w / 2, h / 2), new Vector2(r + 250, yr + 1000), Type);
+                        bulletWave.Push(bullet3);
+                        bulletWave.Push(bullet4);
+                        bulletWave.Push(bullet5);
+                        firstTimer = TimeSpan.Zero;
+                    }
+                    if (bulletWave.Count > 0)
+                    {
+                        foreach (var bullet in bulletWave)
+                        {
+                            bullet.Draw(_spriteBatch);
+                            bullet.update1();
+                        }
+                    }
+
+
+                    break;
 
                 default:
                     break;
