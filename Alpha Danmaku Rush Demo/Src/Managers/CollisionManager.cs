@@ -29,6 +29,7 @@ public class CollisionManager
     {
         CheckEnemyBulletPlayerCollisions();
         CheckEnemyPlayerCollisions();
+        CheckPlayerBulletEnemyCollisions();
     }
 
     private void CheckEnemyBulletPlayerCollisions()
@@ -73,6 +74,26 @@ public class CollisionManager
                 {
                     // Call the Respawn method of the player when health reaches zero
                     player.Respawn();
+                }
+            }
+        }
+    }
+
+    private void CheckPlayerBulletEnemyCollisions()
+    {
+        Bullet playerBullet = player.GetBullet();
+        if (playerBullet != null)
+        {
+            foreach (var enemy in enemies.enemies.Where(enemy => enemy.IsActive))
+            {
+                if (playerBullet.BoundingBox.Intersects(enemy.BoundingBox))
+                {
+                    sound.PlaySound("playerHit");
+                    enemy.IsActive = false;
+                    playerBullet.IsActive = false;
+
+                    score.AddScoreForEnemyKill();
+                    break;
                 }
             }
         }

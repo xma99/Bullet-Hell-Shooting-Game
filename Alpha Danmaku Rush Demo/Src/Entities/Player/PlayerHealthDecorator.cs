@@ -21,7 +21,11 @@ public class PlayerHealthDecorator : IPlayer
 
     public Rectangle BoundingBox => _wrappedPlayer.BoundingBox;
 
-    public int Health { get => _wrappedPlayer.Health; set => _wrappedPlayer.Health = value; }
+    public int Health
+    {
+        get => _wrappedPlayer.Health;
+        set => _wrappedPlayer.Health = value;
+    }
 
     public PlayerHealthDecorator(IPlayer player, int extraLifeTime)
     {
@@ -47,5 +51,10 @@ public class PlayerHealthDecorator : IPlayer
 
     public void SetContent(ContentManager content)
     {
+    }
+
+    public Bullet.Bullet GetBullet()
+    {
+        return GetBullet();
     }
 }

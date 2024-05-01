@@ -70,4 +70,9 @@ public class PlayerMovementDecorator : IPlayer
     public void SetContent(ContentManager content)
     {
     }
+
+    public Bullet.Bullet GetBullet()
+    {
+        return GetBullet();
+    }
 }

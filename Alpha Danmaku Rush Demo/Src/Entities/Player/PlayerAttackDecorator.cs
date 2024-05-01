@@ -92,6 +92,12 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
             this.content = content;
         }
 
+        public Bullet.Bullet GetBullet()
+        {
+            return _isAttacking ? newBullet : null;
+        }
+
+
         public void Respawn()
         {
             _wrappedPlayer.Respawn();

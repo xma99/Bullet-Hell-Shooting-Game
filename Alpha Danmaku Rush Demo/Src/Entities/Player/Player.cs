@@ -61,5 +61,10 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
         public void SetContent(ContentManager content)
         {
         }
+
+        public Bullet.Bullet GetBullet()
+        {
+            return null;
+        }
     }
 }
