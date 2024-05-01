@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -8,7 +8,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
 {
     public class Player : IPlayer
     {
-
         public GameObject GameObject { get; private set; }
         public int Health { get; set; } = 5;
         private Vector2 initialPosition;
@@ -18,6 +17,9 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
         private bool isInvincible = false;
         public bool IsInvincible => isInvincible;
         public int flag = 1;
+
+        private KeyboardState hackModeTurn;
+        private KeyboardState hackMode;
 
         public Vector2 Position
         {
@@ -37,12 +39,13 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
         public void Update(GameTime gameTime, int screenWidth)
         {
             // Check for keyboard input to toggle invincibility
-            KeyboardState keyboardState = Keyboard.GetState();
-            if (keyboardState.IsKeyDown(Keys.H))
+            hackMode = Keyboard.GetState();
+            // Toggle hackmode with the h-key
+            if (hackMode.IsKeyDown(Keys.H) && hackModeTurn.IsKeyUp(Keys.H))
             {
                 // Toggle invincibility
-                isInvincible = true;
-                flag = 0;
+                isInvincible = !isInvincible;
+                flag = isInvincible ? 0 : 1;
             }
 
             if (isInvincible && flag != 0)
@@ -51,6 +54,7 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
                 if (invincibilityTimer >= invincibilityDuration)
                 {
                     isInvincible = false;
+                    flag = 1;
                 }
             }
         }
@@ -84,5 +88,6 @@ namespace Alpha_Danmaku_Rush_Demo.Src.Entities.Player
         {
             return null;
         }
+
     }
 }
