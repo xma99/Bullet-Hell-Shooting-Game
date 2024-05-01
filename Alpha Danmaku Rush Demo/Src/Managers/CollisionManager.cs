@@ -30,7 +30,21 @@ public class CollisionManager
         CheckEnemyBulletPlayerCollisions();
         CheckEnemyPlayerCollisions();
         CheckPlayerBulletEnemyCollisions();
+        // SetBomb();
     }
+
+    // private void SetBomb()
+    // {
+    //     if (direction.IsKeyDown(Keys.B))
+    //     {
+    //         sound.PlaySound("bomb");
+    //         foreach (var enemy in enemies.enemies.Where(enemy => enemy.IsActive))
+    //         {
+    //             enemy.IsActive = false;
+    //             score.AddScoreForEnemyKill();
+    //         }
+    //     }
+    // }
 
     private void CheckEnemyBulletPlayerCollisions()
     {
