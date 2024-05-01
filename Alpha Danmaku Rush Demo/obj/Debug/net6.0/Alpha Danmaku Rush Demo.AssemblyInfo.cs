@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Alpha Danmaku Rush Demo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ff06a9fb28f4316416a5e7900dc716c8f428b67")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6857b6d545c13c1031ac147765d0713ef353b8b8")]
 [assembly: System.Reflection.AssemblyProductAttribute("Alpha Danmaku Rush Demo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Alpha Danmaku Rush Demo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
