@@ -68,17 +68,17 @@ public class LevelManager
 
         InitializePlayer();
 
+        _soundManager = new SoundManager(content);
         _scoreManager = new ScoreManager();
-        _collisionManager = new CollisionManager(_player, _enemyManager, _scoreManager);
+        _collisionManager = new CollisionManager(_player, _enemyManager, _scoreManager, _soundManager);
         _uiManager = new UIManager(content, graphics);
         _uiManager.InitializeHealthIcons(_player.Health);
 
         _enemyManager.RegisterObserver(_scoreManager);
         _enemyManager.RegisterObserver(_uiManager);
 
-        _soundManager = new SoundManager(content);
-        // Load and play background music
-        _soundManager.LoadBackgroundMusic("bgm");
+
+        // play background music
         _soundManager.PlayBackgroundMusic();
 
 

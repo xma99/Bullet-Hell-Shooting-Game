@@ -382,3 +382,6 @@ E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\C
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\GameOver.xnb
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\bgm.ogg
 E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\bgm.xnb
+E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\attack1.xnb
+E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\attack2.xnb
+E:\WSU\Cpts_487\TeamProject\teamalpha\Alpha Danmaku Rush Demo\bin\Debug\net6.0\Content\hit.xnb

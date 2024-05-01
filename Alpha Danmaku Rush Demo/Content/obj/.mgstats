@@ -1,5 +1,7 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/a.png","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/a.xnb","TextureProcessor","Texture2DContent",1160,9085,0.1180091
+"E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/attack1.wav","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/attack1.xnb","SoundEffectProcessor","SoundEffectContent",30124,30185,0.1221286
+"E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/attack2.wav","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/attack2.xnb","SoundEffectProcessor","SoundEffectContent",6316,6377,0.0610194
 "E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/b.png","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/b.xnb","TextureProcessor","Texture2DContent",954,7285,0.0010322
 "E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/back1.jpg","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/back1.xnb","TextureProcessor","Texture2DContent",113373,2759493,0.0438389
 "E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bgm.mp3","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/bgm.xnb","SongProcessor","SongContent",5292302,121,1.0957386
@@ -11,5 +13,6 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/Fonts/Font.spritefont","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/Fonts/Font.xnb","FontDescriptionProcessor","SpriteFontContent",490,21535,0.0533898
 "E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/GameOver.png","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/GameOver.xnb","TextureProcessor","Texture2DContent",6953,416085,0.0097115
 "E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/heart.png","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/heart.xnb","TextureProcessor","Texture2DContent",531411,16000085,0.2153977
+"E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/hit.wav","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/hit.xnb","SoundEffectProcessor","SoundEffectContent",20212,20273,0.0628062
 "E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/midBoss.png","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/midBoss.xnb","TextureProcessor","Texture2DContent",3156,1944085,0.0205992
 "E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/testplayer1.png","E:/WSU/Cpts_487/TeamProject/teamalpha/Alpha Danmaku Rush Demo/Content/bin/testplayer1.xnb","TextureProcessor","Texture2DContent",1415,13885,0.0008203

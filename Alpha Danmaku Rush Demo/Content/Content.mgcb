@@ -25,6 +25,18 @@
 /processorParam:TextureFormat=Color
 /build:a.png
 
+#begin attack1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:attack1.wav
+
+#begin attack2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:attack2.wav
+
 #begin b.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -145,6 +157,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:heart.png
+
+#begin hit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:hit.wav
 
 #begin midBoss.png
 /importer:TextureImporter

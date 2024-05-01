@@ -16,6 +16,8 @@ public class SoundManager
     {
         _content = content;
         _soundEffects = new Dictionary<string, SoundEffect>();
+        this.LoadSound("playerHit", "hit");
+        this.LoadBackgroundMusic("bgm");
     }
 
     public void LoadSound(string key, string assetName)

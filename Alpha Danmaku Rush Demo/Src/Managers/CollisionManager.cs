@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Alpha_Danmaku_Rush_Demo.Src.Entities.Player;
 using System;
+using System.Runtime.CompilerServices;
+using Microsoft.Xna.Framework.Media;
 
 namespace Alpha_Danmaku_Rush_Demo.Src.Managers;
 
@@ -13,12 +15,14 @@ public class CollisionManager
     private List<Bullet> bullets;
     private EnemyManager enemies;
     private ScoreManager score;
+    private SoundManager sound;
 
-    public CollisionManager(IPlayer player, EnemyManager enemies, ScoreManager score)
+    public CollisionManager(IPlayer player, EnemyManager enemies, ScoreManager score, SoundManager sound)
     {
         this.player = player;
         this.enemies = enemies;
         this.score = score;
+        this.sound = sound;
     }
 
     public void Update()
@@ -35,6 +39,7 @@ public class CollisionManager
             {
                 foreach (var bullet in enemy.bulletList.Where(bullet => bullet.IsActive && bullet.BoundingBox.Intersects(player.BoundingBox)))
                 {
+                    sound.PlaySound("playerHit");
                     player.Health -= bullet.Damage;
                     bullet.IsActive = false;
 
@@ -57,6 +62,7 @@ public class CollisionManager
             // Iterate through all active enemies
             foreach (var enemy in enemies.enemies.Where(enemy => enemy.BoundingBox.Intersects(player.BoundingBox) && enemy.IsActive))
             {
+                sound.PlaySound("playerHit");
                 // Inflict damage to the player
                 player.Health -= 1;
                 // Disable the enemy
