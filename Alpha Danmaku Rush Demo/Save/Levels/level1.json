@@ -26,7 +26,7 @@
     },
     {
       "id": "3",
-      "time": [ "25", "35" ],
+      "time": [ "25", "45" ],
       "enemyType": "MidBoss",
       "enemyAmount": 1,
       "enemyBulletType": {
@@ -38,7 +38,7 @@
     },
     {
       "id": "4",
-      "time": [ "35", "45" ],
+      "time": [ "45", "55" ],
       "enemyType": "RegularB",
       "enemyAmount": 5,
       "enemyBulletType": {
@@ -50,7 +50,7 @@
     },
     {
       "id": "5",
-      "time": [ "45", "55" ],
+      "time": [ "55", "65" ],
       "enemyType": "RegularB",
       "enemyAmount": 7,
       "enemyBulletType": {
@@ -62,7 +62,7 @@
     },
     {
       "id": "6",
-      "time": [ "55", "80" ],
+      "time": [ "65", "95" ],
       "enemyType": "FinalBoss",
       "enemyAmount": 1,
       "enemyBulletType": {
