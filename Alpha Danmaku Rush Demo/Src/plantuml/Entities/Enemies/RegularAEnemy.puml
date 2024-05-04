@@ -1,0 +1,8 @@
+@startuml
+class RegularAEnemy {
+    + RegularAEnemy(content:ContentManager, startPosition:Vector2, movementSpeed:float)
+    + <<override>> Update(gameTime:GameTime, playerPosition:Vector2) : void
+    + <<override>> Attack(gameTime:GameTime, playerPosition:Vector2) : void
+}
+Enemy <|-- RegularAEnemy
+@enduml

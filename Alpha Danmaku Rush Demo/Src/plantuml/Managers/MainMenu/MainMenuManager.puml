@@ -1,0 +1,7 @@
+@startuml
+class MainMenuManager {
+    + MainMenuManager(content:ContentManager)
+    + Update(gameTime:GameTime, keyboardState:KeyboardState, previousKeyboardState:KeyboardState) : void
+    + Draw(spriteBatch:SpriteBatch) : void
+}
+@enduml

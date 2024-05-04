@@ -1,0 +1,13 @@
+@startuml
+class Player {
+    + Health : int <<get>> <<set>> = 10
+    + Player(img:Texture2D, initialPosition:Vector2)
+    + Update(gameTime:GameTime, screenWidth:int) : void
+    + Draw(spriteBatch:SpriteBatch) : void
+}
+IPlayer <|-- Player
+Player --> "GameObject" GameObject
+Player --> "Position" Vector2
+Player --> "Sprite" Texture2D
+Player --> "BoundingBox" Rectangle
+@enduml

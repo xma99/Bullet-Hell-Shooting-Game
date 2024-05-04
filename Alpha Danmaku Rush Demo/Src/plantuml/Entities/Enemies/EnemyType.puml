@@ -1,0 +1,8 @@
+@startuml
+enum EnemyType {
+    RegularA,
+    RegularB,
+    MidBoss,
+    FinalBoss,
+}
+@enduml

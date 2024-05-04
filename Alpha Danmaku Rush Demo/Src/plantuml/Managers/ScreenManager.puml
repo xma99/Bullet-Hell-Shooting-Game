@@ -1,0 +1,14 @@
+@startuml
+class ScreenManager {
+    + ScreenManager(content:ContentManager, graphics:GraphicsDeviceManager, spriteBatch:SpriteBatch)
+    + Update(gameTime:GameTime) : void
+    + Draw() : void
+    + LoadLevel(levelPath:string, levelNumber:int) : void
+}
+enum ScreenState {
+    MainMenu,
+    GameLevel,
+    Settings,
+}
+ScreenManager +-- ScreenState
+@enduml

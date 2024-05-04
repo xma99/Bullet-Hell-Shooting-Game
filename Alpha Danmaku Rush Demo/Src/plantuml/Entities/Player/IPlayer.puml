@@ -1,0 +1,6 @@
+@startuml
+interface IPlayer {
+    + Update(gameTime:GameTime, screenWidth:int) : void
+    + Draw(spriteBatch:SpriteBatch) : void
+}
+@enduml

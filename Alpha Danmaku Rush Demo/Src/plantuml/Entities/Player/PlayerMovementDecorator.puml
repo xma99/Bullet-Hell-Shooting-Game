@@ -1,0 +1,12 @@
+@startuml
+class PlayerMovementDecorator {
+    + PlayerMovementDecorator(player:IPlayer, speed:float)
+    + Health : int <<get>> <<set>>
+    + Update(gameTime:GameTime, screenWidth:int) : void
+    + Draw(spriteBatch:SpriteBatch) : void
+}
+IPlayer <|-- PlayerMovementDecorator
+PlayerMovementDecorator --> "Position" Vector2
+PlayerMovementDecorator --> "Sprite" Texture2D
+PlayerMovementDecorator --> "BoundingBox" Rectangle
+@enduml

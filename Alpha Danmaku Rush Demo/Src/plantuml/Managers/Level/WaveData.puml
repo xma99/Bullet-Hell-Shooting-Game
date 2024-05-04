@@ -1,0 +1,12 @@
+@startuml
+class WaveData {
+    + Id : string <<get>> <<set>>
+    + EnemyType : string <<get>> <<set>>
+    + EnemyAmount : int <<get>> <<set>>
+    + Interval : int <<get>> <<set>>
+}
+class "List`1"<T> {
+}
+WaveData --> "Time<string>" "List`1"
+WaveData --> "EnemyBulletType" EnemyBulletType
+@enduml

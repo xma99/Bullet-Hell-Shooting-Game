@@ -1,0 +1,9 @@
+@startuml
+enum MainMenuOption {
+    ContinueGame,
+    NewGame,
+    LevelSelection,
+    AdjustVolume,
+    Exit,
+}
+@enduml

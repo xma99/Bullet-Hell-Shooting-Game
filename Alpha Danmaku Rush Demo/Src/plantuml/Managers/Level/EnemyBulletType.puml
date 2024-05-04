@@ -1,0 +1,8 @@
+@startuml
+class EnemyBulletType {
+    + Color : string <<get>> <<set>>
+    + Type : string <<get>> <<set>>
+    + Amount : int <<get>> <<set>>
+    + Speed : int <<get>> <<set>>
+}
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+class UIManager {
+    + UIManager(content:ContentManager, graphics:GraphicsDeviceManager)
+    + InitializeHealthIcons(healthCount:int) : void
+    + UpdateHealthIcons(currentHealth:int) : void
+    + Draw(spriteBatch:SpriteBatch) : void
+}
+@enduml

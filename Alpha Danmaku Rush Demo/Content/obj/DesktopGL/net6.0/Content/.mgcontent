@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/a.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/attack1.wav</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/attack2.wav</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/b.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/back1.jpg</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/bgm.mp3</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/bomb.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/BossAbility1.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/BossAbility2.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/bubble.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/bullettest1.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/end.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/finalBoss.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/Fonts/Font.spritefont</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/GameOver.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/heart.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/hit.wav</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/menu.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/midBoss.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/PlayerBullet.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/start.png</File>
+    <File>C:/Users/14255/Downloads/teamalpha-Final/Alpha Danmaku Rush Demo/Content/testplayer1.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

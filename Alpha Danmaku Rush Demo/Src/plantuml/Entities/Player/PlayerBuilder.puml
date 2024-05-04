@@ -1,0 +1,9 @@
+@startuml
+class PlayerBuilder {
+    + SetSprite(sprite:Texture2D) : PlayerBuilder
+    + SetPosition(position:Vector2) : PlayerBuilder
+    + WithExtraHealth(extraHealth:int) : PlayerBuilder
+    + WithMovement(speed:float) : PlayerBuilder
+    + Build() : IPlayer
+}
+@enduml

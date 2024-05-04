@@ -1,0 +1,7 @@
+@startuml
+class BulletB {
+    + BulletB(sprite:Texture2D, position:Vector2, velocity:Vector2, color:Color)
+    + <<override>> Update(gameTime:GameTime) : void
+}
+Bullet <|-- BulletB
+@enduml

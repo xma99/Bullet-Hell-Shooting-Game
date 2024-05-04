@@ -1,0 +1,6 @@
+@startuml
+class CollisionManager {
+    + CollisionManager(player:IPlayer, enemies:EnemyManager, score:ScoreManager)
+    + Update() : void
+}
+@enduml

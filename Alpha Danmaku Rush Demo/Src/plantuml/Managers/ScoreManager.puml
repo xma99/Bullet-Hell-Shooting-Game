@@ -1,0 +1,9 @@
+@startuml
+class ScoreManager {
+    + Score : int <<get>>
+    + ScoreManager()
+    + Update(gameTime:GameTime) : void
+    + AddScoreForEnemyKill() : void
+    + Reset() : void
+}
+@enduml

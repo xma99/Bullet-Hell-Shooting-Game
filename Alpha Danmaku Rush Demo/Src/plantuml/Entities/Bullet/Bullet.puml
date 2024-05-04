@@ -1,0 +1,13 @@
+@startuml
+abstract class Bullet {
+    + IsActive : bool <<get>> <<set>> = true
+    + Damage : int <<get>> <<set>>
+    + Speed : int <<get>> <<set>>
+    + {abstract} Update(gameTime:GameTime) : void
+    + Draw(spriteBatch:SpriteBatch) : void
+}
+Bullet --> "Position" Vector2
+Bullet --> "Velocity" Vector2
+Bullet --> "Color" Color
+Bullet --> "BoundingBox" Rectangle
+@enduml
